@@ -1,0 +1,84 @@
+<!doctype html>
+<!-- Written and Designed by Brendan Whitfield -->
+<html>
+	<head>
+		<!-- META -->
+		<meta charset='utf-8'/>
+		<meta name="viewport" content="width=device-width">
+		<meta name="author" content="Brendan Whitfield">
+		<meta name="description" content="Software Portfolio for Brendan Whitfield">
+		<meta name="keywords" content="portfolio, developer, programmer, programming, java, processing, python, actionscript, HTML, javascript, jquery, CSS, creative, interactive">
+		
+		<title>Brendan Whitfield - Programmer &amp; Interactive Developer</title>
+		<link rel='shortcut icon' type='image/png' href='../../favicon.png'>
+
+		<!-- CSS -->
+		<link rel='stylesheet' type='text/css' href='../../css/reset.css'>
+		<link rel='stylesheet' type='text/css' href='../../css/style.css'>
+
+		<!-- JS -->
+		<script type="text/javascript" src='../../js/jquery-1.9.1.min.js'></script>
+		<script type="text/javascript" src='../../js/settings.js'></script>
+		<script type="text/javascript" src='../../js/main.js'></script> <!-- $(window).load() -->
+
+		<!--[if lt IE 9]>
+			<script src="js/html5shiv.js"></script>
+			<link rel='stylesheet' type='text/css' href='../../css/ie.css'>
+		<![endif]-->
+	</head>
+	<body onunload=''>
+
+		<div id='selector' class='h'>
+			<div class='m h'>
+				<div id='spaceArrow' class='h'></div>
+			</div>
+		</div>
+
+		<header class='h'>
+			<div class="m h">
+				<div class='w1 h' id='name'>
+					<h1 class='l'>BRENDAN</h1>
+					<h1 class='r'>WHITFIELD</h1>
+				</div>
+				<div class='w2 h'>
+					<div id='navGraphics'></div> <!-- only used for narrow mode -->
+					<nav>
+						<a href='../../index.html'>Work</a>
+						<a href='../../play.html'>Play</a>
+						<a href='../../about.html'>About</a>
+						<a href='mailto:bcw7044@rit.edu'>bcw7044@rit.edu</a>
+					</nav>
+					<div id='pageContainer' class='h'>
+						<div id='page' class='work'></div>
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<section class='m'>
+			<div class='w1'>
+				<p>
+					This program simulates the physics of a spider web. The user can click anywhere on screen, and the red ball (representing the spider) will jump to the nearest node in the web. This in turn causes ripples to propogate through the web. Internally, the web is constructed from Node objects, each of which maintains an adjacency table containing references to it neighboring nodes. This allows each node to compute its reaction based on the inputs from its neighbors. Such forces are computed according to hooks law, and a centering force is applied to return the nodes to their home positions. A damping force is also applied to slowly bring the web to equilibrium.
+				</p>
+				<div class='bar h'>
+					<div class='graphics h'></div>
+					<span>Dynamic Spider Web</span>
+					<span class='dim'>Processing</span>
+				</div>
+				<div class='code bar h'>
+					<div class='graphics h'></div>
+					<span class='dim'>Github</span>
+					<a class='button' href='https://github.com/brendanwhitfield/processing_spider-web'>Code</a>
+				</div>
+			</div>
+			<div class='w2'>
+				<a href='web.png'>
+					<img src='small_web.png' height='450' width='450' />
+				</a>
+				<span class='dim'>Click to enlarge</span>
+			</div>
+		</section>
+
+		<footer>&copy; 2014 Brendan Whitfield</footer>
+	</body>
+ </html>
