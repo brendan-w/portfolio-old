@@ -1,0 +1,97 @@
+<!doctype html>
+<!-- Written and Designed by Brendan Whitfield -->
+<html>
+	<head>
+		<!-- META -->
+		<meta charset='utf-8'/>
+		<meta name="viewport" content="width=device-width">
+		<meta name="author" content="Brendan Whitfield">
+		<meta name="description" content="Software Portfolio for Brendan Whitfield">
+		<meta name="keywords" content="portfolio, developer, programmer, programming, java, processing, python, actionscript, HTML, javascript, jquery, CSS, creative, interactive">
+		
+		<title>Brendan Whitfield - Programmer &amp; Interactive Developer</title>
+		<link rel='shortcut icon' type='image/png' href='../../favicon.png'>
+
+		<!-- CSS -->
+		<link rel='stylesheet' type='text/css' href='../../css/reset.css'>
+		<link rel='stylesheet' type='text/css' href='../../css/style.css'>
+
+		<!-- JS -->
+		<script type="text/javascript" src='../../js/jquery-1.9.1.min.js'></script>
+		<script type="text/javascript" src='../../js/settings.js'></script>
+		<script type="text/javascript" src='../../js/main.js'></script> <!-- $(window).load() -->
+
+		<!--[if lt IE 9]>
+			<script src="js/html5shiv.js"></script>
+			<link rel='stylesheet' type='text/css' href='../../css/ie.css'>
+		<![endif]-->
+	</head>
+	<body onunload=''>
+
+		<div id='selector' class='h'>
+			<div class='m h'>
+				<div id='spaceArrow' class='h'></div>
+			</div>
+		</div>
+
+		<header class='h'>
+			<div class="m h">
+				<div class='w1 h' id='name'>
+					<h1 class='l'>BRENDAN</h1>
+					<h1 class='r'>WHITFIELD</h1>
+				</div>
+				<div class='w2 h'>
+					<div id='navGraphics'></div> <!-- only used for narrow mode -->
+					<nav>
+						<a href='../../index.html'>Work</a>
+						<a href='../../play.html'>Play</a>
+						<a href='../../about.html'>About</a>
+						<a href='mailto:bcw7044@rit.edu'>bcw7044@rit.edu</a>
+					</nav>
+					<div id='pageContainer' class='h'>
+						<div id='page' class='work'></div>
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<section class='m'>
+			<div class='w1'>
+				<p>
+					This project uses an Arduino Nano to transmit IR remote codes. It has three buttons (up, down, and bank select), a ten segment bar graph display, and two IR LEDS at the tip. IR functions are stored in banks, which can be cycled by pressing the topmost button. Once a bank is selected, the user can press the up or down buttons to transmit the desired code. However, instead of transmitting a single IR code, this device is programmed to iterate through a list of codes. This makes it much more flexible, as it can communicate with a wider range of equipment. Several of the market-leading TV manufacturers are already compiled into the software.
+				</p>
+				<div class='bar h'>
+					<div class='graphics h'></div>
+					<span>Arduino Universal Remote</span>
+					<span class='dim'>Arduino / C++</span>
+				</div>
+				<div class='code bar h'>
+					<div class='graphics h'></div>
+					<span class='dim'>Github</span>
+					<a class='button' href='https://github.com/brendanwhitfield/arduino_ir'>Code</a>
+				</div>
+			</div>
+			<div class='w2'>
+				<a href='remote.jpg'>
+					<img src='small_remote.jpg' height='338' width='450' />
+				</a>
+				<span class='dim'>Click to enlarge</span>
+			</div>
+		</section>
+		<section class='m'>
+			<div class='w1'>
+				<p>
+					Internally, IR codes are stored in a format similar to <a href='http://www.remotecentral.com/features/irdisp2.htm'>Pronto Hex</a>. However, to conserve memory, IR codes are stored using a dictionary and byte-length based compression, and are decompressed when they are retrieved. This technique was inspired by the <a href='https://github.com/adafruit/Flora-TV-B-Gone/'>TV-B-Gone</a>, a similar project that sends OFF commands. As time goes on, I intend to expand the command library to make it control a wider array of devices.
+				</p>
+			</div>
+			<div class='w2'>
+				<a href='inside.jpg'>
+					<img src='small_inside.jpg' height='338' width='450' />
+				</a>
+				<span class='dim'>Click to enlarge</span>
+			</div>
+		</section>
+
+		<footer>&copy; 2014 Brendan Whitfield</footer>
+	</body>
+</html>
