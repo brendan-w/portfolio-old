@@ -53,7 +53,8 @@ a:focus {outline: none;}
 
 p
 {
-	text-align: justify;
+	/*text-align: justify;*/
+	word-spacing: 0.1em;
 	margin-bottom:1em;
 	line-height: 1.2em;
 }
@@ -378,13 +379,11 @@ section.embed
 	-moz-transform: scale(.9999); /* hack to fix border alliasing issues in firefox */
 }
 
-
 .bar.code
 {
 	width:50%;
 	left:50%;
 }
-
 
 a.button
 {
@@ -400,6 +399,10 @@ a.button
 	min-width:32px;
 }
 
+a.button.static
+{
+	width:4em;
+}
 
 a.button:before
 {
@@ -559,5 +562,11 @@ footer
 		width:12em;
 		margin-left:auto;
 		margin-right: auto;
+	}
+
+	.bar.code
+	{
+		width:50%;
+		left:25%;
 	}
 }
