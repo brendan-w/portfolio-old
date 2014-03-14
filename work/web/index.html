@@ -58,7 +58,7 @@
 		<section class='m'>
 			<div class='w1'>
 				<p>
-					This program simulates the physics of a spider web. The user can click anywhere on screen, and the red ball (representing the spider) will jump to the nearest node in the web. This in turn causes ripples to propogate through the web. Internally, the web is constructed from Node objects, each of which maintains an adjacency table containing references to it neighboring nodes. This allows each node to compute its reaction based on the inputs from its neighbors. Such forces are computed according to hooks law, and a centering force is applied to return the nodes to their home positions. A damping force is also applied to slowly bring the web to equilibrium.
+					This program simulates the physics of a spider web. The user can click anywhere on screen, the spider (the red ball) will jump and cause ripples to propogate through the web.
 				</p>
 				<div class='bar h'>
 					<div class='graphics h'></div>
@@ -70,6 +70,9 @@
 					<span class='dim'>Github</span>
 					<a class='button' href='https://github.com/brendanwhitfield/processing_spider-web'>Code</a>
 				</div>
+				<p>
+					Internally, the web is constructed from Node objects, each of which maintains an adjacency table containing references to it neighboring nodes. This allows each node to compute its reaction based on the inputs from its neighbors. Such forces are computed according to hooks law, and a centering force is applied to return the nodes to their home positions. A damping force is also applied to slowly bring the web to equilibrium.
+				</p>
 			</div>
 			<div class='w2'>
 				<a href='web.png'>

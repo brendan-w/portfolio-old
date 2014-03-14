@@ -58,7 +58,7 @@
 		<section class='m'>
 			<div class='w1'>
 				<p>
-					This project uses an Arduino Nano to transmit IR remote codes. It has three buttons (up, down, and bank select), a ten segment bar graph display, and two IR LEDS at the tip. IR functions are stored in banks, which can be cycled by pressing the topmost button. Once a bank is selected, the user can press the up or down buttons to transmit the desired code. However, instead of transmitting a single IR code, this device is programmed to iterate through a list of codes. This makes it much more flexible, as it can communicate with a wider range of equipment. Several of the market-leading TV manufacturers are already compiled into the software.
+					This IR remote control was made to operate any function of any device. Using an Arduino Nano, tables of IR codes can be programmed into the flash memory. When a button is pressed, the remote begins iterating through the desired IR codes. While the code tables are by no means complete, several of the market-leading TV manufacturers are already compiled into the software.
 				</p>
 				<div class='bar h'>
 					<div class='graphics h'></div>
@@ -81,7 +81,7 @@
 		<section class='m'>
 			<div class='w1'>
 				<p>
-					Internally, IR codes are stored in a format similar to <a href='http://www.remotecentral.com/features/irdisp2.htm'>Pronto Hex</a>. However, to conserve memory, IR codes are stored using a dictionary and byte-length based compression, and are decompressed when they are retrieved. This technique was inspired by the <a href='https://github.com/adafruit/Flora-TV-B-Gone/'>TV-B-Gone</a>, a similar project that sends OFF commands. As time goes on, I intend to expand the command library to make it control a wider array of devices.
+					Internally, IR codes are stored in a format similar to <a href='http://www.remotecentral.com/features/irdisp2.htm'>Pronto Hex</a>. However, to conserve memory, they are stored using a dictionary and byte-length based compression, and are decompressed upon retrieval. This technique was inspired by the <a href='https://github.com/adafruit/Flora-TV-B-Gone/'>TV-B-Gone</a>, a similar project that sends OFF commands. As time goes on, I intend to expand the command library to make it control a wider array of devices.
 				</p>
 			</div>
 			<div class='w2'>

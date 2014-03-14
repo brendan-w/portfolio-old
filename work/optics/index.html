@@ -58,7 +58,7 @@
 		<section class='m'>
 			<div class='w1'>
 				<p>
-					This project is based on an excerpt from the book 'How It Works' by Archibald Williams. The goal was to make the book interactive and fun for the user, while still providing all of the text from the original book. Its most effective page (page 2), features a mock optics bench where the user can place up to six lenses in a beam of light. This provided several challenges, such as implementing Snells Law, and computing Lens/Ray intersections.
+					This is an interactive book that teaches optics. Featuring a mock optical bench, the user can click &amp; drag lenses into a simulated beam of light. Once placed, the user can see how each lens deflects the rays. This provided several challenges, such as implementing Snells Law, and computing lens/ray intersections.
 				</p>
 				<div class='bar h'>
 					<div class='graphics h'></div>
@@ -66,6 +66,9 @@
 					<span class='dim'>Actionscript 3</span>
 					<a class='button' href='run.html'>Run</a>
 				</div>
+				<p>
+					Each beam segment is simply a vector. Originating on the left side of the page, beam segments travel until they intersect with a lens. The vertical position of the intersection is calculated, along with the curvature at that point, and the beam is deflected according to Snell's Law.
+				</p>
 			</div>
 			<div class='w2'>
 				<a href='optics.png'>
