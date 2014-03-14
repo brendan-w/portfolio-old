@@ -1,0 +1,87 @@
+<!doctype html>
+<!-- Written and Designed by Brendan Whitfield -->
+<html>
+<head>
+	<!-- META -->
+	<meta charset='utf-8'/>
+	<title>Synthesizer</title>
+
+	<!-- CSS -->
+	<link rel='stylesheet' type='text/css' href='css/reset.css'>
+	<link rel='stylesheet' type='text/css' href='css/style.css'>
+
+	<!-- JS -->
+	<script type="text/javascript" src='js/util.js'></script>
+	<script type="text/javascript" src='js/array2D.js'></script>
+	<script type="text/javascript" src='js/track.js'></script>
+	<script type="text/javascript" src='js/main.js'></script> <!-- init() -->
+
+</head>
+<body>
+	<header>
+		<h1>WEB SYNTH</h1>
+	</header>
+	<div id="tracks">
+		<!-- main section, for settings and such -->
+		<section id="main">
+			<div class="options">
+				<div>
+					<span>Tempo</span>
+					<input id="tempo" class="right" type="range" min="60" max="720" value="480">
+				</div>
+			</div>
+			<table>
+				<tr></tr>
+			</table>
+			<div class="options">
+				<div class="center">
+					<div id="subBeat" class="left button" value="-1">&lt;</div>
+					<span id="numBeats">12</span>
+					<div id="addBeat" class="right button" value="1">&gt;</div>
+				</div>
+			</div>
+		</section>
+		<!-- all other tracks get added as sections here -->
+	</div>
+	<footer>
+		<div class='button' id="addTrack">Add Track</div>
+		&copy; Brendan Whitfield &amp; Zachary Charnock
+	</footer>
+
+	<!-- I got sick of making EVERYTHING with JS, so I'm using this as a template -->
+	<div id="templates" class="hidden">
+		<!-- HTML for a single track element -->
+		<section class="track">
+			<div class="options">
+				<div>
+					<div class="button playButton true">Play</div>
+				</div>
+				<div>
+					<span class="left">Key</span>
+					<select class="key right"></select>
+				</div>
+				<div>
+					<span class="left">Octave</span>
+					<select class="octave right"></select>
+				</div>
+				<div>
+					<span class="left">Scale</span>
+					<select class="scale right"></select>
+				</div>
+				<div>
+					<span class="left">Tone</span>
+					<select class="tone right"></select>
+				</div>
+			</div>
+			<div class="table">
+				<div class="button shiftLeft">&lt;</div>
+				<table></table>
+				<div class="button shiftRight">&gt;</div>
+			</div>
+			<div class="options">
+				
+			</div>
+		</section>
+	</div>
+</body>
+</html>
