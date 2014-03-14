@@ -281,6 +281,7 @@ a.listLink
 	display:block;
 	color:black;
 	overflow:hidden;
+	opacity:0;
 }
 
 a.listLink > div > div {border-top:1px solid rgb(200,200,200);}
@@ -292,6 +293,7 @@ a.listLink:first-of-type > div > div {border-top:none;}
 section
 {
 	margin-bottom:30px;
+	opacity:0;
 }
 
 section .w2 img

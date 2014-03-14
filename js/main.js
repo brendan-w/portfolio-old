@@ -1,48 +1,52 @@
 
 var $window;
 var $header;
+var $selector;
 var $page;
 var $navLinks;
-var $projects;
-var $selector;
-var $spaceArrow;
-var $leftArrow;
+var $listLinks;
+var $sections;
 var $footer;
-
-var color;
-var intervalID;
 var $interact;
 
 var thisPage;
 var narrow;
+var redirectWait = 0;
 
 $(window).load(init); //used .load to ensure CSS values are computed (issues in chrome & safari)
 
-function init()
-{
+function init() {
 	setVars();
 	layout();
 	listen();
 	footer();
+
+	fadeIn();
 }
 
-function setVars()
-{
+function setVars() {
 	$window = $(window);
 	$header = $('header');
+	$selector = $('#selector');
 	$page = $('#page');
 	$navLinks = $('header nav a');
-	$projects = $('a.listLink');
-	$selector = $('#selector');
-	$spaceArrow = $('#spaceArrow');
-	$leftArrow = $('#leftArrow');
+	$listLinks = $('a.listLink');
+	$sections = $('section');
 	$footer = $("footer");
 	$interact = $("#interactive");
 	thisPage = $page.attr('class');
+
+	if($listLinks.length === 0)
+	{
+		redirectWait = anim_sect_duration;
+	}
+	else
+	{
+		redirectWait = ($listLinks.length * anim_step_time) + anim_list_duration;
+	}
 }
 
-function layout()
-{
+function layout() {
 	if($window.width() < 904)
 	{
 		narrow = true;
@@ -55,8 +59,7 @@ function layout()
 	headerOver();
 }
 
-function listen()
-{
+function listen() {
 	$window.resize(layout);
 
 	if(thisPage != "back")
@@ -82,17 +85,25 @@ function listen()
 		});
 	}
 
-	for(var i = 0; i < $projects.length; i++)
+	for(var i = 0; i < $listLinks.length; i++)
 	{
-		$projects.eq(i).mouseover(mOver).click(click);
+		$listLinks.eq(i).mouseover(mOver).click(click);
+	}
+
+	for(var i = 0; i < $navLinks.length; i++)
+	{
+		$navLinks.eq(i).click(click);
 	}
 
 	$header.mouseover(headerOver);
 
 
-
+	//easter egg on the about page
 	if($interact.length != 0)
 	{
+		var color;
+		var intervalID;
+
 		$interact.mouseover(function(){
 			color = 0;
 			intervalID = setInterval(function()
@@ -109,26 +120,62 @@ function listen()
 	}
 }
 
-function headerOver()
-{
+function headerOver(e) {
 	var num = Math.round($header.offset().top);
 	if(narrow) { num += 45; }
 	$selector.css('top', num + 'px');
 }
 
-function mOver()
-{
+function mOver(e) {
 	var $this = $(this);
 	$selector.css('top', Math.round($this.offset().top) + 'px');
 }
 
-function click()
-{
+function click(e) {
+	e.preventDefault();
 	headerOver();
+	fadeOut();
+	redirect(this);
 }
 
-function footer()
-{
+function footer(e) {
 	var year = (new Date()).getFullYear();
 	$footer.html("&copy; " + year + " Brendan Whitfield");
+}
+
+//ANIMATION---------------------------------------------------------------
+
+function fadeIn() {
+	for(var i = 0; i < $listLinks.length; i++)
+	{
+		var wait = i * anim_step_time;
+		animateList($listLinks.eq(i), wait, 1);
+	}
+
+	$sections.animate({opacity:1},
+					  {duration:anim_sect_duration, queue:false});
+}
+
+function fadeOut() {
+	for(var i = 0; i < $listLinks.length; i++)
+	{
+		var wait = (($listLinks.length - 1) * anim_step_time) - (i * anim_step_time);
+		animateList($listLinks.eq(i), wait, 0);
+	}
+
+	$sections.animate({opacity:0},
+					  {duration:anim_sect_duration, queue:false});
+}
+
+function animateList($p, wait, op) {
+	setTimeout(function() {
+		$p.animate({opacity:op},
+					{duration:anim_list_duration, queue:false});
+	}, wait);
+}
+
+function redirect(element) {
+	setTimeout(function() {
+		window.location = element.getAttribute("href");
+	}, redirectWait);
 }
