@@ -3,7 +3,7 @@
 /******************************SETTINGS*******************************/
 
 var anim_step_time = 15;
-var anim_list_duration = 200;
+var anim_list_duration = 150;
 var anim_sect_duration = 350;
 
 

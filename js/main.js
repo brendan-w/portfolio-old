@@ -13,7 +13,7 @@ var thisPage;
 var narrow;
 var redirectWait = 0;
 
-$(window).load(init); //used .load to ensure CSS values are computed (issues in chrome & safari)
+$(window).load(init);
 
 function init() {
 	setVars();
@@ -85,15 +85,9 @@ function listen() {
 		});
 	}
 
-	for(var i = 0; i < $listLinks.length; i++)
-	{
-		$listLinks.eq(i).mouseover(mOver).click(click);
-	}
+	$navLinks.click(click);
 
-	for(var i = 0; i < $navLinks.length; i++)
-	{
-		$navLinks.eq(i).click(click);
-	}
+	$listLinks.mouseover(mOver).click(click);
 
 	$header.mouseover(headerOver);
 
@@ -133,6 +127,11 @@ function mOver(e) {
 
 function click(e) {
 	e.preventDefault();
+
+	//unbind events
+	$navLinks.unbind('mouseover').unbind('mouseout').unbind('click');
+	$listLinks.unbind('mouseover').unbind('click');
+
 	headerOver();
 	fadeOut();
 	redirect(this);
