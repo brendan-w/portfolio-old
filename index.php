@@ -3,12 +3,12 @@
 <html>
 	<head>
 		
-		<?php require('REQ_HEAD.php'); echo"asdf"; ?>
+		<?php require('REQ_HEAD.html'); ?>
 
 	</head>
 	<body onunload=''>
 	
-		<?php require('REQ_HEADER.php'); ?>
+		<?php require('REQ_HEADER.html'); ?>
 
 		<a class='listLink' href='work/lumber/' >
 			<div class='m h'>
@@ -105,8 +105,8 @@
 				</div>
 			</div>
 		</a>
-
-		<?php require('REQ_FOOTER.php'); ?>
+		
+		<?php require('REQ_FOOTER.html'); ?>
 
 	</body>
  </html>
