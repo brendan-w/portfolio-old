@@ -22,6 +22,11 @@ function init() {
 	footer();
 
 	fadeIn();
+
+	/*
+	console.log($(window).outerWidth());
+	console.log(window.innerWidth);
+	*/
 }
 
 function setVars() {
