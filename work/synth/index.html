@@ -61,7 +61,7 @@
 		<section class='m'>
 			<div class='w1'>
 				<p>
-					This is a web-based multi-track synthesizer. Using the classic grid style sequencer, the user is able to layer multiple melodies, each with settings for key, octave, and scale. Under the hood, this project uses the Web Audio API for sound generation. While there are still features left to add (such as reverb, delay, distortion, etc...), it is currently playable. Go check it out!
+					This is a web-based multi-track synthesizer. Using the classic grid style sequencer, the user is able to layer multiple melodies, each with settings for key, octave, scale, and wave type. A &lt;canvas&gt; in each track also displays the individual waveforms.
 				</p>
 				<div class='bar h'>
 					<div class='graphics h'></div>
@@ -74,10 +74,13 @@
 					<span class='dim'>Github</span>
 					<a class='button' href='https://github.com/brendanwhitfield/rmw_project_1'>Code</a>
 				</div>
+				<p>
+					Under the hood, this site makes heavy use of the Web Audio API. A signal chain composed of oscillators, gain nodes, and waveshaper nodes is used to create the audio. A master timer in the Main.js file advances the current beat on each track, and each track enables and disables the oscillators corresponding to the notes on the sequencer. In order to be polyphonic, each row of the sequencer (each pitch) has its own dedicated oscillator. When the user changes the key or the scale, all of the oscillators are set to new frequencies according to built in music theory functionality. 
+				</p>
 			</div>
 			<div class='w2'>
 				<a href='synth.png'>
-					<img src='small_synth.png' height='344' width='450' />
+					<img src='small_synth.png' height='425' width='450' />
 				</a>
 				<span class='dim'>Click to enlarge</span>
 			</div>
