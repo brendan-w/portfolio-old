@@ -61,12 +61,17 @@
 		<section class='m'>
 			<div class='w1'>
 				<p>
-					This is an Arduino based oscilloscope. Using a small Arduino program for capture, the data is sent to a processing application via Serial. Here, the data is stored, processed, and displayed. Currently, I am working to implement the triggering functionality.
+					This is a software package for turning an Arduino into an oscilloscope. The front-end is written in Processing, and provides controls for pin selection, triggering, and sample rate. Data is collected via the Arduino’s 6 ADC pins, and triggered/buffered on the chip. This allows for sample rates of up to ~25kHz.
 				</p>
 				<div class='bar h'>
 					<div class='graphics h'></div>
-					<span>Arduino Oscilloscope</span>
+					<span>OpenScope</span>
 					<span class='dim'>Arduino / Processing</span>
+				</div>
+				<div class='code bar h'>
+					<div class='graphics h'></div>
+					<span class='dim'>Github</span>
+					<a class='button' href='https://github.com/brendanwhitfield/openscope'>Code</a>
 				</div>
 			</div>
 			<div class='w2'>
