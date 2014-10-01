@@ -67,12 +67,24 @@
 					<div class='graphics h'></div>
 					<span>OpenScope</span>
 					<span class='dim'>Arduino / Processing</span>
+					<a class='button' href='https://github.com/brendanwhitfield/openscope/releases/tag/v1.0'>Download</a>
 				</div>
 				<div class='code bar h'>
 					<div class='graphics h'></div>
 					<span class='dim'>Github</span>
 					<a class='button' href='https://github.com/brendanwhitfield/openscope'>Code</a>
 				</div>
+				<p>
+					In order to achieve better results than the ubiquitous
+				</p>
+				<pre style="font-family:monospace; font-size:9pt; color:rgb(80,80,80);">
+void loop()
+{
+	int r = AnalogRead(0); //slow
+	Serial.println(r);     //still slow
+}
+				</pre>
+				<p>it was neccessary to process and buffer the signal on the Arduino itself. While this does present severe memory constrictions, it goes a long way to preserve the temporal consistancy of the readings. Triggering (signal stabalization) can also be done in the Arduino, and helps prevent the sending of undisplayed data. This alone dramatically increases the sample rate of the system. More speed was also coaxed out of the analogRead() by <a href="http://brendanwhitfield.wordpress.com/2014/04/07/arduino-fast-analogread/">adjusting prescale registers in the AVR</a>.</p>
 			</div>
 			<div class='w2'>
 				<a href='scope.png'>
