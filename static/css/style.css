@@ -44,7 +44,7 @@ body
 
 sup {font-size:xx-small; vertical-align:super; line-height:0;}
 
-h1 {font-size:32pt; font-family: 'Share Tech', 'Helvetica', 'Arial', sans-serif;}
+h1 { font-size:20pt; font-family: 'Share Tech'; }
 
 /* make links less ugly */
 a {color:rgb(200,0,0);}
@@ -61,7 +61,7 @@ p
 
 /************************************* General ************************************/
 
-html
+html, body
 {
 	width:100%;
 	height:100%;
@@ -69,369 +69,101 @@ html
 
 body
 {
-	background-color: rgb(255,255,255);
+	background-color: white;
+	/*background-color: #F0F0F0;*/
 }
 
-
-.h {height:30px; line-height: 30px;}
-
-.m
+*
 {
-	display:block;
-	width:860px; /* 904 px with padding*/
-	margin-left:auto;
-	margin-right:auto;
-	padding-left:22px;
-	padding-right:22px;
-	font-size: 0pt; /* removes whitespace between inline blocks */
-	white-space: nowrap;
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */
 }
 
-.w1
+section.left, section.right
 {
-	display:inline-block;
-	vertical-align: top;
-	width:350px;
-	font-size: 10pt;
-	white-space: normal;
+	position: relative;
 }
 
-.w2
+section.left
 {
-	display:inline-block;
-	vertical-align: top;
-	width:480px;
-	margin-left:30px;
-	font-size: 10pt;
-	white-space: normal;
+	text-align: right;
+	float:left;
+	width:33.33%;
+	padding-right:40px;
+	/*padding-left:40px;*/
 }
 
-.dim {opacity:0.5;}
-
-.right {float:right;}
+section.right
+{
+	text-align: left;
+	width:auto;
+	overflow:hidden;
+}
 
 
 /****************************** Header ********************************/
 
 header
 {
-	margin-top:100px;
-	padding-bottom:30px;
+	position: relative;
+	height:80px;
 }
 
-header h1
+.left header
 {
-	position:relative;
-	top:2px;
+	border-bottom: 1px solid black;
 }
 
-header h1.l
+.left header h1
 {
-	float:left;
-	left:-4px;
-}
-
-header h1.r
-{
-	float:right;
-	right:-4px;
-}
-
-header .w2
-{
-	font-size: 0pt; /* removes whitespace between inline blocks */
-}
-
-header nav
-{
-	font-size: 10pt;
-	display:inline-block;
-	width:300px; /* forces the #page to be in consistent locations */
-}
-
-header nav a
-{
-	text-decoration:none;
-	float:left;
-	color:white;
-	padding-left:0.9em;
-	padding-right:0.9em;
-}
-
-header nav a:first-of-type { padding-left:0em; }
-header nav a:last-of-type { padding-right:0em; }
-
-#navGraphics
-{
-	display:none;
-}
-
-#pageContainer
-{
-	display:inline-block;
-	position:relative;
-	width:0px;
-}
-
-#page
-{
-	z-index: -1;
-	position:absolute;
-	background-color: rgb(200,0,0);
-	height:30px;
-	font-size: 10pt;
-
-	-moz-transition: width 0.15s, right 0.15s;
-    -webkit-transition: width 0.15s, right 0.15s;
-    -o-transition: width 0.15s, right 0.15s;
-    transition: width 0.15s, right 0.15s;
-}
-
-#page.work  {right:265px; width:40px;}
-#page.play  {right:216px; width:34px;}
-#page.about {right:158px; width:42px;}
-#page.email {right:30px;  width:108px;}
-#page.back  {right:271px;  width:34px;}
-
-/*#page.work  {right:17.6em; width:3em;}
-#page.play  {right:13.9em; width:2.5em;}
-#page.about {right:9.5em; width:3.1em;}
-#page.email {right:0em;   width:8em;}
-#page.back  {right:0px;   width:2.5em;}*/
-
-
-#page:before
-{
-	content:"";
-	height:0cm;
-	width:0cm;
-	position:absolute;
-	left:-15px;
-	border:15px solid rgb(200,0,0);
-	border-left-color:transparent;
-	-moz-transform: scale(.9999); /* hack to fix border alliasing issues in firefox */
-}
-
-#page:after
-{
-	content:"";
-	height:0cm;
-	width:0cm;
-	position:absolute;
-	right:-30px;
-	border:15px solid transparent;
-	border-left-color: rgb(200,0,0);
-	-moz-transform: scale(.9999); /* hack to fix border alliasing issues in firefox */
-}
-
-/************************************* Selector ************************************/
-
-#selector
-{
-	z-index: -2;
-	position:absolute;
-	width:100%;
-	background-color: black;
-
-	top:100px;
-
-	-moz-transition: top 0.15s;
-    -webkit-transition: top 0.15s;
-    -o-transition: top 0.15s;
-    transition: top 0.15s;
-}
-
-#spaceArrow
-{
-	background-color: white;
-	position:relative;
-	left:-10px;
-	width:370px;
-}
-
-#spaceArrow:before
-{
-	content:"";
-	height:0cm;
-	width:0cm;
-	position:absolute;
-	left:-15px;
-	border:15px solid white;
-	border-left-color:transparent;
-	-moz-transform: scale(.9999); /* hack to fix border alliasing issues in firefox */
-}
-
-#spaceArrow:after
-{
-	content:"";
-	height:0cm;
-	width:0cm;
-	position:absolute;
-	right:-30px;
-	border:15px solid transparent;
-	border-left-color: white;
-	-moz-transform: scale(.9999); /* hack to fix border alliasing issues in firefox */
-}
-
-/****************************** Main List Structure ********************************/
-
-a.listLink
-{
-	text-decoration:none;
-	display:block;
-	color:black;
-	overflow:hidden;
-	opacity:0;
-}
-
-a.listLink > div > div {border-top:1px solid rgb(200,200,200);}
-a.listLink:first-of-type > div > div {border-top:none;}
-
-
-/****************************** Sections ***********************************/
-
-section
-{
-	margin-bottom:30px;
-	opacity:0;
-}
-
-section .w2 img
-{
-	margin-left:30px;
-	/*width:450px;*/
-	/*height:auto;*/
-}
-
-section .w2 span
-{
-	margin-left:30px;
-}
-
-section.image
-{
-	font-size: 10pt;
-	white-space: normal;
-}
-
-section.embed
-{
-	margin-left:auto;
-	margin-right:auto;
-}
-
-
-/****************************** Lang List ***********************************/
-
-#lang
-{
-	display:block;
-	float:left;
-	padding-left:30px;
-	border-left:1px solid rgb(200,200,200);
-}
-
-#lang li {margin-bottom:1em;}
-#lang li:last-of-type {margin-bottom:0.1em;}
-
-/****************************** Project ***********************************/
-
-
-.bar
-{
-	color:white;
-	margin-bottom:1em;
-	position:relative;
-	background-color:black;
-}
-
-.bar > span
-{
-	margin-left:1em;
-	display:inline-block;
-	position:relative;
-}
-
-.bar > .graphics
-{
-	position:absolute;
-	width:100%;
-}
-
-.bar > .graphics:before
-{
-	content:"";
-	height:0cm;
-	width:0cm;
-	position:absolute;
-	left:-15px;
-	border:15px solid black;
-	border-left-color:transparent;
-	border-right-color:transparent;
-	-moz-transform: scale(.9999); /* hack to fix border alliasing issues in firefox */
-}
-
-.bar > .graphics:after
-{
-	content:"";
-	height:0cm;
-	width:0cm;
-	position:absolute;
-	right:-30px;
-	border:15px solid transparent;
-	border-left-color: black;
-	-moz-transform: scale(.9999); /* hack to fix border alliasing issues in firefox */
-}
-
-.bar.code
-{
-	width:50%;
-	left:50%;
-}
-
-a.button
-{
-	text-decoration:none;
-	position:absolute;
-	background-color: rgb(200,0,0);
-	color:white;
+	position: absolute;
+	bottom:0px;
 	right:0px;
-	padding-left:1.1em;
-	padding-right:1.1em;
-	text-align: center;
-	height:30px;
-	min-width:32px;
 }
 
-a.button.static
+
+/****************************** List ********************************/
+
+nav a
 {
-	width:4em;
+	display:block;
+	padding:2px 0px;
+	border-bottom: 1px solid #F0F0F0;
+	color:#AAA;
+	text-decoration: none;
+
+	position: relative;
 }
 
-a.button:before
+nav a:hover
 {
-	content:"";
-	height:0cm;
-	width:0cm;
-	position:absolute;
-	left:-15px;
-	border:15px solid rgb(200,0,0);
-	border-left-color:transparent;
-	-moz-transform: scale(.9999); /* hack to fix border alliasing issues in firefox */
+	color:rgb(0,0,0);
+	background-color: #F0F0F0;
 }
 
-a.button:after
+nav a:after
 {
 	content:"";
-	height:0cm;
-	width:0cm;
-	position:absolute;
-	right:-0.8cm;
-	border:15px solid transparent;
-	border-left-color: rgb(200,0,0);
-	-moz-transform: scale(.9999); /* hack to fix border alliasing issues in firefox */
+	background-color: inherit;
+
+	position: absolute;
+	top:-1px;
+	right:-40px;
+
+	width:40px;
+	height:100%;
+	height:calc(100% + 2px);
 }
 
+
+/****************************** Article ********************************/
+
+article
+{
+	height:500px;
+	background-color: #F0F0F0;
+}
 
 /****************************** Footer ***********************************/
 footer
@@ -439,138 +171,4 @@ footer
 	position:fixed;
 	bottom:0px;
 	opacity: 0.4;
-}
-
-/****************************** Media Queries ********************************/
-
-@media only screen and (max-width: 903px)
-{
-	.m
-	{
-		width:350px;
-		font-size: 10pt;
-	}
-
-	.w1, .w2
-	{
-		width:350px;
-		display:block;
-		margin:0px;
-		white-space: normal;
-		vertical-align: baseline;
-	}
-
-	header
-	{
-		margin-top:30px;
-		padding-bottom:60px;
-	}
-
-	header .w1
-	{
-		margin-bottom:15px;
-	}
-
-	header .w2
-	{
-		font-size: 10pt;
-		text-align: center;
-		line-height: 30px;
-	}
-
-	header nav
-	{
-		width:auto;
-	}
-
-	#navGraphics
-	{
-		display:block;
-		position:absolute;
-		background-color:black;
-		z-index: -2;
-		width:350px;
-		height:30px;
-	}
-
-	#navGraphics:before
-	{
-		content:"";
-		height:0cm;
-		width:0cm;
-		position:absolute;
-		left:-15px;
-		border:15px solid black;
-		border-left-color:transparent;
-		border-right-color:transparent;
-		-moz-transform: scale(.9999); /* hack to fix border alliasing issues in firefox */
-	}
-	
-	#navGraphics:after
-	{
-		content:"";
-		height:0cm;
-		width:0cm;
-		position:absolute;
-		right:-30px; 
-		border:15px solid transparent;
-		border-left-color: black;
-		-moz-transform: scale(.9999); /* hack to fix border alliasing issues in firefox */
-	}
-
-	#page.work  {right:237px; width:40px;}
-	#page.play  {right:188px; width:34px;}
-	#page.about {right:129px; width:42px;}
-	#page.email {right:2px;  width:108px;}
-	#page.back  {right:2px;  width:34px;}
-
-	/*
-	#page.work  {right:17.8em; width:3em;}
-	#page.play  {right:14.1em; width:2.5em;}
-	#page.about {right:9.7em;  width:3.1em;}
-	#page.email {right:0.2em;  width:8em;}
-	#page.back  {right:0.2px;    width:2.5em;}
-	*/
-
-	#selector
-	{
-		top:75px;
-	}
-
-	section img
-	{
-		width:350px;
-		height:auto;
-		margin:0px;
-	}
-
-	section .w2 img
-	{
-		width:350px;
-		height:auto;
-		margin:0px;
-	}
-
-	section .w2 span
-	{
-		margin:0px;
-	}
-
-	#lang
-	{
-		border-left:1px solid rgb(200,200,200);
-		border-right:1px solid rgb(200,200,200);
-		float:none;
-		padding:0px 30px;
-		margin:30px 0px;
-		width:12em;
-		margin-left:auto;
-		margin-right: auto;
-	}
-
-	.bar.code
-	{
-		width:50%;
-		left:25%;
-	}
 }
