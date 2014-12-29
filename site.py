@@ -5,7 +5,7 @@ from flask import Flask, render_template
 app = Flask(__name__)
 
 
-@app.route('/foo/<path:filename>')
+@app.route('/static/<path:filename>')
 def send_foo(filename):
     return send_from_directory('static/', filename)
 
