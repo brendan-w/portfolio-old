@@ -69,6 +69,7 @@ html, body
 
 body
 {
+	padding:0px 40px;
 	background-color: white;
 	/*background-color: #F0F0F0;*/
 }
@@ -91,7 +92,6 @@ section.left
 	float:left;
 	width:33.33%;
 	padding-right:40px;
-	/*padding-left:40px;*/
 }
 
 section.right
@@ -110,42 +110,48 @@ header
 	height:80px;
 }
 
-.left header
-{
-	border-bottom: 1px solid black;
-}
+.left  header { border-bottom: 2px solid black;   }
+.right header { border-bottom: 2px solid #F0F0F0; }
+
 
 .left header h1
 {
 	position: absolute;
 	bottom:0px;
 	right:0px;
+
 }
 
+header a
+{
+	color:#000;
+	text-decoration: none;
+}
 
 /****************************** List ********************************/
 
 nav a
 {
 	display:block;
-	padding:2px 0px;
+	padding:4px 0px;
 	border-bottom: 1px solid #F0F0F0;
-	color:#AAA;
+	color:#888;
 	text-decoration: none;
 
 	position: relative;
 }
 
+nav a.current,
 nav a:hover
 {
 	color:rgb(0,0,0);
 	background-color: #F0F0F0;
 }
 
-nav a:after
+nav a.current:after
 {
 	content:"";
-	background-color: inherit;
+	background-color: #F0F0F0;
 
 	position: absolute;
 	top:-1px;
@@ -161,7 +167,7 @@ nav a:after
 
 article
 {
-	height:500px;
+	height:700px;
 	background-color: #F0F0F0;
 }
 
