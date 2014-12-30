@@ -58,6 +58,7 @@ h1
 a {color:rgb(200,0,0);}
 a:active {outline: none;}
 a:focus {outline: none;}
+a:hover {cursor:pointer;}
 
 /************************************* General ************************************/
 
@@ -170,33 +171,23 @@ article
 	margin-bottom: 1.2em;
 }
 
-article.header
-{
-	border-top: 1px solid black;
-}
-
-article.header span
-{
-	float:left;
-	margin-right:1.2em;
-}
-
-article.header .name
-{
-	font-weight: bold;
-}
-
-article.header .lang
-{
-	color:#888;
-}
-
-#links
+#banner
 {
 	overflow: hidden;
 }
 
-#links a
+#banner a.img
+{
+	display:block;
+	height:calc((1.2em * 5) + 5px);
+	border-top:1px solid #CCC;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	margin-bottom: 1px;
+}
+
+#banner a:not(.img)
 {
 	padding:0px 1.2em;
 	margin-right:1px;
@@ -205,21 +196,19 @@ article.header .lang
 	background-color: black;
 }
 
-#links a:hover
+#banner a:not(.img):hover
 {
-	cursor:pointer;
 	background-color: rgb(200,0,0);	
 }
 
-#links:after
+#banner span
 {
-	content:"";
-	display:block;
-	width:auto;
-	overflow: hidden;
-	height:1.2em;
-	border-top:1px dashed black;
+	float:right;
+	margin-left:1.2em;
 }
+
+.name { font-weight: bold; }
+.lang { color:#888; }
 
 article > section
 {
