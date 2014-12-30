@@ -41,6 +41,7 @@ body
 	font-family: 'Open Sans', 'Helvetica', 'Arial', sans-serif;
 	font-size:10pt;
 	line-height: 1.2em;
+	word-spacing: 0.1em;
 }
 
 sup {font-size:xx-small; vertical-align:super; line-height:0;}
@@ -57,12 +58,6 @@ h1
 a {color:rgb(200,0,0);}
 a:active {outline: none;}
 a:focus {outline: none;}
-
-p
-{
-	/*text-align: justify;*/
-	word-spacing: 0.1em;
-}
 
 /************************************* General ************************************/
 
@@ -183,12 +178,12 @@ article.header
 article.header span
 {
 	float:left;
-	margin-right:1em;
+	margin-right:1.2em;
 }
 
 article.header .lang
 {
-	opacity: 0.5;
+	color:#888;
 }
 
 #links
@@ -198,7 +193,7 @@ article.header .lang
 
 #links a
 {
-	padding:0px 1em;
+	padding:0px 1.2em;
 	margin-right:1px;
 	float:left;
 	color:white;
@@ -211,6 +206,13 @@ article.header .lang
 	background-color: rgb(200,0,0);	
 }
 
+#links div
+{
+	width:auto;
+	overflow: hidden;
+	height:1.2em;
+	border-bottom:1px dashed black;
+}
 
 article > section
 {
@@ -227,10 +229,9 @@ article > section:last-child  { padding-right: 0px; }
 article > section > *            { margin-bottom: 1.2em; }
 article > section > *:last-child { margin-bottom: 0px;   }
 
-.content img
+img
 {
 	width:100%;
-	height:calc(1.2em * 5);
 }
 
 /****************************** Footer ***********************************/
