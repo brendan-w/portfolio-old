@@ -4,7 +4,6 @@
 		<section class='control'>
 			<header>
 				<h1><a href='/'>BRENDAN<br>WHITFIELD</a></h1>
-				<!-- <aside>Programmer &amp; Interactive Developer</aside> -->
 			</header>
 			<nav>
 				<a                 href='work/exejs/'     >Python-OBD</a>
@@ -27,14 +26,18 @@
 
 		<section class='content'>
 			<header>
+				<div class='run'>RUN</div>
 			</header>
 			<article>
 				<section>
-					<div>
-						<p>This is a web-based multi-track synthesizer. Using the classic grid style sequencer, the user is able to layer multiple melodies, each with settings for key, octave, scale, and wave type. A &lt;canvas&gt; in each track also displays the individual waveforms. </p>
-						<p>Under the hood, this site makes heavy use of the Web Audio API. A signal chain composed of oscillators, gain nodes, and waveshaper nodes is used to create the audio. A master timer in the Main.js file advances the current beat on each track, and each track enables and disables the oscillators corresponding to the notes on the sequencer. In order to be polyphonic, each row of the sequencer (each pitch) has its own dedicated oscillator. When the user changes the key or the scale, all of the oscillators are set to new frequencies according to built in music theory functionality. </p>
-					</div>
-					<div></div>
+
+					<p>This is a web-based multi-track synthesizer. Using the classic grid style sequencer, the user is able to layer multiple melodies, each with settings for key, octave, scale, and wave type. A &lt;canvas&gt; in each track also displays the individual waveforms. </p>
+					
+					<p>Under the hood, this site makes heavy use of the Web Audio API. A signal chain composed of oscillators, gain nodes, and waveshaper nodes is used to create the audio. A master timer in the Main.js file advances the current beat on each track, and each track enables and disables the oscillators corresponding to the notes on the sequencer. In order to be polyphonic, each row of the sequencer (each pitch) has its own dedicated oscillator. When the user changes the key or the scale, all of the oscillators are set to new frequencies according to built in music theory functionality. </p>
+				
+				</section>
+				<section>
+					<img src='/static/scope.png'/>
 				</section>
 			</article>
 		</section>
