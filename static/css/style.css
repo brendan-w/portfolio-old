@@ -44,7 +44,8 @@ body
 
 sup {font-size:xx-small; vertical-align:super; line-height:0;}
 
-h1 { font-size:20pt; font-family: 'Share Tech'; }
+h1 { font-size:40px; font-family: 'Share Tech'; }
+h2 { font-size:40px; font-family: 'Share Tech'; }
 
 /* make links less ugly */
 a {color:rgb(200,0,0);}
@@ -70,6 +71,7 @@ html, body
 body
 {
 	padding:0px 40px;
+	padding-top: 80px;
 	background-color: white;
 	/*background-color: #F0F0F0;*/
 }
@@ -81,12 +83,12 @@ body
 	box-sizing: border-box;         /* Opera/IE 8+ */
 }
 
-section.left, section.right
+.control, .content
 {
 	position: relative;
 }
 
-section.left
+.control
 {
 	text-align: right;
 	float:left;
@@ -94,7 +96,7 @@ section.left
 	padding-right:40px;
 }
 
-section.right
+.content
 {
 	text-align: left;
 	width:auto;
@@ -106,21 +108,16 @@ section.right
 
 header
 {
+	height:160px;
 	position: relative;
-	height:80px;
+	border-bottom: 1px solid black;
 }
 
-.left  header { border-bottom: 2px solid black;   }
-.right header { border-bottom: 2px solid #F0F0F0; }
-
-
-.left header h1
+header > *
 {
-	position: absolute;
-	bottom:0px;
-	right:0px;
-
+	height:50%;
 }
+
 
 header a
 {
@@ -128,12 +125,24 @@ header a
 	text-decoration: none;
 }
 
+.content header
+{
+	background: url('/static/scope.png');
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+.content header h2
+{
+	color:white;
+}
+
 /****************************** List ********************************/
 
 nav a
 {
 	display:block;
-	padding:4px 0px;
+	line-height: 1.2em;
 	border-bottom: 1px solid #F0F0F0;
 	color:#888;
 	text-decoration: none;
@@ -148,27 +157,30 @@ nav a:hover
 	background-color: #F0F0F0;
 }
 
-nav a.current:after
-{
-	content:"";
-	background-color: #F0F0F0;
-
-	position: absolute;
-	top:-1px;
-	right:-40px;
-
-	width:40px;
-	height:100%;
-	height:calc(100% + 2px);
-}
-
 
 /****************************** Article ********************************/
 
-article
+
+article section
 {
-	height:700px;
-	background-color: #F0F0F0;
+	overflow: hidden;
+}
+
+article section > *
+{
+	float:left;
+	width:50%;
+	padding:0px 20px; /* 40 = 2 * 20 */
+}
+
+article section > *:first-child
+{
+	padding-left: 0px;
+}
+
+article section > *:last-child
+{
+	padding-right: 0px;
 }
 
 /****************************** Footer ***********************************/
