@@ -181,6 +181,11 @@ article.header span
 	margin-right:1.2em;
 }
 
+article.header .name
+{
+	font-weight: bold;
+}
+
 article.header .lang
 {
 	color:#888;
@@ -206,12 +211,14 @@ article.header .lang
 	background-color: rgb(200,0,0);	
 }
 
-#links div
+#links:after
 {
+	content:"";
+	display:block;
 	width:auto;
 	overflow: hidden;
 	height:1.2em;
-	border-bottom:1px dashed black;
+	border-top:1px dashed black;
 }
 
 article > section
