@@ -75,7 +75,6 @@ html, body
 body
 {
 	padding:0px 160px;
-	padding-top: 40px;
 	background-color: white;
 	/*background-color: #F0F0F0;*/
 }
@@ -94,14 +93,14 @@ body
 
 .control
 {
-	text-align: right;
 	float:left;
-	width:20%;
-	padding-right:40px;
+	text-align: right;
+	padding-right:80px;
 }
 
 .content
 {
+	/*opacity: 0;*/
 	text-align: left;
 	width:auto;
 	overflow:hidden;
@@ -112,20 +111,14 @@ body
 
 header
 {
-	height:160px;
 	position: relative;
-	border-bottom: 1px solid black;
-	margin-bottom: 1.2em;
+	height:160px;
+	line-height: 160px;
 }
 
-header > *
+.control header a
 {
-	height:50%;
-}
-
-
-header a
-{
+	display: inline-block;
 	color:black;
 	text-decoration: none;
 }
@@ -133,31 +126,91 @@ header a
 
 /****************************** List ********************************/
 
+nav
+{
+	position: relative;
+	border-top: 1px solid #CCC;
+	margin-bottom: 2.4em;
+}
+
 nav a
 {
 	display:block;
 	line-height: 1.2em;
-	border-bottom: 1px solid #F0F0F0;
+	border-bottom: 1px dashed #CCC;
 	color:#888;
 	text-decoration: none;
 	position: relative;
 }
 
+nav a:last-child
+{
+	border-bottom: none;
+}
+
 nav a.current,
 nav a:hover
 {
-	color:rgb(0,0,0);
-	background-color: #F0F0F0;
+	color: rgb(200,0,0);
 }
 
+nav span
+{
+	text-align: left;
+	display: block;
+	position: absolute;
+	top:-1px;
+	left:-80px;
+	width:80px;
+
+	border-top:1px solid #CCC;
+	color:#888;
+}
 
 /****************************** Article ********************************/
-
 
 article
 {
 	overflow: hidden;
+	margin-bottom: 1.2em;
 }
+
+article.header
+{
+	border-top: 1px solid black;
+}
+
+article.header span
+{
+	float:left;
+	margin-right:1em;
+}
+
+article.header .lang
+{
+	opacity: 0.5;
+}
+
+#links
+{
+	overflow: hidden;
+}
+
+#links a
+{
+	padding:0px 1em;
+	margin-right:1px;
+	float:left;
+	color:white;
+	background-color: black;
+}
+
+#links a:hover
+{
+	cursor:pointer;
+	background-color: rgb(200,0,0);	
+}
+
 
 article > section
 {
@@ -174,15 +227,10 @@ article > section:last-child  { padding-right: 0px; }
 article > section > *            { margin-bottom: 1.2em; }
 article > section > *:last-child { margin-bottom: 0px;   }
 
-.content .run
-{
-	color:white;
-	background-color: black;
-}
-
-article img
+.content img
 {
 	width:100%;
+	height:calc(1.2em * 5);
 }
 
 /****************************** Footer ***********************************/
