@@ -86,12 +86,13 @@ body
 	box-sizing: border-box;         /* Opera/IE 8+ */
 }
 
-.control, .content
+aside,
+article
 {
 	position: relative;
 }
 
-.control
+aside
 {
 	float:left;
 	width:250px;
@@ -99,13 +100,12 @@ body
 	padding-right:80px;
 }
 
-.content
+article
 {
 	/*opacity: 0;*/
 	text-align: left;
 	width:auto;
 	overflow:hidden;
-	padding-top:200px;
 }
 
 .r { color:rgb(200,0,0); }
@@ -113,14 +113,14 @@ body
 
 /****************************** Header ********************************/
 
-.control header
+aside header
 {
 	position: relative;
 	height:200px;
 	line-height: 200px;
 }
 
-.control header a
+aside header a
 {
 	vertical-align: middle;
 	display: inline-block;
@@ -128,6 +128,16 @@ body
 	text-decoration: none;
 }
 
+article header
+{
+	margin-top:200px;
+	border-top: 1px solid #ccc;
+	padding:0.5em 0px;
+
+	position: relative;
+	/*overflow: hidden;*/
+	margin-bottom: 3em;
+}
 
 /****************************** List ********************************/
 
@@ -167,7 +177,36 @@ nav span
 
 /****************************** Article ********************************/
 
-article
+
+.name { font-weight: normal; font-size: 16pt;}
+.lang { color:#888; }
+
+
+.links
+{
+	position: absolute;
+	top:-1px;
+	right:0px;
+}
+
+.links a
+{
+	border-top:1px solid transparent;
+	display: inline-block;
+	padding-top: 0.5em;
+	padding-bottom: 1em;
+	color:black;
+
+}
+
+.links a:hover
+{
+	border-top-color:rgb(200,0,0);
+	color:rgb(200,0,0);
+	
+}
+
+section
 {
 	overflow: hidden;
 	margin-bottom: 2.4em;
@@ -182,33 +221,7 @@ a.img
 	background-position: center;
 }
 
-#banner
-{
-	border-top: 1px solid #ccc;
-	padding-top:6px;
-	overflow: hidden;
-	margin-bottom: 3.5em;
-}
-
-.name { font-weight: normal; font-size: 16pt;}
-.lang { color:#888; }
-
-a.button
-{
-	padding:0px 1.2em;
-	float:right;
-	margin-left:1px;
-	color:black;
-	/*color:white;*/
-	/*background-color: black;*/
-}
-
-a.button:hover
-{
-	background-color: rgb(200,0,0);	
-}
-
-article > section
+section > .col
 {
 	float:left;
 	position: relative;
@@ -217,11 +230,11 @@ article > section
 }
 
 
-article > section:first-child { padding-right: 20px; }
-article > section:last-child  { padding-left:  20px; }
+section > .col:first-child { padding-right: 20px; }
+section > .col:last-child  { padding-left:  20px; }
 
-article > section > *            { margin-bottom: 1.2em; }
-article > section > *:last-child { margin-bottom: 0px;   }
+section > .col > *            { margin-bottom: 1.2em; }
+section > .col > *:last-child { margin-bottom: 0px;   }
 
 img
 {

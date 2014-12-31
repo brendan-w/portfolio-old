@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block body %}
-		<section class='control'>
+		<aside>
 			<header>
 				<a href='/'>
 					<h1>BRENDAN</h1>
@@ -34,27 +34,28 @@
 				<a href='https://github.com/brendanwhitfield'>GitHub</a>
 				<a href='http://www.linkedin.com/pub/brendan-whitfield/89/7aa/3b8'>LinkedIn</a>
 			</nav>
-		</section>
+		</aside>
 
-		<section class='content'>
-			<header></header>
-			<article id='banner'>
+		<article>
+			<header>
 				<span class='name'>Execute JS</span>
 				<span class='lang'> = Javascript + UglifyJS2</span>
-				<a class='button code' ref=''>Code</a>
-				<a class='button run'  ref=''>Run</a>
-			</article>
-			<article>
+				<span class='links'>
+					<a class='run'  ref=''>Run</a>
+					&bull;
+					<a class='code' ref=''>Code</a>
+				</span>
+			</header>
+			<section>
 				<a class='img' href='/static/exejs.png' style='background-image: url("/static/exejs.png");'></a>
-			</article>
-			<article>
-				<section>
+			</section>
+			<section>
+				<div class='col'>
 					<p>This tool for visualizes Javascript as it executes in a web browser. After supplying the script, the user can watch the computer execute each line of code. As it runs, a heatmap is built which displays the total number of times a each line was executed. One-off commands can also be issued, allowing for experimentation with larger libraries.</p>
-				</section>
-				<section>
+				</div>
+				<div class='col'>
 					<p>The execution detection is done by injecting callbacks before (or in) every javascript statement. This is done with UglifyJS2, which creates a syntax tree from the users Javascript. This tree is then modified by adding new nodes which define the various callbacks, and is recompiled to Javascript text.</p>
-					
-				</section>
-			</article>
-		</section>
+				</div>
+			</section>
+		</article>
 {% endblock %}
