@@ -37,10 +37,8 @@
 			<header></header>
 			<article id='banner'>
 				<a class='img' style='background-image: url("/static/scope.png");'></a>
-				<a class='run'  ref=''>Run</a>
-				<a class='code' ref=''>Code</a>
 				<span class='name'>Execute JS</span>
-				<span class='lang'>Javascript + UglifyJS2</span>
+				<span class='lang'> = Javascript + UglifyJS2</span>
 			</article>
 			<article>
 				<section>
@@ -48,6 +46,10 @@
 					<p>The execution detection is done by injecting callbacks before (or in) every javascript statement. This is done with UglifyJS2, which creates a syntax tree from the users Javascript. This tree is then modified by adding new nodes which define the various callbacks, and is recompiled to Javascript text.</p>
 				</section>
 				<section>
+					<div id='links'>
+						<a class='run'  ref=''>Run</a>
+						<a class='code' ref=''>Code</a>
+					</div>
 				</section>
 			</article>
 		</section>
