@@ -39,7 +39,7 @@ body
 {
 	color:rgb(0,0,0);
 	font-family: 'Open Sans', 'Helvetica', 'Arial', sans-serif;
-	font-size:9pt;
+	font-size:8pt;
 	line-height: 1.2em;
 	word-spacing: 0.1em;
 }
@@ -48,7 +48,7 @@ sup {font-size:xx-small; vertical-align:super; line-height:0;}
 
 h1
 {
-	font-size:24px;
+	font-size:28px;
 	font-family: 'Share Tech';
 	line-height: 1em;
 }
@@ -71,6 +71,7 @@ html, body
 body
 {
 	padding:0px 160px;
+	padding-right:300px;
 	background-color: white;
 	/*background-color: #F0F0F0;*/
 }
@@ -90,6 +91,7 @@ body
 .control
 {
 	float:left;
+	width:250px;
 	text-align: right;
 	padding-right:80px;
 }
@@ -102,14 +104,16 @@ body
 	overflow:hidden;
 }
 
+.r { color:rgb(200,0,0); }
+
 
 /****************************** Header ********************************/
 
 header
 {
 	position: relative;
-	height:160px;
-	line-height: 160px;
+	height:220px;
+	line-height: 220px;
 }
 
 .control header a
@@ -132,8 +136,7 @@ nav
 nav a
 {
 	display:block;
-	line-height: 1.2em;
-	border-bottom: 1px dashed #CCC;
+	line-height: 1.6em;
 	color:#888;
 	text-decoration: none;
 	position: relative;
@@ -148,19 +151,17 @@ nav a.current,
 nav a:hover
 {
 	color: rgb(200,0,0);
+	text-decoration: underline;
 }
 
 nav span
 {
+	color:black;
 	text-align: left;
 	display: block;
 	position: absolute;
 	top:-1px;
-	left:-80px;
-	width:80px;
-
 	border-top:1px solid #CCC;
-	color:#888;
 }
 
 /****************************** Article ********************************/
@@ -174,7 +175,7 @@ article
 a.img
 {
 	display:block;
-	height:calc((1.2em * 5) + 5px);
+	height:calc((1.2em * 10) + 5px);
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -183,11 +184,13 @@ a.img
 
 #banner
 {
-	border-top: 1px solid black;
+	border-top: 1px solid #ccc;
+	padding-top:6px;
 	overflow: hidden;
+	margin-bottom:40px;
 }
 
-.name { font-weight: bold; }
+.name { font-weight: normal; font-size: 16pt;}
 .lang { color:#888; }
 
 a.button
@@ -195,8 +198,9 @@ a.button
 	padding:0px 1.2em;
 	float:right;
 	margin-left:1px;
-	color:white;
-	background-color: black;
+	color:black;
+	/*color:white;*/
+	/*background-color: black;*/
 }
 
 a.button:hover
@@ -209,9 +213,10 @@ article > aside
 {
 	float:left;
 	position: relative;
-	width:50%;
 	margin-bottom: 1.2em;
+	width:50%;
 }
+
 
 article > section { padding-right: 20px; }
 article > aside   { padding-left:  20px; }

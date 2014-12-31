@@ -3,16 +3,8 @@
 {% block body %}
 		<section class='control'>
 			<header>
-				<a href='/'><h1>BRENDAN&nbsp;WHITFIELD</h1></a>
+				<a href='/'><h1>BRENDAN <span class='r'>W.</span></h1></a>
 			</header>
-			<nav>
-				<span>About</span>
-				<a href='work/exejs/'>Bio</a>
-				<a href='mailto:bcw7044@rit.edu'>Email</a>
-				<a href='/static/BrendanWhitfieldResume.pdf'>R&eacute;sum&eacute;</a>
-				<a href='https://github.com/brendanwhitfield'>GitHub</a>
-				<a href='http://www.linkedin.com/pub/brendan-whitfield/89/7aa/3b8'>LinkedIn</a>
-			</nav>
 			<nav>
 				<span>Work</span>
 				<a                 href='work/exejs/'     >Python-OBD</a>
@@ -31,6 +23,14 @@
 				<a                 href='work/drone/'     >Drone Game</a>
 				<a                 href='work/laser/'     >Laser Controller</a>
 			</nav>
+			<nav>
+				<span>About</span>
+				<a href='work/exejs/'>Bio</a>
+				<a href='mailto:bcw7044@rit.edu'>Email</a>
+				<a href='/static/BrendanWhitfieldResume.pdf'>R&eacute;sum&eacute;</a>
+				<a href='https://github.com/brendanwhitfield'>GitHub</a>
+				<a href='http://www.linkedin.com/pub/brendan-whitfield/89/7aa/3b8'>LinkedIn</a>
+			</nav>
 		</section>
 
 		<section class='content'>
@@ -42,11 +42,18 @@
 				<a class='button run'  ref=''>Run</a>
 			</article>
 			<article>
+				
+				<a class='img' href='/static/scope.png' style='background-image: url("/static/scope.png");'></a>
+			</article>
+			<article>
 				<section>
-					<a class='img' href='/static/scope.png' style='background-image: url("/static/scope.png");'></a>
 					<p>This is a tool for visualizing Javascript as it executes in a web browser. After supplying the script, the user can watch the computer execute each line of code. As it runs, a heatmap is built which displays the total number of times a each line was executed. One-off commands can also be issued, allowing for experimentation with larger libraries.</p>
 					<p>The execution detection is done by injecting callbacks before (or in) every javascript statement. This is done with UglifyJS2, which creates a syntax tree from the users Javascript. This tree is then modified by adding new nodes which define the various callbacks, and is recompiled to Javascript text.</p>
 				</section>
+				<aside>
+					<p>This is a tool for visualizing Javascript as it executes in a web browser. After supplying the script, the user can watch the computer execute each line of code. As it runs, a heatmap is built which displays the total number of times a each line was executed. One-off commands can also be issued, allowing for experimentation with larger libraries.</p>
+					<p>The execution detection is done by injecting callbacks before (or in) every javascript statement. This is done with UglifyJS2, which creates a syntax tree from the users Javascript. This tree is then modified by adding new nodes which define the various callbacks, and is recompiled to Javascript text.</p>
+				</aside>
 			</article>
 		</section>
 {% endblock %}
