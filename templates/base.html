@@ -1,3 +1,7 @@
+
+
+{% from 'nav.html' import make_nav %}
+
 <!doctype html>
 <!-- Written and Designed by Brendan Whitfield -->
 <html>
@@ -26,7 +30,7 @@
 
 		<!--[if lt IE 9]>
 			<script src="/static/js/html5shiv.js"></script>
-			<link rel='stylesheet' type='text/css' href='/static/css/ie.css'>
+			<link rel='stylesheet't ype='text/css' href='/static/css/ie.css'>
 		<![endif]-->
 	</head>
 	<body onunload=''>
@@ -40,21 +44,7 @@
 			</header>
 			<nav>
 				<span>Work</span>
-				<a                 href='work/pyobd/'     >Python-OBD</a>
-				<a                 href='work/cgraph/'    >C-Graph</a>
-				<a class='current' href='work/exejs/'     >Execute JS</a>
-				<a                 href='work/lumber/'    >Lumber Segmenter</a>
-				<a                 href='work/remote/'    >Universal Remote</a>
-				<a                 href='work/scope/'     >OpenScope</a>
-				<a                 href='work/3d/'        >3D Engine</a>
-				<a                 href='work/planetary/' >Planetary</a>
-				<a                 href='work/synth/'     >Web Synthesizer</a>
-				<a                 href='work/15puzzle/'  >15-Puzzle Solver</a>
-				<a                 href='work/asteroids/' >Gravitational Asteroids</a>
-				<a                 href='work/optics/'    >Interactive Optics</a>
-				<a                 href='work/ascii/'     >Ascii Art Painter</a>
-				<a                 href='work/drone/'     >Drone Game</a>
-				<a                 href='work/laser/'     >Laser Controller</a>
+				{{ make_nav(projects, project) }}
 			</nav>
 			<nav>
 				<span>About</span>

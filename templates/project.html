@@ -2,33 +2,33 @@
 
 {% block title %}{{ project.title }}{% endblock %}
 
-{% block article %}
+{% block article -%}
 		<article>
 			<header>
 				<span class='name'>Execute JS</span>
 				<span class='lang'> = Javascript + UglifyJS2</span>
 				<span class='links'>
-					{% for link in project.links %}
+					{%- for link in project.links -%}
 						{% if loop.index > 1 %}
 						&bull;
-						{% endif %}
+						{%- endif %}
 						<a ref='{{ link["url"] }}'>{{ link["name"] }}</a>
-					{% endfor %}
+					{%- endfor %}
 				</span>
 			</header>
 
-			{% for section in project.content %}
-				{% if section is string %}
+			{% for section in project.content -%}
+				{% if section is string -%}
 					<section>
 						<a class='img' href='{{ section }}' style='background-image: url("{{ section }}");'></a>
 					</section>
 				{% elif section is iterable %}
 					<section>
-					{% for col in section %}
+					{% for col in section -%}
 						<div class='col'>{{ col }}</div>
-					{% endfor %}
+					{%- endfor %}
 					</section>
-				{% endif %}
-			{% endfor %}
+				{%- endif %}
+			{%- endfor %}
 		</article>
 {% endblock %}

@@ -1,0 +1,24 @@
+
+{% macro make_nav(projects, current) -%}
+	{% for p in [
+		'pyobd',
+		'cgraph',
+		'executejs',
+		'lumber',
+		'remote',
+		'scope',
+		'3d',
+		'planetary',
+		'synth',
+		'15puzzle',
+		'asteroids',
+		'optics',
+		'ascii',
+		'drone',
+		'laser',
+	] -%}
+		{% if projects[p] is defined -%}
+			<a href='{{ p }}' >{{ p }}</a>
+		{%- endif %}
+	{%- endfor %}
+{%- endmacro %}

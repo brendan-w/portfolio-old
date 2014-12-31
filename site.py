@@ -9,6 +9,13 @@ app.debug = True
 
 
 
+@app.context_processor
+def add_global():
+    # make all project data available to the templates
+    # used for nav construction
+    return dict(projects=projects)
+
+
 
 
 # static serving
