@@ -204,18 +204,17 @@ a.button:hover
 	background-color: rgb(200,0,0);	
 }
 
-
-article > section
+article > section,
+article > aside
 {
 	float:left;
 	position: relative;
 	width:50%;
-	padding:0px 20px; /* 40 = 2 * 20 */
 	margin-bottom: 1.2em;
 }
 
-article > section:first-child { padding-left: 0px;  }
-article > section:last-child  { padding-right: 0px; }
+article > section { padding-right: 20px; }
+article > aside   { padding-left:  20px; }
 
 article > section > *            { margin-bottom: 1.2em; }
 article > section > *:last-child { margin-bottom: 0px;   }
