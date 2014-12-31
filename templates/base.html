@@ -30,8 +30,42 @@
 		<![endif]-->
 	</head>
 	<body onunload=''>
-		{% block body %}
-		{% endblock %}
+
+		<aside>
+			<header>
+				<a href='/'>
+					<h1>BRENDAN</h1>
+					<h1 class='r'>WHITFIELD</h1>
+				</a>
+			</header>
+			<nav>
+				<span>Work</span>
+				<a                 href='work/pyobd/'     >Python-OBD</a>
+				<a                 href='work/cgraph/'    >C-Graph</a>
+				<a class='current' href='work/exejs/'     >Execute JS</a>
+				<a                 href='work/lumber/'    >Lumber Segmenter</a>
+				<a                 href='work/remote/'    >Universal Remote</a>
+				<a                 href='work/scope/'     >OpenScope</a>
+				<a                 href='work/3d/'        >3D Engine</a>
+				<a                 href='work/planetary/' >Planetary</a>
+				<a                 href='work/synth/'     >Web Synthesizer</a>
+				<a                 href='work/15puzzle/'  >15-Puzzle Solver</a>
+				<a                 href='work/asteroids/' >Gravitational Asteroids</a>
+				<a                 href='work/optics/'    >Interactive Optics</a>
+				<a                 href='work/ascii/'     >Ascii Art Painter</a>
+				<a                 href='work/drone/'     >Drone Game</a>
+				<a                 href='work/laser/'     >Laser Controller</a>
+			</nav>
+			<nav>
+				<span>About</span>
+				<a href='mailto:bcw7044@rit.edu'>bcw7044@rit.edu</a>
+				<a href='/static/BrendanWhitfieldResume.pdf'>R&eacute;sum&eacute;</a>
+				<a href='https://github.com/brendanwhitfield'>GitHub</a>
+				<a href='http://www.linkedin.com/pub/brendan-whitfield/89/7aa/3b8'>LinkedIn</a>
+			</nav>
+		</aside>
+
+		{% block article %}{% endblock %}
 
 		<footer>&copy; <span class="year">2014</span> Brendan Whitfield</footer>
 
