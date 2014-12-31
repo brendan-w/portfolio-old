@@ -48,7 +48,7 @@ sup {font-size:xx-small; vertical-align:super; line-height:0;}
 
 h1
 {
-	font-size:28px;
+	font-size:22pt;
 	font-family: 'Share Tech';
 	line-height: 1em;
 }
@@ -75,8 +75,7 @@ body
 	margin-right:auto;
 	margin-left: auto;
 	padding:0px 20px;
-	/*padding-top:80px;*/
-	max-width:800px;
+	max-width:860px;
 }
 
 *
@@ -102,7 +101,6 @@ aside
 
 article
 {
-	/*opacity: 0;*/
 	text-align: left;
 	width:auto;
 	overflow:hidden;
@@ -116,7 +114,7 @@ article
 aside header
 {
 	position: relative;
-	height:200px;
+	height: 200px;
 	line-height: 200px;
 }
 
@@ -135,7 +133,6 @@ article header
 	padding:0.5em 0px;
 
 	position: relative;
-	/*overflow: hidden;*/
 	margin-bottom: 3em;
 }
 
@@ -196,26 +193,23 @@ nav span
 	padding-top: 0.5em;
 	padding-bottom: 1em;
 	color:black;
-
 }
 
 .links a:hover
 {
 	border-top-color:rgb(200,0,0);
 	color:rgb(200,0,0);
-	
 }
 
 section
 {
-	overflow: hidden;
 	margin-bottom: 2.4em;
 }
 
 a.img
 {
 	display:block;
-	height:calc((1.2em * 10) + 5px);
+	height:150px;
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -224,14 +218,11 @@ a.img
 section > .col
 {
 	float:left;
-	position: relative;
-	margin-bottom: 1.2em;
 	width:50%;
 }
 
-
-section > .col:first-child { padding-right: 20px; }
-section > .col:last-child  { padding-left:  20px; }
+section > .col:first-child { padding-right: 1.2em; }
+section > .col:last-child  { padding-left:  1.2em; }
 
 section > .col > *            { margin-bottom: 1.2em; }
 section > .col > *:last-child { margin-bottom: 0px;   }
@@ -242,9 +233,11 @@ img
 }
 
 /****************************** Footer ***********************************/
+
 footer
 {
 	position:fixed;
 	bottom:0px;
+	left:0px;
 	opacity: 0.4;
 }
