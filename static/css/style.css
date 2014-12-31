@@ -171,34 +171,35 @@ article
 	margin-bottom: 1.2em;
 }
 
-#banner
-{
-	overflow: hidden;
-}
-
-#banner a.img
+a.img
 {
 	display:block;
 	height:calc((1.2em * 5) + 5px);
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
-	margin-bottom: 1px;
+	padding-bottom: 1px;
+}
+
+#banner
+{
+	border-top: 1px solid black;
+	overflow: hidden;
 }
 
 .name { font-weight: bold; }
 .lang { color:#888; }
 
-#links a
+a.button
 {
 	padding:0px 1.2em;
-	margin-right:1px;
-	float:left;
+	float:right;
+	margin-left:1px;
 	color:white;
 	background-color: black;
 }
 
-#links a:hover
+a.button:hover
 {
 	background-color: rgb(200,0,0);	
 }
