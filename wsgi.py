@@ -18,5 +18,5 @@ try:
 except IOError:
     pass
 
-from myflaskapp import app as application
+from site import app as application
 
