@@ -19,12 +19,7 @@ function colorForIndex(n)
 }
 
 //see if this page has been referred to by another page
-function referredFrom(page)
-{
-	var result = false
-	if(document.referrer.search(page) != -1){result = true;}
-	return result;
-}
+function referredFrom(page) { return (document.referrer.search(page) != -1); }
 
 //fix Javascript modulo bug for negative numbers... jeese...
 function mod(x,n) {return(((x%n)+n)%n);}
