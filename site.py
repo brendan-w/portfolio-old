@@ -16,9 +16,15 @@ def add_global():
     return dict(projects=projects)
 
 
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
+    
+
 # static serving
 @app.route('/static/<path:filename>')
-def send_foo(filename):
+def send_static(filename):
+    print filename
     return send_from_directory('static/', filename)
 
 
