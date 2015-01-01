@@ -19,14 +19,18 @@
 		<!-- CSS -->
 		<link rel='stylesheet' type='text/css' href='/static/css/reset.css'>
 		<link rel='stylesheet' type='text/css' href='/static/css/style.css'>
-		<noscript>
-			<link rel='stylesheet' type='text/css' href='/static/css/noscript.css'>
-		</noscript>
 
 		<!-- JS -->
-		<!-- <script type="text/javascript" src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js'></script> -->
-		<!-- <script type="text/javascript" src='/static/js/settings.js'></script> -->
-		<!-- <script type="text/javascript" src='/static/js/main.js'></script>--> <!-- init() -->
+		<script type="text/javascript">
+			window.onload = function() {
+				var copy_date = document.querySelector("footer .year");
+				if(copy_date !== null)
+				{
+					var year = (new Date()).getFullYear();
+					copy_date.innerHTML = year;
+				}
+			};
+		</script>
 
 		<!--[if lt IE 9]>
 			<script src="/static/js/html5shiv.js"></script>
