@@ -1,23 +1,32 @@
 {% extends "base.html" %}
 
-{% block title %}{{ project.title }}{% endblock %}
+{% set project_data = projects[project] %}
+
+{% block title %}{{ project_data.title }}{% endblock %}
 
 {% block article -%}
 		<article>
 			<header>
-				<span class='name'>Execute JS</span>
-				<span class='lang'> = Javascript + UglifyJS2</span>
+				<span class='name'>{{ project_data.title }}</span>
+				<span class='lang'> = 
+					{%- for lang in project_data.langs -%}
+						{% if loop.index > 1 %}
+						+
+						{%- endif %}
+						{{ lang }}
+					{%- endfor %}
+				</span>
 				<span class='links'>
-					{%- for link in project.links -%}
+					{%- for link in project_data.links -%}
 						{% if loop.index > 1 %}
 						&bull;
 						{%- endif %}
-						<a ref='{{ link["url"] }}'>{{ link["name"] }}</a>
+						<a href='{{ link["url"] }}'>{{ link["name"] }}</a>
 					{%- endfor %}
 				</span>
 			</header>
 
-			{% for section in project.content -%}
+			{% for section in project_data.content -%}
 				{% if section is string -%}
 					<section>
 						<a class='img' href='{{ section }}' style='background-image: url("{{ section }}");'></a>
@@ -25,7 +34,7 @@
 				{% elif section is iterable %}
 					<section>
 					{% for col in section -%}
-						<div class='col'>{{ col }}</div>
+						<div class='col'>{{ col | safe }}</div>
 					{%- endfor %}
 					</section>
 				{%- endif %}

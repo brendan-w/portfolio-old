@@ -18,7 +18,7 @@
 		'laser',
 	] -%}
 		{% if projects[p] is defined -%}
-			<a href='{{ p }}' >{{ p }}</a>
+			<a href='/work/{{ p }}' {% if current is defined and current == p %} class='current' {% endif %} >{{ projects[p].title }}</a>
 		{%- endif %}
 	{%- endfor %}
 {%- endmacro %}

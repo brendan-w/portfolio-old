@@ -16,8 +16,6 @@ def add_global():
     return dict(projects=projects)
 
 
-
-
 # static serving
 @app.route('/static/<path:filename>')
 def send_foo(filename):
@@ -32,7 +30,7 @@ def home_page():
 @app.route('/work/<project>')
 def project_page(project):
     if project in projects:
-        return render_template('project.html', project=projects[project])
+        return render_template('project.html', project=project)
     else:
         return render_template('404.html')
 
