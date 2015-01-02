@@ -69,7 +69,7 @@
 				{% for p in project_order -%}
 					{% if projects[p] is defined -%}
 						<a href='/work/{{ p }}' {% if project is defined and project == p %} class='current' {% endif %} >{{ projects[p].title }}</a>
-					{%- endif %}
+					{% endif %}
 				{%- endfor %}
 			</nav>
 			<nav>
