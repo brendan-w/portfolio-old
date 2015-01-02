@@ -1,0 +1,28 @@
+{
+	"title":"C-Graph",
+	
+	"langs":[
+		"NodeJS",
+		"D3",
+		"Git"
+	],
+
+	"links": [
+		{
+			"name":"Run",
+			"url":"http://cgraph.herokuapp.com/"
+		},
+		{
+			"name":"Code",
+			"url":"http://github.com/brendanwhitfield/cgraph"
+		}
+	],
+
+	"content":[
+		"/static/work/cgraph.png",
+		[
+			"C-Graph is a function call graphing utility for C. Integrated with GitHub, C-Graph contructs a force directed graph of function and files in the given repository. Files can be expanded into sets of functions, with arrows depicting the calls from one function to the next. Selecting a function or file will also display its raw C code.",
+			""
+		]
+	]
+}

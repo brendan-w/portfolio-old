@@ -1,6 +1,22 @@
 
+{%- set project_order = [
+	'python-obd',
+	'cgraph',
+	'executejs',
+	'lumber',
+	'remote',
+	'scope',
+	'optics',
+	'planetary',
+	'synth',
+	'15puzzle',
+	'3d',
+	'asteroids',
+	'ascii',
+	'drone',
+	'laser',
+] -%}
 
-{% from 'nav.html' import make_nav %}
 
 <!doctype html>
 <!-- Written and Designed by Brendan Whitfield -->
@@ -36,6 +52,8 @@
 			<script src="/static/js/html5shiv.js"></script>
 			<link rel='stylesheet' type='text/css' href='/static/css/ie.css'>
 		<![endif]-->
+
+		{% block head %}{% endblock %}
 	</head>
 	<body onunload=''>
 
@@ -48,7 +66,11 @@
 			</header>
 			<nav>
 				<span>Work</span>
-				{{ make_nav(projects, project) }}
+				{% for p in project_order -%}
+					{% if projects[p] is defined -%}
+						<a href='/work/{{ p }}' {% if project is defined and project == p %} class='current' {% endif %} >{{ projects[p].title }}</a>
+					{%- endif %}
+				{%- endfor %}
 			</nav>
 			<nav>
 				<span>About</span>

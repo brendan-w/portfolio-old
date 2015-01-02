@@ -1,22 +1,6 @@
 
 {% macro make_nav(projects, current) -%}
-	{% for p in [
-		'pyobd',
-		'cgraph',
-		'executejs',
-		'lumber',
-		'remote',
-		'scope',
-		'3d',
-		'planetary',
-		'synth',
-		'15puzzle',
-		'asteroids',
-		'optics',
-		'ascii',
-		'drone',
-		'laser',
-	] -%}
+	{% for p in project_order -%}
 		{% if projects[p] is defined -%}
 			<a href='/work/{{ p }}' {% if current is defined and current == p %} class='current' {% endif %} >{{ projects[p].title }}</a>
 		{%- endif %}
