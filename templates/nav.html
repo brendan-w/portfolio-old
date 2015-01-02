@@ -1,8 +1,0 @@
-
-{% macro make_nav(projects, current) -%}
-	{% for p in project_order -%}
-		{% if projects[p] is defined -%}
-			<a href='/work/{{ p }}' {% if current is defined and current == p %} class='current' {% endif %} >{{ projects[p].title }}</a>
-		{%- endif %}
-	{%- endfor %}
-{%- endmacro %}
