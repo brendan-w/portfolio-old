@@ -1,12 +1,8 @@
 
 
 from pages import projects
-
-
 from flask import Flask, render_template
 app = Flask(__name__)
-#app.debug = True
-
 
 
 @app.context_processor
@@ -39,9 +35,3 @@ def project_page(project):
         return render_template('project.html', project=project)
     else:
         return render_template('404.html')
-
-
-
-
-if __name__ == '__main__':
-    app.run()
