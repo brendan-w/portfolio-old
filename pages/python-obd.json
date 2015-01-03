@@ -23,7 +23,7 @@
 
 	"content":[
 		[
-			"This python module serves as a back-end for projects using sensor data from a vechicle’s OBD-II port. This module seemlessly handles querying and decoding of data, and returns response objects with values and units. Derived from the popular pyobd project, this package attempts to decouple the serial operations by encapsulating them in a python module. Since the initial fork of pyobd, it has been substantially overhauled.",
+			"This python module serves as a back-end for projects using sensor data from a car's <a href='http://en.wikipedia.org/wiki/On-board_diagnostics'>OBD-II port</a>. This module seemlessly handles querying and decoding of data, and returns response objects with values and units. Derived from the popular pyobd project, this package attempts to decouple the serial operations by encapsulating them in a python module. Since the initial fork of pyobd, it has been substantially overhauled.",
 			""
 		]
 	]

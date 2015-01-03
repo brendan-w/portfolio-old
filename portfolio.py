@@ -2,6 +2,8 @@
 
 from pages import projects
 from flask import Flask, render_template
+
+
 app = Flask(__name__)
 
 
@@ -15,13 +17,6 @@ def add_global():
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
-
-
-# static serving
-@app.route('/static/<path:filename>')
-def send_static(filename):
-    print filename
-    return send_from_directory('static/', filename)
 
 
 @app.route('/')

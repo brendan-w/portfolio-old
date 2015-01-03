@@ -1,28 +1,10 @@
 {% extends "base.html" %}
 
-{% block head %}
-		<style>
-			a.img
-			{
-				height:75px;
-			}
-		</style>
-{% endblock %}
-
 {% block article %}
 		<article>
 			<header>
 				<span class='name'>Programmer &amp; Interactive Developer</span>
 				<span class='lang'></span>
 			</header>
-			{% for p in project_order -%}
-				{% if loop.index <= 6 -%}
-					{% if projects[p].content[0] is string -%}
-						<section>
-							<a class='img' href='/work/{{ p }}' style='background-image: url("{{ projects[p].content[0] }}");'></a>
-						</section>
-					{%- endif %}
-				{%- endif %}
-			{%- endfor %}
 		</article>
 {% endblock %}
