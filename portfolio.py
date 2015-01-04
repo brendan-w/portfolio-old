@@ -1,17 +1,12 @@
 
-
+import re
 from pages import projects
 from flask import Flask, render_template
 
 
 app = Flask(__name__)
-
-
-@app.context_processor
-def add_global():
-    # make all project data available to the templates
-    # used for nav construction
-    return dict(projects=projects)
+app.jinja_env.globals['projects'] = projects
+app.jinja_env.tests['image_url'] = lambda s: bool(re.match("(http:|/).*\.(png|jpg|jpeg|bmp|gif)", s, re.I))
 
 
 @app.errorhandler(404)

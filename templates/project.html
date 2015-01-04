@@ -26,16 +26,14 @@
 				</span>
 			</header>
 
-			{% for section in project_data.content -%}
-				{% if section is string -%}
+			{% for content in project_data.content -%}
+				{% if content is image_url -%}
 					<section>
-						<a class='img' href='{{ section }}' style='background-image: url("{{ section }}");'></a>
+						<a class='img' href='{{ content }}' style='background-image: url("{{ content }}");'></a>
 					</section>
-				{% elif section is iterable %}
+				{% else %}
 					<section>
-					{% for col in section -%}
-						<div class='col'>{{ col | safe }}</div>
-					{%- endfor %}
+						{{ content | safe }}
 					</section>
 				{%- endif %}
 			{%- endfor %}
