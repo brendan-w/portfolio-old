@@ -26,16 +26,38 @@
 				</span>
 			</header>
 
+
+			{% set col_count = 0 %}
 			{% for content in project_data.content -%}
+
 				{% if content is image_url -%}
-					<section>
-						<a class='img' href='{{ content }}' style='background-image: url("{{ content }}");'></a>
-					</section>
+					{% if col_count > 0 %}
+						{% set col_count = col_count + 1 %}
+						<div class='col'>
+							<a class='img' href='{{ content }}' style='background-image: url("{{ content }}");'></a>
+						</div>
+					{% else %}
+						<section>
+							<a class='img' href='{{ content }}' style='background-image: url("{{ content }}");'></a>
+						</section>
+					{% endif %}
 				{% else %}
-					<section>
+					{% if col_count == 0 %}
+						<section>
+					{% endif %}
+
+					{% set col_count = col_count + 1 %}
+					<div class='col'>
 						{{ content | safe }}
-					</section>
+					</div>
 				{%- endif %}
+
+				{% if col_count == 2 %}
+					{% set col_count = 0 %}
+					</section>
+				{% endif %}
+
 			{%- endfor %}
+
 		</article>
 {% endblock %}

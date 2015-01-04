@@ -35,6 +35,7 @@ section
 a.img
 {
 	display:block;
+	width:100%;
 	height:150px;
 	background-size: cover;
 	background-repeat: no-repeat;
