@@ -3,10 +3,11 @@ import re
 from pages import projects
 from flask import Flask, render_template
 
-
 app = Flask(__name__)
+
 app.jinja_env.globals['projects'] = projects
-app.jinja_env.tests['image_url'] = lambda s: bool(re.match("(http:|/).*\.(png|jpg|jpeg|bmp|gif)", s, re.I))
+app.jinja_env.tests['image_url'] = lambda e: bool(re.match("(http:|/).*\.(png|jpg|jpeg|bmp|gif)", e, re.I))
+app.jinja_env.tests['list']      = lambda e: isinstance(e, list)
 
 
 @app.errorhandler(404)

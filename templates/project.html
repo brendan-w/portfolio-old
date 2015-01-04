@@ -1,5 +1,15 @@
 {% extends "base.html" %}
 
+{% macro render_block(content) -%}
+    {% if content is string %}
+		{% if content is image_url %}
+			<a class='img' href='{{ content }}' style='background-image: url("{{ content }}");'></a>
+		{% else %}
+			{{ content | safe }}
+		{% endif %}
+	{% endif %}
+{%- endmacro %}
+
 {% set project_data = projects[project] %}
 
 {% block title %}{{ project_data.title }}{% endblock %}
@@ -27,36 +37,18 @@
 			</header>
 
 
-			{% set col_count = 0 %}
 			{% for content in project_data.content -%}
-
-				{% if content is image_url -%}
-					{% if col_count > 0 %}
-						{% set col_count = col_count + 1 %}
-						<div class='col'>
-							<a class='img' href='{{ content }}' style='background-image: url("{{ content }}");'></a>
-						</div>
+				<section>
+					{% if content is list %}
+						{% for column in content -%}
+							<div class='col'>
+								{{ render_block(column) }}
+							</div>
+						{% endfor %}
 					{% else %}
-						<section>
-							<a class='img' href='{{ content }}' style='background-image: url("{{ content }}");'></a>
-						</section>
+						{{ render_block(content) }}
 					{% endif %}
-				{% else %}
-					{% if col_count == 0 %}
-						<section>
-					{% endif %}
-
-					{% set col_count = col_count + 1 %}
-					<div class='col'>
-						{{ content | safe }}
-					</div>
-				{%- endif %}
-
-				{% if col_count == 2 %}
-					{% set col_count = 0 %}
-					</section>
-				{% endif %}
-
+				</section>
 			{%- endfor %}
 
 		</article>
