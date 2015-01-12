@@ -1,0 +1,34 @@
+{% extends "article.html" %}
+
+
+{% block title %}Python OBD-II{% endblock %}
+{% block name  %}Python OBD-II{% endblock %}
+
+{%- block langs -%}
+	{{ make_langs([
+		'Python',
+		'pyserial'
+	]) }}
+{%- endblock -%}
+
+{%- block links -%}
+	{{ make_links([
+		('Download', 'https://pypi.python.org/pypi/obd/0.2.0'),
+		('Code',     'https://github.com/brendanwhitfield/python-OBD'),
+		('Docs',     'https://github.com/brendanwhitfield/python-OBD/wiki')
+	]) }}
+{% endblock %}
+
+{% block article -%}
+		<section>
+			{{ make_image("", "") }}
+		</section>
+		<section>
+			<div class='col'>
+				This python module serves as a back-end for projects using sensor data from a car's <a href='http://en.wikipedia.org/wiki/On-board_diagnostics'>OBD-II port</a>. This module seemlessly handles querying and decoding of data, and returns response objects with values and units. Derived from the popular pyobd project, this package attempts to decouple the serial operations by encapsulating them in a python module. Since the initial fork of pyobd, it has been substantially overhauled.
+			</div>
+			<div class='col'>
+				
+			</div>
+		</section>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "article.html" %}
+
+
+{% block title %}Interactive Optics{% endblock %}
+{% block name  %}Interactive Optics{% endblock %}
+
+{%- block langs -%}
+	{{ make_langs([
+		'Actionscript 3'
+	]) }}
+{%- endblock -%}
+
+{%- block links -%}
+	{{ make_links([
+
+	]) }}
+{% endblock %}
+
+{% block article -%}
+		<section>
+			{{ make_image("/static/work/optics.png", "/static/work/optics.png") }}
+		</section>
+		<section>
+			<div class='col'>
+				This is an interactive book that teaches optics. Featuring a mock optical bench, the user can click &amp; drag lenses into a simulated beam of light. Once placed, the user can see how each lens deflects the rays. This provided several challenges, such as implementing Snells Law, and computing lens/ray intersections.
+			</div>
+			<div class='col'>
+				Each beam segment is simply a vector. Originating on the left side of the page, beam segments travel until they intersect with a lens. The vertical position of the intersection is calculated, along with the curvature at that point, and the beam is deflected according to Snell's Law.
+			</div>
+		</section>
+{% endblock %}

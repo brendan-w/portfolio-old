@@ -1,0 +1,33 @@
+{% extends "article.html" %}
+
+
+{% block title %}Ascii Art Painter{% endblock %}
+{% block name  %}Ascii Art Painter{% endblock %}
+
+{%- block langs -%}
+	{{ make_langs([
+		'Javascript',
+		'jQuery'
+	]) }}
+{%- endblock -%}
+
+{%- block links -%}
+	{{ make_links([
+		('Run',  'http://people.rit.edu/bcw7044/tools/ascii/'),
+		('Code', 'http://people.rit.edu/bcw7044/tools/ascii/draw.js')
+	]) }}
+{% endblock %}
+
+{% block article -%}
+		<section>
+			{{ make_image("/static/work/ascii.png", "/static/work/ascii.png") }}
+		</section>
+		<section>
+			<div class='col'>
+				This tool lets you draw Ascii Art. Simply by clicking and dragging, the tool will find the characters that most closely approximate the users gesture. Under the hood, the user is simply drawing 1px strokes onto a canvas. This canvas is then split into character sized segments, which are rendered to the individual characters you see on screen.
+			</div>
+			<div class='col'>
+				To convert between pixels and characters, the software compares image data to an internal dataset representing the font. Things such as the bounding box and quadrant pixel densities are metrics used to select the nearest character. While the drawn image must be processed on the fly, the internal font dataset was precomputed using the same algorithms in Processing.
+			</div>
+		</section>
+{% endblock %}

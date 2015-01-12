@@ -1,0 +1,34 @@
+{% extends "article.html" %}
+
+
+{% block title %}C-Graph{% endblock %}
+{% block name  %}C-Graph{% endblock %}
+
+{%- block langs -%}
+	{{ make_langs([
+		'NodeJS',
+		'D3',
+		'Git'
+	]) }}
+{%- endblock -%}
+
+{%- block links -%}
+	{{ make_links([
+		('Run',  'http://cgraph.herokuapp.com/'),
+		('Code', 'http://github.com/brendanwhitfield/cgraph')
+	]) }}
+{% endblock %}
+
+{% block article -%}
+		<section>
+			{{ make_image("/static/work/cgraph.png", "/static/work/cgraph.png") }}
+		</section>
+		<section>
+			<div class='col'>
+				C-Graph is a function call graphing utility for C. Integrated with GitHub, C-Graph contructs a force directed graph of function and files in a Git repository. Files can be expanded into sets of functions, with arrows depicting the calls from one function to the next. Selecting a function or file will also display its raw C code.
+			</div>
+			<div class='col'>
+				
+			</div>
+		</section>
+{% endblock %}

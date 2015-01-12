@@ -1,0 +1,31 @@
+{% extends "article.html" %}
+
+
+{% block title %}Planetary{% endblock %}
+{% block name  %}Planetary{% endblock %}
+
+{%- block langs -%}
+	{{ make_langs([
+		'Python'
+	]) }}
+{%- endblock -%}
+
+{%- block links -%}
+	{{ make_links([
+		('Code', 'https://github.com/brendanwhitfield/planetary')
+	]) }}
+{% endblock %}
+
+{% block article -%}
+		<section>
+			{{ make_image("/static/work/planetary.png", "/static/work/planetary.png") }}
+		</section>
+		<section>
+			<div class='col'>
+				An application developed for the <a href="http://one.laptop.org/">OLPC</a> aimed to teach 4th graders about the planets and our solar system. With a quiz-based system, facts about the planets are gradually dispensed to the user as they answer questions correctly. This gradual progression helps prevent \"information overload,\" and ensure that the user has learned the existing content before advancing to more difficult concepts. Written with Python and Pygame, this application runs both on the OLPC, and as a standalone Pygame app.
+			</div>
+			<div class='col'>
+				
+			</div>
+		</section>
+{% endblock %}
