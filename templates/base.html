@@ -68,23 +68,23 @@
 				<span>Work</span>
 
 				{%- set work = [
-					('Python OBD-II',           '/work/python-obd'),
-					('C-Graph',                 '/work/cgraph'    ),
-					('Execute JS',              '/work/executejs' ),
-					('Lumber Segmenter',        '/work/lumber'    ),
-					('Universal Remote',        '/work/remote'    ),
-					('OpenScope',               '/work/scope'     ),
-					('Interactive Optics',      '/work/optics'    ),
-					('Planetary',               '/work/planetary' ),
-					('Web Synthesizer',         '/work/synth'     ),
-					('15-Puzzle Solver',        '/work/15puzzle'  ),
-					('3D Graphics Engine',      '/work/3d'        ),
-					('Gravitational Asteroids', '/work/asteroids' ),
-					('Ascii Art Painter',       '/work/ascii'     ),
+					('Python OBD-II',           'python-obd'),
+					('C-Graph',                 'cgraph'    ),
+					('Execute JS',              'executejs' ),
+					('Lumber Segmenter',        'lumber'    ),
+					('Universal Remote',        'remote'    ),
+					('OpenScope',               'scope'     ),
+					('Interactive Optics',      'optics'    ),
+					('Planetary',               'planetary' ),
+					('Web Synthesizer',         'synth'     ),
+					('15-Puzzle Solver',        '15puzzle'  ),
+					('3D Graphics Engine',      '3d'        ),
+					('Gravitational Asteroids', 'asteroids' ),
+					('Ascii Art Painter',       'ascii'     ),
 				] -%}
 
 				{% for link in work %}
-					<a href='{{ link[1] }}' {% if link[1] == ('/work/' + page_name) %}class='current'{% endif %} >{{ link[0] }}</a>
+					<a href='/work/{{ link[1] }}' {% if link[1] == page_name %}class='current'{% endif %} >{{ link[0] }}</a>
 				{% endfor %}
 			</nav>
 			<nav>
