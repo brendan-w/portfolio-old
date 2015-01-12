@@ -66,11 +66,7 @@
 			</header>
 			<nav>
 				<span>Work</span>
-				{% for p in project_order -%}
-					{% if projects[p] is defined -%}
-						<a href='/work/{{ p }}' {% if project is defined and project == p %} class='current' {% endif %} >{{ projects[p].title }}</a>
-					{% endif %}
-				{%- endfor %}
+				<a href='/work/project' >Project</a>
 			</nav>
 			<nav>
 				<span>About</span>
@@ -81,7 +77,7 @@
 			</nav>
 		</aside>
 
-		{% block article %}{% endblock %}
+		{% block content %}{% endblock %}
 
 		<footer>&copy; <span class="year">2014</span> Brendan Whitfield</footer>
 

@@ -2,12 +2,10 @@
 import re
 from pages import projects
 from flask import Flask, render_template
+from werkzeug import secure_filename
 
 app = Flask(__name__)
-
-app.jinja_env.globals['projects'] = projects
-app.jinja_env.tests['image_url'] = lambda e: bool(re.match("(http:|/).*\.(png|jpg|jpeg|bmp|gif)", e, re.I))
-app.jinja_env.tests['list']      = lambda e: isinstance(e, list)
+app.debug = True
 
 
 @app.errorhandler(404)
@@ -22,7 +20,15 @@ def home_page():
 
 @app.route('/work/<project>')
 def project_page(project):
-    if project in projects:
-        return render_template('project.html', project=project)
+
+    t_name = 'work/%s.html' % project
+
+    if t_name in app.jinja_env.list_templates():
+        return render_template(t_name)
     else:
         return render_template('404.html')
+
+
+
+if __name__ == '__main__':
+    app.run()

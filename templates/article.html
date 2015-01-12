@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+
+{% block content -%}
+		<article>
+			<header>
+				<span class='name' >{% block name  %}{% endblock %}</span>
+				<span class='lang' >{% block langs %}{% endblock %}</span>
+				<span class='links'>{% block links %}{% endblock %}</span>
+			</header>
+			{% block article %}{% endblock %}
+		</article>
+{% endblock %}
+
+
+{%- macro make_langs(langs) -%}
+	&nbsp;=&nbsp;
+	{%- for lang in langs -%}
+		{%- if loop.index != 1 -%}
+			&nbsp;+&nbsp;
+		{%- endif -%}
+		{{ lang }}
+	{%- endfor -%}
+{%- endmacro -%}
+
+
+{%- macro make_links(links) -%}
+	{%- for link in links %}
+		{% if loop.index != 1 -%}
+			&bull;
+		{% endif -%}
+		<a href='{{ link[1] }}'>{{ link[0] }}</a>
+	{%- endfor -%}
+{%- endmacro -%}
+
+
+{%- macro make_image(src, link='/') -%}
+	<a class='img' href='{{ link }}' style='background-image: url("{{ src }}");'></a>
+{%- endmacro -%}

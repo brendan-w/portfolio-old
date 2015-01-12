@@ -1,0 +1,33 @@
+{% extends "article.html" %}
+
+
+{% block title %}Execute JS{% endblock %}
+{% block name  %}Execute JS{% endblock %}
+
+{%- block langs -%}
+	{{ make_langs([
+		'Javascript',
+		'UglifyJS2'
+	]) }}
+{%- endblock -%}
+
+{%- block links -%}
+	{{ make_links([
+		('Run',  'http://people.rit.edu/bcw7044/tools/exejs/'),
+		('Code', 'https://github.com/brendanwhitfield/execute-js')
+	]) }}
+{% endblock %}
+
+{% block article -%}
+		<section>
+			{{ make_image("/static/work/executejs_thumb.png", "/static/work/executejs.png") }}
+		</section>
+		<section>
+			<div class='col'>
+				This tool visualizes Javascript as it executes in a web browser. After supplying the script, the user can watch the computer execute each line of code. As it runs, a heatmap is built which displays the total number of times a each line was executed. One-off commands can also be issued, allowing for experimentation with larger libraries.
+			</div>
+			<div class='col'>
+				The execution detection is done by injecting callbacks before (or in) every javascript statement. This is done with UglifyJS2, which creates a syntax tree from the users Javascript. This tree is then modified by adding new nodes which define the various callbacks, and is recompiled to Javascript text.
+			</div>
+		</section>
+{% endblock %}
