@@ -84,8 +84,8 @@
 				] -%}
 
 				{% for link in work %}
-					<a href='/work/{{ link[1] }}' {% if link[1] == page_name %}class='current'{% endif %} >{{ link[0] }}</a>
-				{% endfor %}
+				<a href='/work/{{ link[1] }}' {% if link[1] == page_name -%}class='current' {% endif -%}>{{ link[0] }}</a>
+				{%- endfor %}
 			</nav>
 			<nav>
 				<span>About</span>

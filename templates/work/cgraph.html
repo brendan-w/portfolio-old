@@ -21,11 +21,13 @@
 
 {% block article -%}
 		<section>
-			{{ make_image("/static/work/cgraph.png", "/static/work/cgraph.png") }}
+			{{ make_image("/static/work/cgraph_thumb.png", "/static/work/cgraph.png") }}
 		</section>
 		<section>
 			<div class='col'>
-				C-Graph is a function call graphing utility for C. Integrated with GitHub, C-Graph contructs a force directed graph of function and files in a Git repository. Files can be expanded into sets of functions, with arrows depicting the calls from one function to the next. Selecting a function or file will also display its raw C code.
+				<p>
+					C-Graph is a function call graphing utility for C that is integrated with GitHub. Simply provide the url for a Git repository, and C-Graph will search for C files. The graph itself represents the code at both the file and function level. Files can be expanded into sets of functions, with arrows depicting the calls from one function to the next. Selecting a function or file will also display its raw C code.
+				</p>
 			</div>
 			<div class='col'>
 				
