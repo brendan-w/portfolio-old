@@ -17,18 +17,6 @@
 		<link rel='stylesheet' type='text/css' href='/static/css/reset.css'>
 		<link rel='stylesheet' type='text/css' href='/static/css/style.css'>
 
-		<!-- JS -->
-		<script type="text/javascript">
-			window.onload = function() {
-				var copy_date = document.querySelector("footer .year");
-				if(copy_date !== null)
-				{
-					var year = (new Date()).getFullYear();
-					copy_date.innerHTML = year;
-				}
-			};
-		</script>
-
 		<!--[if lt IE 9]>
 			<script src="/static/js/html5shiv.js"></script>
 			<link rel='stylesheet' type='text/css' href='/static/css/ie.css'>
@@ -47,36 +35,28 @@
 			</header>
 			<nav>
 				<span>Work</span>
-
-				{%- set work = [
-					('Python OBD-II',           'python-obd'),
-					('C-Graph',                 'cgraph'    ),
-					('Execute JS',              'executejs' ),
-					('Lumber Segmenter',        'lumber'    ),
-					('Universal Remote',        'remote'    ),
-					('OpenScope',               'scope'     ),
-					('Interactive Optics',      'optics'    ),
-					('Planetary',               'planetary' ),
-					('Web Synthesizer',         'synth'     ),
-					('15-Puzzle Solver',        '15puzzle'  ),
-					('3D Graphics Engine',      '3d'        ),
-					('Gravitational Asteroids', 'asteroids' ),
-					('Ascii Art Painter',       'ascii'     ),
-				] -%}
-
-				{% for link in work %}
-				<a href='/work/{{ link[1] }}' {% if link[1] == page_name -%}class='current' {% endif -%}>{{ link[0] }}</a>
-				{%- endfor %}
+				<a href='/work/python-obd' >Python OBD-II</a>
+				<a href='/work/cgraph'     >C-Graph</a>
+				<a href='/work/executejs'  >Execute JS</a>
+				<a href='/work/lumber'     >Lumber Segmenter</a>
+				<a href='/work/remote'     >Universal Remote</a>
+				<a href='/work/scope'      >OpenScope</a>
+				<a href='/work/optics'     >Interactive Optics</a>
+				<a href='/work/planetary'  >Planetary</a>
+				<a href='/work/synth'      >Web Synthesizer</a>
+				<a href='/work/15puzzle'   >15-Puzzle Solver</a>
+				<a href='/work/3d'         >3D Graphics Engine</a>
+				<a href='/work/asteroids'  >Gravitational Asteroids</a>
+				<a href='/work/ascii'      >Ascii Art Painter</a>
 			</nav>
 			<nav>
 				<span>Play</span>
-				{%- set play = [
-					('Glass', 'glass'),
-				] -%}
-
-				{% for link in play %}
-				<a href='/play/{{ link[1] }}' {% if link[1] == page_name -%}class='current' {% endif -%}>{{ link[0] }}</a>
-				{%- endfor %}
+				<a href='/play/pipe-organ' >Pipe Organs</a>
+				<a href='/play/3d'         >3D Modelling</a>
+				<a href='/play/guitar'     >Guitar</a>
+				<a href='/play/lasers'     >Lasers</a>
+				<a href='/play/lighting'   >Lighting</a>
+				<a href='/play/glass'      >Glass</a>
 			</nav>
 			<nav>
 				<span>About</span>
@@ -91,7 +71,9 @@
 
 		<footer>&copy; <span class="year">2014</span> Brendan Whitfield</footer>
 
+		<!-- JS -->
 		<script type="text/javascript">
+			// GA
 			var _gaq = _gaq || [];
 			_gaq.push(['_setAccount', 'UA-47261656-1']);
 			_gaq.push(['_trackPageview']);
@@ -100,6 +82,23 @@
 				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 			})();
+		</script>
+		
+		<script type="text/javascript">
+			//set the (C) date
+			var copy_date = document.querySelector("footer .year");
+			if(copy_date)
+			{
+				var year = (new Date()).getFullYear();
+				copy_date.innerHTML = year;
+			}
+
+			//mark the current page in the nav
+			var nav_link = document.querySelector("a[href='" + window.location.pathname + "']");
+			if(nav_link)
+			{
+				nav_link.classList.add("current");
+			}
 		</script>
 	</body>
 </html>

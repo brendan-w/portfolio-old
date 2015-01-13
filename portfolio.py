@@ -22,7 +22,7 @@ def project_page(catagory, article):
     template = '%s/%s.html' % (catagory, article)
 
     if template in app.jinja_env.list_templates():
-        return render_template(template, page_name=article)
+        return render_template(template)
     else:
         return render_template('404.html')
 
