@@ -1,10 +1,27 @@
 {% extends "base.html" %}
 
-{% block article %}
+
+{% block head %}
+	<style>
+
+		article header
+		{
+			padding:50px 0px;
+			border-bottom:1px solid #CCC;
+		}
+
+	</style>
+{% endblock %}
+
+
+
+{% block content %}
 		<article>
 			<header>
-				<span class='name'>Programmer &amp; Interactive Developer</span>
-				<span class='lang'></span>
+				<h1>Programmer &amp; Interactive Developer</h1>
+				<p class='dim'>A programmer, a woodworker, and a musician walk into a bar</p>
 			</header>
+			<section>
+			</section>
 		</article>
 {% endblock %}
