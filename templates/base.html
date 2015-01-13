@@ -69,6 +69,16 @@
 				{%- endfor %}
 			</nav>
 			<nav>
+				<span>Play</span>
+				{%- set play = [
+					('Glass', 'glass'),
+				] -%}
+
+				{% for link in play %}
+				<a href='/play/{{ link[1] }}' {% if link[1] == page_name -%}class='current' {% endif -%}>{{ link[0] }}</a>
+				{%- endfor %}
+			</nav>
+			<nav>
 				<span>About</span>
 				<a href='mailto:bcw7044@rit.edu'>bcw7044@rit.edu</a>
 				<a href='/static/BrendanWhitfieldResume.pdf'>R&eacute;sum&eacute;</a>

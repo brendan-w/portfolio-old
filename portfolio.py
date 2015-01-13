@@ -16,13 +16,13 @@ def home_page():
     return render_template('index.html')
 
 
-@app.route('/work/<project>')
-def project_page(project):
+@app.route('/<catagory>/<article>') # flask ignore /static in this scenario
+def project_page(catagory, article):
 
-    t_name = 'work/%s.html' % project
+    template = '%s/%s.html' % (catagory, article)
 
-    if t_name in app.jinja_env.list_templates():
-        return render_template(t_name, page_name=project)
+    if template in app.jinja_env.list_templates():
+        return render_template(template, page_name=article)
     else:
         return render_template('404.html')
 
