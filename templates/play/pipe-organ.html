@@ -1,0 +1,27 @@
+{% extends "article.html" %}
+
+
+{% block title %}Pipe Organs{% endblock %}
+{% block name  %}Pipe Organs{% endblock %}
+
+
+{% block article -%}
+		<section>
+			{{ make_image("/static/play/organ.png", "/static/play/organ.png") }}
+		</section>
+		<section>
+			<div class='col'>
+				One of my admittedly weirder interests is pipe organs. Given my love of woodworking, music, and mechanisms, I decided it would be a fun challenge to build a working pipe organ. After completing a small two octave prototype in 2010, I began work on a larger, more elaborate pipe organ for my bedroom. This organ (when complete) will have 41 pipes and stand a little over 7 feet tall.
+			</div>
+			<div class='col'>
+				As if the second pipe organ wasn't ambitious enough, I have already found myself designing a 3rd. This one will be more sleak and modern, and carry 3 ranks (2', 4' and 8'). Motorized wing will (hopefully) extend from the main case, making it space efficient and 10x more awesome. Obviously, I have a lot of work ahead of me on the mechanical engineering front, but that's never stopped me before.
+			</div>
+		</section>
+		<section>
+			{{ make_image("/static/play/organ_angle.png", "/static/play/organ_angle.png") }}
+		</section>
+		<section>
+			{{ make_image("/static/play/organ_open_closed.png", "/static/play/organ_open_closed.png") }}
+		</section>
+
+{% endblock %}

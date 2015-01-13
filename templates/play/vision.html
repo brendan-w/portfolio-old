@@ -1,0 +1,20 @@
+{% extends "article.html" %}
+
+
+{% block title %}Computer Vision{% endblock %}
+{% block name  %}Computer Vision{% endblock %}
+
+
+{% block article -%}
+		<section>
+			{{ make_image("/static/play/vision.jpg", "/static/play/vision.jpg") }}
+		</section>
+		<section>
+			<div class='col'>
+				Using two USB webcams, I hope to create a spatial computer interface. Fixed on either side of the monitor, I intend to pipe the video feeds into a program running <a href="http://opencv.org/">OpenCV</a> to do stereo image processing. Exactly how will the user interact with the computer? I don't know yet! That's what makes this fun!
+			</div>
+			<div class='col'>
+				
+			</div>
+		</section>
+{% endblock %}

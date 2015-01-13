@@ -51,12 +51,13 @@
 			</nav>
 			<nav>
 				<span>Play</span>
-				<a href='/play/pipe-organ' >Pipe Organs</a>
-				<a href='/play/3d'         >3D Modelling</a>
-				<a href='/play/guitar'     >Guitar</a>
-				<a href='/play/lasers'     >Lasers</a>
-				<a href='/play/lighting'   >Lighting</a>
-				<a href='/play/glass'      >Glass</a>
+				<a href='/play/pipe-organ'  >Pipe Organs</a>
+				<a href='/play/guitar'      >Guitar</a>
+				<a href='/play/glass'       >Glass</a>
+				<a href='/play/lasers'      >Lasers</a>
+				<a href='/play/lighting'    >Lighting</a>
+				<a href='/play/vision'      >Computer Vision</a>
+				<a href='/play/3d'          >3D Modeling</a>
 			</nav>
 			<nav>
 				<span>About</span>
@@ -94,7 +95,7 @@
 			}
 
 			//mark the current page in the nav
-			var nav_link = document.querySelector("a[href='" + window.location.pathname + "']");
+			var nav_link = document.querySelector("nav a[href='" + window.location.pathname + "']");
 			if(nav_link)
 			{
 				nav_link.classList.add("current");

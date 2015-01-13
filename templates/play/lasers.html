@@ -1,0 +1,29 @@
+{% extends "article.html" %}
+
+
+{% block title %}Laser Projectors{% endblock %}
+{% block name  %}Laser Projectors{% endblock %}
+
+
+{% block article -%}
+		<section>
+			{{ make_image("/static/play/laser.png", "/static/play/laser.png") }}
+		</section>
+		<section>
+			<div class='col'>
+				<p>
+				One of my many hobbies is building laser projectors. Much like those found at rock concerts, this projector is capable of receiving and drawing vector graphics. The projector shown is the latest working graphics projector capable of high scanning rates.
+				</p>
+				<p>
+				In order to control the projector, custom software was written. This software provides an interface to generate the vector laser graphics. Tools such as point manipulation, interpolation, and effects are all built in to the software. Once created, the image can then be sent to the projector via that parallel port.
+				</p>
+				<p>
+				This program also features an effects stack. This lets the user sequentially apply modifiers to the drawn image. Effects such as translation, scale, and duplication (both linear and radial) can be applied to produce the desired effect. Some of these effects even provide rudimentary animation capabilities.
+				</p>
+			</div>
+			<div class='col'>
+				{{ make_image("/static/play/laser_software.png", "/static/play/laser_software.png") }}
+				{{ make_image("/static/play/laser_viewer.jpg", "/static/play/laser_viewer.jpg") }}
+			</div>
+		</section>
+{% endblock %}
