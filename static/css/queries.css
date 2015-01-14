@@ -1,0 +1,40 @@
+
+
+/****************************** Media Querys ********************************/
+
+@media only screen and (max-width: 750px) {
+	aside
+	{
+		margin-right:40px;
+	}
+}
+
+@media only screen and (max-width: 700px) {
+	section > .col
+	{
+		float:none;
+		width:100%;
+		padding:0px !important;
+		margin:0px 0px 1.2em 0px;
+	}
+
+}
+
+@media only screen and (max-width: 550px) {
+	article header
+	{
+		overflow: hidden;
+		margin-bottom: 1.2em;
+	}
+
+	.name, .lang
+	{
+		float:left;
+		clear:left;
+		margin-bottom: 6px;
+	}
+}
+
+@media only screen and (max-width: 550px) {
+
+}

@@ -26,12 +26,14 @@
 		<section>
 			<div class='col'>
 				<p>
-					C-Graph is a function call graphing utility for C with GitHub integration. Simply provide the url for a Git repository, and C-Graph will search for C files. The graph itself represents the code at both the file and function level. Files can be expanded into sets of functions, with arrows depicting the calls from one function to the next. Selecting a function or file will also display its raw C code.
+					C-Graph is a GitHub-integrated call graphing utility for C. Simply provide the url for a Git repository, and C-Graph will search for C files, and construct a graph. The graph itself represents the code at both the file and function level. Files can be expanded into sets of functions, with arrows depicting the calls from one function to the next. Selecting a function or file will also display its raw C code.
 				</p>
 			</div>
 			<div class='col'>
 				<p>
-					
+					In order to parse arbitrary GitHub repos, a custom parser was built 
+
+					C-Graph was originally slated to use a pre-existing graphing utility as a back-end. However, after some experimentation, each utility was rejected because it failed to deliver some piece data or functionality. In particular, the ability to parse a segment of source code without its dependant libraries was a feature that did not exist in any tool. In order to easily integrate with external code repositories (such as GitHub), a custom parser was designed to suit this need. Instead of doing a full syntax parse of the user’s code (and dependant headers), the system only searches for calls and definitions. Once located, they can be linked by name and location. The C language was chosen specifically for its ease and simplicity in linking. Unlike other languages, where functions of the same name are rampant, extern C functions must carry globally unique names, thus allowing it to be linked quickly.
 				</p>
 			</div>
 		</section>
