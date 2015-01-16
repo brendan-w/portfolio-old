@@ -26,14 +26,16 @@
 		<section>
 			<div class='col'>
 				<p>
-				This python module serves as a back-end for projects using sensor data from a car's <a href='http://en.wikipedia.org/wiki/On-board_diagnostics'>OBD-II port</a>. It seemlessly handles the decoding of data from the car, and returns values with units to the programmer. Derived from the popular <a href='https://github.com/peterh/pyobd'>pyobd</a> project, this package attempts to do a better job of decoupling the serial operations from the UI code.
+					This python module serves as a back-end for projects using sensor data from a car's <a href='http://en.wikipedia.org/wiki/On-board_diagnostics'>OBD-II port</a>. It seemlessly handles the decoding of data from the car, and returns values with units to the programmer. Derived from the popular <a href='https://github.com/peterh/pyobd'>pyobd</a> project, this package attempts to do a better job of decoupling the serial operations from the UI code.
 				</p>
 				<p>
-				Since the initial fork of pyobd, the code has been substantially overhauled. The library now makes better use of the Python stdlib, supports more commands, and presents a simple API for accessing the car's data. Commands (sensors) can now be accessed by name, or PID (Parameter ID). Threaded callbacks can also be subscribed, allowing for asynchronous usage.
+					Since the initial fork of pyobd, the code has been substantially overhauled. The library now makes better use of the Python stdlib, supports more commands, and presents a simple API for accessing the car's data. Commands (sensors) can now be accessed by name, or PID (Parameter ID). Threaded callbacks can also be subscribed, allowing for asynchronous usage.
 				</p>
 			</div>
 			<div class='col'>
-				<p>Here are a few of the currently supported commands (for a full list, see the <a href='https://github.com/brendanwhitfield/python-OBD/wiki/Command-Tables'>GitHub Wiki</a>):</p>
+				<p>
+					Here are a few of the currently supported commands (for a full list, see the <a href='https://github.com/brendanwhitfield/python-OBD/wiki/Command-Tables'>GitHub Wiki</a>):
+				</p>
 				<ul>
 					<li>Calculated Engine Load</li>
 					<li>Engine Coolant Temperature</li>

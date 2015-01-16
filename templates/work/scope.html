@@ -24,10 +24,14 @@
 		</section>
 		<section>
 			<div class='col'>
-				This is a software package for turning an Arduino into an oscilloscope. The front-end is written in Processing, and provides controls for pin selection, triggering, and sample rate. Data is collected via the Arduino’s 6 ADC pins, and triggered/buffered on the chip. This allows for sample rates of up to 25kHz.
+				<p>
+					This is a software package for turning an Arduino into an oscilloscope. The front-end is written in Processing, and provides controls for pin selection, triggering, and sample rate. Data is collected via the Arduino’s 6 ADC pins, and triggered/buffered on the chip. This allows for sample rates of up to 25kHz.
+				</p>
 			</div>
 			<div class='col'>
-				In order to achieve better results, it was neccessary to process and buffer the signal on the Arduino itself. While this does present severe memory constrictions, it goes a long way to preserve the temporal consistancy of the readings. Triggering (signal stabalization) can also be done in the Arduino, and helps prevent the sending of undisplayed data. This alone dramatically increases the sample rate of the system. More speed was also coaxed out of the analogRead() by <a href='http://www.microsmart.co.za/technical/2014/03/01/advanced-arduino-adc/'>adjusting prescale registers in the AVR</a>.
+				<p>
+					In order to achieve better results, it was neccessary to process and buffer the signal on the Arduino itself. While this does present severe memory constrictions, it goes a long way to preserve the temporal consistancy of the readings. Triggering (signal stabalization) can also be done in the Arduino, and helps prevent the sending of undisplayed data. This alone dramatically increases the sample rate of the system. More speed was also coaxed out of the analogRead() by <a href='http://www.microsmart.co.za/technical/2014/03/01/advanced-arduino-adc/'>adjusting prescale registers in the AVR</a>.
+				</p>
 			</div>
 		</section>
 {% endblock %}

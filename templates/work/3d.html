@@ -22,10 +22,14 @@
 		</section>
 		<section>
 			<div class='col'>
-				Built and derived from scratch, this project uses a 2D turtle graphics system to render 3D objects. A system of classes representing 3D points, polygons and solids was created to represent the model. The original 2D Turtle class was extended with functions capable of drawing 3D objects. Upon startup, the document class procedurally generates a unique fracture pattern for the glass, and gives it to the turtle for rendering.
+				<p>
+					Built and derived from scratch, this project uses a 2D turtle graphics system to render 3D objects. A system of classes representing 3D points, polygons and solids was created to represent the model. The original 2D Turtle class was extended with functions capable of drawing 3D objects. Upon startup, the document class procedurally generates a unique fracture pattern for the glass, and gives it to the turtle for rendering.
+				</p>
 			</div>
 			<div class='col'>
-				On every frame of the animation, a rotation matrix is applied to slowly turn the model. The shading for each polygon is also recalculated to allow for a slight glint in the glass. This was done by computing the angle between each polygon's surface normal and the camera's forward vector. When drawing, the system also interpolates between vertices to allow for the slight curved lens distortion.
+				<p>
+					On every frame of the animation, a rotation matrix is applied to slowly turn the model. The shading for each polygon is also recalculated to allow for a slight glint in the glass. This was done by computing the angle between each polygon's surface normal and the camera's forward vector. When drawing, the system also interpolates between vertices to allow for the slight curved lens distortion.
+				</p>
 			</div>
 		</section>
 {% endblock %}

@@ -2,13 +2,15 @@
 
 /****************************** Media Querys ********************************/
 
-@media only screen and (max-width: 750px) {
+/* shrink whitespace */
+@media only screen and (max-width: 900px) {
 	aside
 	{
 		margin-right:40px;
 	}
 }
 
+/* turn columns into rows */
 @media only screen and (max-width: 700px) {
 	section > .col
 	{
@@ -20,6 +22,7 @@
 
 }
 
+/* put languages on new line */
 @media only screen and (max-width: 550px) {
 	article header
 	{

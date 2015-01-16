@@ -22,10 +22,14 @@
 		</section>
 		<section>
 			<div class='col'>
-				This program allows the user to solve the classic 15 tile puzzle by hand, or have the computer find a solution. Solutions are generated using the A* search algorithm implemented with the Manhattan Distance heuristic. The solver explores each possible move, and then selects the move that is closest to a finished puzzle (as quantified by the Manhattan Distance). When a solved puzzle state has been reached, the solution is played back for the user to enjoy.
+				<p>
+					This program allows the user to solve the classic 15 tile puzzle by hand, or have the computer find a solution. Solutions are generated using the A* search algorithm implemented with the Manhattan Distance heuristic. The solver explores each possible move, and then selects the move that is closest to a finished puzzle (as quantified by the Manhattan Distance). When a solved puzzle state has been reached, the solution is played back for the user to enjoy.
+				</p>
 			</div>
 			<div class='col'>
-				Of course, this algorithm quickly generates large tree structures that must be searched and traversed. For efficiency, this program maintains a hash table of nodes. This helps when checking for puzzle collisions, which prevents infinite cycles of moves from destroying the search. Due to the large process size, this program also self-regulates its search (iterations per time) so that the interface does not go unresponsive.
+				<p>
+					Of course, this algorithm quickly generates large tree structures that must be searched and traversed. For efficiency, this program maintains a hash table of nodes. This helps when checking for puzzle collisions, which prevents infinite cycles of moves from destroying the search. Due to the large process size, this program also self-regulates its search (iterations per time) so that the interface does not go unresponsive.
+				</p>
 			</div>
 		</section>
 {% endblock %}
