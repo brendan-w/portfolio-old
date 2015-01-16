@@ -8,9 +8,9 @@ nav
 
 nav a
 {
+	color:inherit; /* override the default link color */
 	display:block;
 	line-height: 1.6em;
-	color:#888;
 	text-decoration: none;
 	position: relative;
 }
@@ -29,6 +29,6 @@ nav a:hover
 
 nav span
 {
-	text-align: left;
+	color:black;
 	float:left;
 }

@@ -1,6 +1,9 @@
 
-.name { font-weight: normal; font-size: 16pt;}
-.lang { color:#888; }
+.name
+{
+	color:black;
+	font-size: 16pt;
+}
 
 
 .links
@@ -12,11 +15,11 @@
 
 .links a
 {
+	color:black;
 	border-top:1px solid transparent;
 	display: inline-block;
 	padding-top: 0.8em;
 	padding-bottom: 1em;
-	color:black;
 	text-decoration: none;
 }
 
@@ -63,4 +66,9 @@ article ul
 {
 	list-style-type: disc;
 	list-style-position: inside;
+}
+
+article section a
+{
+
 }
