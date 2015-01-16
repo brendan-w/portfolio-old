@@ -8,6 +8,7 @@
 
 .links
 {
+	color:black;
 	position: absolute;
 	top:-1px;
 	right:0px;
@@ -15,10 +16,10 @@
 
 .links a
 {
-	color:black;
+	color:inherit; /* override default link color */
 	border-top:1px solid transparent;
 	display: inline-block;
-	padding-top: 0.8em;
+	padding-top: 0.9em;
 	padding-bottom: 1em;
 	text-decoration: none;
 }

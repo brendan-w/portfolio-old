@@ -1,7 +1,5 @@
 
-import re
 from flask import Flask, render_template
-from werkzeug import secure_filename
 
 app = Flask(__name__)
 
@@ -16,7 +14,7 @@ def home_page():
     return render_template('index.html')
 
 
-@app.route('/<catagory>/<article>') # flask ignore /static in this scenario
+@app.route('/<catagory>/<article>') # flask ignores /static in this scenario
 def project_page(catagory, article):
 
     template = '%s/%s.html' % (catagory, article)
