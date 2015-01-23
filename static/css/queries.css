@@ -36,6 +36,12 @@
 		clear:left;
 		margin-bottom: 6px;
 	}
+
+	/* hide the equals sign */
+	.lang .equals
+	{
+		display:none;
+	}
 }
 
 /* switch to mobile layout */

@@ -14,7 +14,7 @@
 
 
 {%- macro make_langs(langs) -%}
-	=&nbsp;
+	<span class='equals'>=&nbsp;</span>
 	{%- for lang in langs -%}
 		{%- if loop.index != 1 -%}
 			&nbsp;+&nbsp;
@@ -35,5 +35,7 @@
 
 
 {%- macro make_image(src, link='/') -%}
-	<a class='img' href='{{ link }}' style='background-image: url("{{ src }}");'></a>
+	<a class='img' href='{{ link }}'>
+		<img src='{{ src }}'/>
+	</a>
 {%- endmacro -%}
