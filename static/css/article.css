@@ -60,7 +60,7 @@ section > .col:first-child { padding-right: 1.2em; }
 section > .col:last-child  { padding-left:  1.2em; }
 
 section > .col > *            { margin-bottom: 1.2em; }
-section > .col > *:last-child { margin-bottom: 0px;   }
+section > .col > *:last-child { margin-bottom: 0.1em; } /* not zero, because of letter that extend below baseline */
 
 article ul
 {

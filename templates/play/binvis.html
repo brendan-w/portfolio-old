@@ -1,0 +1,64 @@
+{% extends "article.html" %}
+
+
+{% block title %}Binary Visualization{% endblock %}
+{% block name  %}Binary Visualization{% endblock %}
+
+{%- block links -%}
+	{{ make_links([
+		('Run', 'http://people.rit.edu/bcw7044/tools/binvis/'),
+		('Code', 'https://github.com/brendanwhitfield/binvis')
+	]) }}
+{% endblock %}
+
+{% block article -%}
+		<section>
+			<div class='col'>
+				<p>
+					One of these images represents a .DLL file, and the other a .WAV file. Can you tell which is which?
+				</p>
+			</div>
+			<div class='col'>
+			</div>
+		</section>
+		<section>
+			<div class='col'>
+				{{ make_image("/static/play/binvis_dll.png", "/static/play/binvis_dll.png") }}
+			</div>
+			<div class='col'>
+				{{ make_image("/static/play/binvis_wav.png", "/static/play/binvis_wav.png") }}
+			</div>
+		</section>
+		<section>
+			<div class='col'>
+				<p>
+					It all started with this <a href='http://www.ted.com/talks/chris_domas_the_1s_and_0s_behind_cyber_warfare'>TED talk by Chris Domas</a>. During the presentation, he shows some elegant visualizations of raw binary data. The first is an adjacency map, with the value of any given byte (n) on the X-axis, and the value of the next byte (n+1) on the Y-axis. This creates a beautiful frequency map of the byte patterns in a given file, and it is remarkably good at distinguishing the file’s contents.
+				</p>
+				<p>
+					Of course, this was simple too cool, and I immediatly went and made my own to play with (click "Run" at the top of the page). Simply drag and drop your files into the page, and it will assemble your very own visualization (I promise, the files never leave the page).
+				</p>
+			</div>
+			<div class='col'>
+				<p>
+					Chris Domas has released a <a href='https://media.blackhat.com/bh-us-12/Arsenal/Domas/_cantor.dust_.7z.zip'>demo</a> version of his software <a href='https://sites.google.com/site/xxcantorxdustxx/home'>..cantor.dust..</a>. He also gave a very good <a href='https://www.youtube.com/watch?v=4bM3Gut1hIk'>Derbycon talk</a>, which goes into detail about each visualization.
+				</p>
+				<p>
+					While my software is only a simple web app, I fully intend to continue exploring the topic of data visualization for reverse engineering. I am currently playing with <a href='http://www.openframeworks.cc/'>openFrameworks</a> as a possible display framework for future iterations of this project.
+				</p>
+			</div>
+		</section>
+		<section>
+			<div class='col'>
+				{{ make_image("/static/play/binvis_random_exe.png", "/static/play/binvis_random_exe.png") }}
+				<p>
+					A random .EXE file, with embeded graphics
+				</p>
+			</div>
+			<div class='col'>
+				{{ make_image("/static/play/binvis_unicode.png", "/static/play/binvis_unicode.png") }}
+				<p>
+					A unicode language pack. The upper left is the standard ASCII region.
+				</p>
+			</div>
+		</section>
+{% endblock %}
