@@ -47,6 +47,11 @@
 /* switch to mobile layout */
 /* hide all navs, but keep the name logo */
 @media only screen and (max-width: 550px) {
+	body
+	{
+		font-size:10pt;
+	}
+
 	aside
 	{
 		position: absolute;
