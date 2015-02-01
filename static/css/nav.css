@@ -6,11 +6,15 @@ nav
 	margin-bottom: 2.4em;
 }
 
+nav *
+{
+	line-height: 1.6em;
+}
+
 nav a
 {
 	color:inherit; /* override the default link color */
 	display:block;
-	line-height: 1.6em;
 	text-decoration: none;
 	position: relative;
 }
