@@ -12,10 +12,10 @@
 		<section>
 			<div class='col'>
 				<p>
-				One of my many hobbies is building laser projectors. Much like those found at rock concerts, this projector is capable of receiving and drawing vector graphics. The projector shown is the latest working graphics projector capable of high scanning rates.
+				One of my many hobbies is building laser projectors. Much like those found at rock concerts, this projector is capable of receiving and drawing vector graphics. The projector shown was built back in highschool.
 				</p>
 				<p>
-				In order to control the projector, custom software was written. This software provides an interface to generate the vector laser graphics. Tools such as point manipulation, interpolation, and effects are all built in to the software. Once created, the image can then be sent to the projector via that parallel port.
+				In order to control the projector, I wrote custom software in visual basic (I was a young programmer). This provided an interface in which to draw vector laser. Tools such as point manipulation, interpolation, and effects are all built in to the software. Once drawn, the image can then be sent to the projector via that parallel port.
 				</p>
 				<p>
 				This program also features an effects stack. This lets the user sequentially apply modifiers to the drawn image. Effects such as translation, scale, and duplication (both linear and radial) can be applied to produce the desired effect. Some of these effects even provide rudimentary animation capabilities.
@@ -23,7 +23,18 @@
 			</div>
 			<div class='col'>
 				{{ make_image("/static/play/laser_software.png", "/static/play/laser_software.png") }}
-				{{ make_image("/static/play/laser_viewer.jpg", "/static/play/laser_viewer.jpg") }}
+				<!-- {{ make_image("/static/play/laser_viewer.jpg", "/static/play/laser_viewer.jpg") }} -->
+			</div>
+		</section>
+		<section>
+			<iframe src="https://player.vimeo.com/video/53363776" width="100%" height="375" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+		</section>
+		<section>
+			<div class='col'>
+				<p>In case you didn't think I was crazy already, I've been building these even before highschool. Here's a cute one from my childhood made out of Lego, controlled by the <a href='https://en.wikipedia.org/wiki/Lego_Mindstorms#RCX'>Lego Mindstorms RCX</a></p>
+			</div>
+			<div class='col'>
+				{{ make_image("/static/play/lego_laser.jpg", "/static/play/lego_laser.jpg") }}
 			</div>
 		</section>
 {% endblock %}
