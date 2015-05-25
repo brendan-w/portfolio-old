@@ -36,3 +36,14 @@ nav span
 	color:black;
 	float:left;
 }
+
+nav details
+{
+	height:0px;
+	overflow: hidden;
+}
+
+nav details.open
+{
+	height:auto;
+}

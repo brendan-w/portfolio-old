@@ -42,13 +42,16 @@
 				<a href='/work/lumber'     >Lumber Segmenter</a>
 				<a href='/work/remote'     >Universal Remote</a>
 				<a href='/work/scope'      >OpenScope</a>
-				<a href='/work/optics'     >Interactive Optics</a>
-				<a href='/work/planetary'  >Planetary</a>
-				<a href='/work/synth'      >Web Synthesizer</a>
-				<a href='/work/15puzzle'   >15-Puzzle Solver</a>
-				<a href='/work/3d'         >3D Graphics Engine</a>
-				<!-- <a href='/work/asteroids'  >Gravitational Asteroids</a> -->
-				<!-- <a href='/work/ascii'      >Ascii Art Painter</a> -->
+				<details>
+					<a href='/work/optics'     >Interactive Optics</a>
+					<a href='/work/planetary'  >Planetary</a>
+					<a href='/work/synth'      >Web Synthesizer</a>
+					<a href='/work/15puzzle'   >15-Puzzle Solver</a>
+					<a href='/work/3d'         >3D Graphics Engine</a>
+					<a href='/work/asteroids'  >Gravitational Asteroids</a>
+					<a href='/work/ascii'      >Ascii Art Painter</a>
+				</details>
+				<a class='more' onClick="more(event);">More ▼</a>
 			</nav>
 			<nav class='dim'>
 				<span>Play</span>
@@ -57,9 +60,12 @@
 				<a href='/play/lasers'      >Lasers</a>
 				<a href='/play/guitar'      >Guitar</a>
 				<a href='/play/glass'       >Glass</a>
-				<!-- <a href='/play/lighting'    >Lighting</a> -->
-				<!-- <a href='/play/vision'      >Computer Vision</a> -->
-				<a href='/play/3d'          >3D Modeling</a>
+				<details>
+					<a href='/play/lighting'    >Lighting</a>
+					<a href='/play/3d'          >3D Modeling</a>
+					<a href='/play/vision'      >Computer Vision</a>
+				</details>
+				<a class='more' onClick="more(event);">More ▼</a>
 			</nav>
 			<nav class='dim'>
 				<span>About</span>
@@ -101,6 +107,52 @@
 			if(nav_link)
 			{
 				nav_link.classList.add("current");
+
+				//if it's in a "more" menu, open it
+				if(nav_link.parentNode.localName === "details")
+					open_more(nav_link.parentNode.parentNode);
+			}
+
+			//more button handler
+			function more(e)
+			{
+				var nav = e.target.parentNode;
+
+				//toggle the <details>
+				if(is_more_open(nav))
+					close_more(nav);
+				else
+					open_more(nav);
+			}
+
+			function is_more_open(nav)
+			{
+				var details = nav.querySelector("details");
+				return (details && (details.className !== ""))
+			}
+
+			function open_more(nav)
+			{
+				var button  = nav.querySelector(".more");
+				var details = nav.querySelector("details");
+
+				if(button && details)
+				{
+					button.innerHTML = "Less ▲"
+					details.className = "open";
+				}
+			}
+
+			function close_more(nav)
+			{
+				var button  = nav.querySelector(".more");
+				var details = nav.querySelector("details");
+
+				if(button && details)
+				{
+					button.innerHTML = "More ▼";
+					details.className = "";
+				}
 			}
 		</script>
 	</body>
