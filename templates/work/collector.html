@@ -1,0 +1,35 @@
+{% extends "article.html" %}
+
+
+{% block title %}Collector{% endblock %}
+{% block name  %}Collector{% endblock %}
+
+{%- block langs -%}
+	{{ make_langs([
+		'SDL2',
+		'C++'
+	]) }}
+{%- endblock -%}
+
+{%- block links -%}
+	{{ make_links([
+		('Code', 'https://github.com/brendanwhitfield/collector')
+	]) }}
+{% endblock %}
+
+{% block article -%}
+		<section>
+			{{ make_image("/static/work/collector_thumb.png", "/static/work/collector.png") }}
+		</section>
+		<section>
+			<div class='col'>
+				<p>
+					Collector is a tag-based file manager for linux.
+				</p>
+			</div>
+			<div class='col'>
+				<p>
+				</p>
+			</div>
+		</section>
+{% endblock %}
