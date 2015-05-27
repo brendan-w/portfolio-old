@@ -13,7 +13,8 @@
 
 {%- block links -%}
 	{{ make_links([
-		('Code', 'https://github.com/brendanwhitfield/collector')
+		('Code', 'https://github.com/brendanwhitfield/collector'),
+		('Docs', 'https://github.com/brendanwhitfield/collector/blob/master/README.md')
 	]) }}
 {% endblock %}
 
@@ -24,12 +25,15 @@
 		<section>
 			<div class='col'>
 				<p>
-					Collector is a tag-based file manager for linux. It presents files in a flat data structure where the user can select files by tag names. 
+					Collector is a tag-based file manager for linux. It presents the user's files as a flat data structure, where they can be selected by tag name, or by manual inclusion and exclusion. These tags can be arbitrarily added or removed from files, and can even be queried with logical set operations.
+				</p>
+				<p>
+					Collector also outputs symlinks of the current selection to a temporary directory, where they can be used by other programs. By default, files are opened in their default programs using the <a href='https://wiki.archlinux.org/index.php/Xdg-open'>xdg-open</a> utility.
 				</p>
 			</div>
 			<div class='col'>
 				<p>
-					Collector stores tags in the file's name and path. This allows directory names to function as tags, making existing folder structures easier to work with. When tags are added or removed, Collector will either splice the tag in to or out of the filename, or move the file to a different spot in the directory tree. Not only does this help maintain an organized directory structure, but also prevents the need to synchronize a tag database with the filesystem.
+					Tags are stored in the file's name and path. This allows directories to function as tags, and helps to represent existing folder structures in the Collector. When tags are added or removed, Collector will either splice text from the file name, or move the file to a different place in the directory tree. Not only does this help maintain an organized directory structure, but also prevents the need to synchronize a tag database with the filesystem.
 				</p>
 			</div>
 		</section>

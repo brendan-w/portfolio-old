@@ -31,7 +31,7 @@
 			</div>
 			<div class='col'>
 				<p>
-					C-Graph was originally slated to use a pre-existing graphing utility as a back-end. However, after some experimentation, each utility was rejected because it failed to deliver some piece data or functionality. In particular, the ability to parse a segment of source code without its dependant libraries was a feature that did not exist in any tool. In order to easily integrate with external code repositories (such as GitHub), a custom parser was designed to suit this need. Instead of doing a full syntax parse of the user’s code (and dependant headers), the system only searches for calls and definitions. Once located, they can be linked by name and location. The C language was chosen specifically for its ease and simplicity in linking. Unlike other languages, where functions of the same name are rampant, extern C functions must carry globally unique names, thus allowing it to be linked quickly.
+					Curiously, C-Graph uses a custom C parser to construct its graphs. Many pre-existing graphing utilities were rejected because they failed to deliver some piece data or functionality. In particular, the ability to parse a project without its dependant libraries was a common failing point. Instead of doing a full syntax parse (which includes dependant headers), this system only searches for calls and definitions. Once located, they can be linked by name and location. The C language was chosen specifically for its ease and simplicity in linking.
 				</p>
 			</div>
 		</section>
