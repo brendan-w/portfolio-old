@@ -37,13 +37,13 @@ nav span
 	float:left;
 }
 
-nav details
+nav div
 {
 	height:0px;
 	overflow: hidden;
 }
 
-nav details.open
+nav div.open
 {
 	height:auto;
 }
