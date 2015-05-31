@@ -1,0 +1,33 @@
+
+article header
+{
+	padding:50px 0px;
+	border-bottom:1px solid #CCC;
+}
+
+@media only screen and (max-width: 550px) {
+
+	article
+	{
+		display:none;
+	}
+
+	/* turn the navs back on (overrides queries.css) */
+	aside nav
+	{
+		display:block !important;
+	}
+
+	aside nav span
+	{
+		float:right;
+	}
+
+	aside
+	{
+		position: static;
+		float:none;
+		width:auto;
+		margin-right: 0px;
+	}
+}
