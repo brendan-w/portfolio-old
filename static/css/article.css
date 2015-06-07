@@ -1,14 +1,13 @@
 
 .name
 {
-	color:black;
-	font-size: 16pt;
+	color:#999;
 }
 
 
 .links
 {
-	color:black;
+	/*color:black;*/
 	position: absolute;
 	top:-1px;
 	right:0px;
@@ -26,8 +25,8 @@
 
 .links a:hover
 {
-	border-top-color:rgb(200,0,0);
-	color:rgb(200,0,0);
+	border-top-color:#CCC;
+	color:#CCC;
 }
 
 section

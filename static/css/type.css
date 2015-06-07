@@ -27,10 +27,10 @@
 
 body
 {
-    color:#000;
+    color:#555;
 	font-family: 'Open Sans', 'Helvetica', 'Arial', sans-serif;
 	font-size:8pt;
-	line-height: 1.2em;
+	line-height: 1.5em;
 	word-spacing: 0.1em;
 }
 
@@ -38,22 +38,22 @@ sup {font-size:xx-small; vertical-align:super; line-height:0;}
 
 h1, h2, h3, h4, h5, h6
 {
-    color:black;
+    color:inherit;
 }
 
 h1
 {
-	font-size:22pt;
+	font-size:16pt;
 	font-family: 'Share Tech';
 	line-height: 1em;
     text-transform: uppercase;
 }
 
 /* make links less ugly */
-a {color:rgb(200,0,0);}
+a {color:#999;}
 a:active {outline: none;}
 a:focus {outline: none;}
 a:hover {cursor:pointer;}
 
 .r { color:rgb(200,0,0); }
-.dim { color:#777; }
+.dim { color:#555; }

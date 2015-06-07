@@ -2,7 +2,7 @@
 nav
 {
 	position: relative;
-	border-top: 1px solid #CCC;
+	border-top: 1px solid #555;
 	margin-bottom: 2.4em;
 }
 
@@ -27,13 +27,13 @@ nav a:last-child
 nav a.current,
 nav a:hover
 {
-	color: rgb(200,0,0);
+	color:#999;
 	text-decoration: underline;
 }
 
 nav span
 {
-	color:black;
+	color:#999;
 	float:left;
 }
 
