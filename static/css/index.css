@@ -1,8 +1,23 @@
 
+body
+{
+	padding-right: 0px;
+}
+
 article header
 {
+	margin-top:300px;
 	padding:50px 0px;
-	border-bottom:1px solid #555;
+	background-color: black;
+	color:white;
+	border:none;
+	z-index: 1;
+}
+
+canvas
+{
+	position: absolute;
+	top:0px;
 }
 
 @media only screen and (max-width: 550px) {
