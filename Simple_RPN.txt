@@ -1,0 +1,136 @@
+
+/**
+ * Simple RPN calculator that can add, subtract and multiply using and array to simulate a stack
+ * Note: Assumes positive single digit input values.
+ * 
+ * Brendan Whitfield 
+ * Version 2.01 (5-23-11)
+ */
+public class Simple_RPN
+{
+    /**
+     * Create operating variables for an instance of Simple_RPN
+     */
+    int top = -1; //default value of -1 for an emtpy stack
+    int[] stack = new int[10]; //intitializes the stack
+
+    /**
+     * method that takes a string value from the user,
+     * parses it into a number or operation, and either
+     * pushes the number to the stack, or operates on the
+     * two top numbers on the stack
+     */
+    public void input(String value)
+    {
+        if (value == "1") {push(1);} //detect number inputs
+        else if (value == "2") {push(2);}
+        else if (value == "3") {push(3);}
+        else if (value == "4") {push(4);}
+        else if (value == "5") {push(5);}
+        else if (value == "6") {push(6);}
+        else if (value == "7") {push(7);}
+        else if (value == "8") {push(8);}
+        else if (value == "9") {push(9);}
+        else if (value == "0") {push(0);}
+        
+        else if (value == "+")//detect addition operation
+        {
+            if (top >= 1)
+            {
+                push(pop() + pop());
+            }
+            else
+            {
+                System.out.println ("Another value is needed for computation.");
+                viewstack();
+            }
+        }
+        else if (value == "-")//detect subtraction operation
+        {
+            if (top >= 1)
+            {
+                push(pop() - pop());
+            }
+            else
+            {
+                System.out.println ("Another value is needed for computation.");
+                viewstack();
+            }
+        }
+        else if (value == "*")//detect multiplication operation
+        {
+            if (top >= 1)
+            {
+                push(pop() * pop());
+            }
+            else
+            {
+                System.out.println ("Another value is needed for computation.");
+                viewstack();
+            }
+        }
+        else if (value == "=")//detect equals operation/ends the algebra
+        {
+            if (top == 0) //everything worked correctly
+            {
+                System.out.println ("Result = " + pop()); //print the result
+                top = -1; //set the stack to empty
+            }
+            else if (top == -1) //empty stack, there's nothing to report
+            {
+                System.out.println ("There's nothing in the stack");
+            }
+            else if (top >= 1) //extraneous data exists, can't end computation
+            {
+                System.out.println ("There's more than one element left in the stack!");
+            }
+        }
+        
+    }
+    
+    /**
+     * method that clears the stack, in case an error has been made
+     */
+    public void clearstack()
+    {
+        top = -1;
+        System.out.println ("Stack has been erased and reset");
+    }
+    
+    /**
+     * method that loops through and prints the stack, for clarity
+     */
+    public void viewstack()
+    {
+        System.out.println ("Here's your stack:");
+        for (int i = top; i >= 0; i--)
+        {
+            System.out.println (stack[i]);
+        }
+    }
+    
+    /**
+     * method that pushes an integer onto the top of the stack
+     */
+    private void push(int value)
+    {
+        if (top < 9)
+        {
+            top ++; //increment the top-of-stack value
+            stack[top] = value; //push the value
+        }
+        else //if the stack is all full
+        {
+            System.out.println ("You just ran out of stack space...");
+        }
+    }
+    
+    /**
+     * method that pops and returns the top integer of the stack
+     */
+    private int pop()
+    {
+            top--; //decrement the top-of-stack value
+            return stack[(top + 1)]; //pop the value
+    }
+}

@@ -1,0 +1,22 @@
+Image Name: Spinning Platters
+
+Beam Time: 3
+
+Screen: 8
+[Point,2730,2730,Yes,65280]
+[Point,3071,1365,Yes,65280]
+[Point,2730,1365,No,65280]
+[Point,2730,682,No,65280]
+[Point,3071,682,No,16711680]
+[Point,3071,1365,No,16711680]
+[Point,2730,2730,Yes,65535]
+[Point,2389,2389,No,255]
+
+Stack: 6
+[Yes,Radial Repeat,2730,2730,No,360,19,1,1,0,0,1]
+[Yes,Rotation,2730,2730,Yes,360,0,0,1,0,0,0]
+[Yes,Scale,2730,2730,No,100,40,3,0,0,1,0]
+[Yes,Move,2730,4436,No,0,0,0,1,0,0,0]
+[Yes,Linear Repeat,2730,1024,No,2,0,0,1,0,0,0]
+[Yes,Rotation,2730,2730,Yes,360,0,1,2,0,0,0]
+

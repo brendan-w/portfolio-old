@@ -1,0 +1,140 @@
+/**
+ * Class imitating Wolfram's cellular automaton.
+ * Generates a pattern of true and false values based on a given rule,
+ * and the values previously generated. The output grid is printed to the screen.
+ * 
+ * Brendan Whitfield
+ * Version 1.01 (5-7-2011)
+ */
+public class Wolfram
+{
+    /**
+     * Create operating variables for an instance of Wolfram
+     */
+    boolean[] previous; //Contains values of the previous row
+    boolean[] current; //Contains values of the current row being created
+    boolean[] rule = new boolean[8]; //Contains the rule, in binary, for the pattern
+    int width = 0; //Stores the width of the grid
+    int height = 0; //Stores the width of the grid
+    String trueChar = "[]"; //Stores the string representing a true value
+    String falseChar = "  "; //Stores the string representing a false value
+    
+    /**
+     * initialize the arrays for the previous and current values.
+     * Also set the height and width from the user.
+     */
+    public Wolfram(int widthPattern, int heightPattern)
+    {
+        height = heightPattern;
+        width = widthPattern - 1;
+        previous = new boolean[widthPattern];
+        current = new boolean[widthPattern];
+    }
+       
+    /**
+     * method to print out a pattern according to the given rule
+     * by checking each set of 3 adjacent values in the previous row,
+     * and configuring the current row accordingly.
+     */
+    public void Create(int ruleNumber)
+    {
+        System.out.println ("Rule number: " + ruleNumber);
+        setRule(ruleNumber); //configure the rule array
+        int i = 0; //looping variable
+        int j = 0; //second looping variable
+        for (i = 0; i <= width; i++) //setup initial values
+        {
+            if (i == Math.round(width/2)) //light up the middle start value (make True)
+                {
+                    previous[i] = true;
+                }
+            else //make all other values false
+                {
+                    previous[i] = false;
+                }
+        }
+        for (j = 0; j <= height; j++)//line loop
+        {
+            for (i = 0; i <= width; i++)//element loop
+            {
+                if (previous[i] == true)//Print the previous row to the screen
+                {
+                    System.out.print (trueChar); //print a true
+                }
+                else if (previous[i] == false)
+                {
+                    System.out.print (falseChar); //print a false
+                }
+                if ((i >= 1)&&(i <= (width - 1))) //create the next row according to the rule
+                {
+                    current[i] = rule[binToNum(previous[i-1], previous[i], previous[i+1])]; //look up corresponding rule value
+                }
+                else if (i == 0)
+                {
+                    current[i] = rule[binToNum(previous[i], previous[i], previous[i+1])]; //handle edge values (left)
+                }
+                else if (i == width) 
+                {
+                    current[i] = rule[binToNum(previous[i-1], previous[i], previous[i])]; //handle edge values (right)
+                }
+            }
+            System.out.print ("\n"); //line feed in output
+            for(i = 0; i <= width; i++) //advance the lines
+            {
+                previous[i] = current[i];//load the current row into the previous row
+                if (j >= height)//if the last row is reached, print the current row
+                {
+                    if (current[i] == true)//Print the current row to the screen
+                    {
+                        System.out.print (trueChar); //print a true
+                    }
+                    else if (current[i] == false)
+                    {
+                        System.out.print (falseChar); //print a false
+                    }  
+                }
+            }
+        }
+        System.out.print ("\n"); //line feed in output
+    }
+    
+    /**
+     * Method to convert a 3-boolean binary value to a numerical integer
+     * by adding the corresponding value
+     */
+    private int binToNum(boolean a, boolean b, boolean c)
+    {
+        int total = 0;
+        if (a) {total += 4;}
+        if (b) {total += 2;}
+        if (c) {total += 1;}
+        return total;
+    }
+    
+    /**
+     * Method to convert a numerical integer to a 3-boolean binary value
+     * by looping and subtracting bit values
+     */
+    private void setRule(int ruleNum)
+    {
+        int count = ruleNum;
+        if (ruleNum > 255)
+            {
+                count = 255;
+            }
+        int bitNum = 128; //max bit size
+        for (int i = 7; i >= 0; i--) //inverted due to LSB on the right
+        {
+            if (count >= bitNum)
+            {
+                count -= bitNum;
+                rule[i] = true;
+            }
+            else
+            {
+                rule[i] = false;
+            }
+            bitNum = bitNum / 2; //decrement the bit size
+        }
+    }
+}

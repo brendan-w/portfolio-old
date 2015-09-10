@@ -1,0 +1,122 @@
+/**
+ * Class that prints a pascal triangle of variable size using
+ * the nCr method to generate values.
+ * 
+ * Brendan Whitfield
+ * Version 1.01 (4-15-2011)
+ */
+public class Pascal
+{
+    /**
+     * Constructor that prints the instructions on the screen
+     */
+    public Pascal()
+    {
+        instructions();
+    }
+    
+    /**
+     * Method that generates and prints the whole triangle.
+     * This method calls the single row generator, and calls
+     * the deadSpace method to center the triangle on the screen.
+     * The number of rows to print is given by a parameter from
+     * the user.
+     */
+    public void generateTriangle(int height)
+    {
+        int rows = (height - 1);
+        int width = generateRow(rows).length();
+        String newRow = "";
+        int spaces = 0;
+        for(int i = 0; i <= rows; i++)
+        {
+            newRow = generateRow(i);
+            spaces = (width - newRow.length())/2;
+            newRow = deadSpace(spaces) + newRow + deadSpace(spaces);
+            System.out.println (newRow);
+        }
+    }
+    
+    /**
+     * Method that generates and returns a SINGLE pascal triangle row.
+     * This method calls the nCr combination method and adds appropriate
+     * spaces.
+     */
+    private String generateRow(int row)
+    {
+        String result = "";
+        for(int i = 0; i <= row; i++)
+        {
+            result += combination(row, i);
+            if (i != row)
+                {
+                    result += "   ";
+                }
+        }
+        return result;
+    }
+    
+    /**
+     * Method that evaluates nCr expressions using the nCr equation.
+     * This method calls the factorial function.
+     */
+    private long combination(long n, long r)
+    {
+        long result;
+        result = factorial(n)/((factorial(n-r)) * factorial(r));
+        return result;
+    }
+    
+    /**
+     * Method that computes the factorials of numbers. 0 is
+     * automatically set to output 1, and the factorial loop
+     * stops descending at 2 (multiplying by 1 is redundant)
+     */
+    private long factorial(long input)
+    {
+        long result = input;
+        if (input == 0)
+        {
+            result = 1;
+        }
+        else
+        {
+            long factor = (input - 1);
+            while (factor > 1)
+            {
+                result = result * factor;
+                factor --;
+            }
+        }
+        return result;
+    }
+    
+    /**
+     * Method that generates a string of spaces of the requested
+     * length. Used for centering the text triangle on the screen.
+     */
+    private String deadSpace(int length)
+    {
+        String result = "";
+        if (length > 0)
+        {
+            for(int i = 1; i <= length; i++)
+            {
+                result += " ";
+            }
+        }
+        return result;
+    }
+    
+    /**
+     * Method that prints instructions to the output window.
+     */
+    public void instructions()
+    {
+        System.out.println ("                Pascal Triangle Generator");
+        System.out.println ("       #1: Right click on the Pascal object");
+        System.out.println ("       #2: Input the desired height of the triangle");
+        System.out.println ("       #3: Click 'ok' and view your new traingle\n");
+        System.out.println ("Warning! This program is only accurate to 21 rows of pascal\n");
+    }
+}

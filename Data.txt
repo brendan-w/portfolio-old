@@ -1,0 +1,296 @@
+import os
+
+#PRIVATE VARIABLES===================================================================
+continuing = True    #Stops the loop when false, and hence, exits the program
+catch = ""           #Input from the user
+data = [-1,[]]            #Contains the Database
+sep = "--------------------------------------------------------------------------------" #Seperator for entries
+
+#PUBLIC VARIABLES===================================================================
+mode = ""            #Search mode inactive
+
+case = False          #Case sensitive
+name = True          #Search names
+nameexit = True      #Exit searching if perfect name match
+tags = True          #Search tags
+body = True         #Search body text
+
+#CALCULATOR FUNCTIONS===================================================================
+def findOrderOp(input): #Find the next operation to be completed, according to the order of operations
+	result = -1
+	if input.find("+") > -1:
+		result = input.find("+")
+	if input.find("-") > -1:
+		if (input.find("-") < result) or (result == -1):
+			result = input.find("-")
+	if input.find("*") > -1:
+		result = input.find("*")
+	if input.find("/") > -1:
+		if (input.find("/") < result) or (result == -1):
+			result = input.find("/")
+	if input.find("^") > -1:
+		result = input.find("^")
+	return result
+def isNum(input, ops, decimal): #Evaluates whether the string is a number, by removing all numerical characters. If the result is an empty string, then the whole string was numerical.
+	#remove the number characters by replacing each one with nothing
+	input = input.replace("0", "")
+	input = input.replace("1", "")
+	input = input.replace("2", "")
+	input = input.replace("3", "")
+	input = input.replace("4", "")
+	input = input.replace("5", "")
+	input = input.replace("6", "")
+	input = input.replace("7", "")
+	input = input.replace("8", "")
+	input = input.replace("9", "")
+	if decimal == True: #an option to accept decimals into the descision
+		input = input.replace(".", "")
+	if ops == True: #an option to accept operations into the descision
+		#remove the operation characters by replacing each one with nothing
+		input = input.replace("+", "")
+		input = input.replace("-", "")
+		input = input.replace("*", "")
+		input = input.replace("/", "")
+		input = input.replace("^", "")
+	result = False #preset the result to false in case the if statement below isn't true
+	if len(input) == 0:
+		#if the string has nothing left in it, then it passed the test!
+		result = True
+	return result
+def findNum(input, forward): #Isolates individual numbers by removing one character at a time from the end of the string.
+	result = input
+	if forward == True:
+		while isNum(result, False, True) == False:
+			result = result[:len(result) - 1]
+	elif forward == False:
+		while isNum(result, False, True) == False:
+			result = result[1:]
+	return result
+def calc(input): #Main calculator function. This function calls findNum, isNum, and findOrderOp to perform its calculations
+	if isNum(input, True, True) == True:
+		while findOrderOp(input) != -1:
+			#Find the next operator, according to the order of operations
+			opLoc = findOrderOp(input)
+			#Store the type of operator as a string
+			op = input[opLoc:(opLoc  + 1)]
+			#Extract the number to the left and right of the operator
+			var1 = findNum(input[:opLoc], False)
+			var2 = findNum(input[opLoc + 1:], True)
+			if op == "+": #Switch for the type of operator, and perform the operation
+				result = float(var1) + float(var2)
+			elif op == "-":
+				result = float(var1) - float(var2)
+			elif op == "*":
+				result = float(var1) * float(var2)
+			elif op == "/":
+				result = float(var1) / float(var2)
+			#Replace the original expression with the result
+			input = input[:opLoc - len(var1)] + str(result) + input[opLoc + 1 + len(var2):]
+			#repeat finding operators until none exist
+		if input.find(".") > -1: #remove extra zeros if its an integer
+			if input[input.find("."):] == ".0":
+				input = input[:len(input) - 2]
+	else:
+		input = "Illegal characters found..."
+	return input
+#DATA FUNCTIONS===================================================================
+def loadData(fileName):
+	try:
+		rawData = open(fileName, "r").read()
+		#Print some feedback to the user
+		print "".join([fileName, " Opened..."])
+		#Define variables for parsing. Not neccessary, but helps with intelligibility
+		newData = []
+		name = ""
+		tags = ""
+		meta = ""
+		body = ""
+		total = -1
+		length = str(len(rawData))
+		while rawData.find("$Name[") > -1: #repeat as long as there's another name 
+			#find the first name badge, and extract the name
+			name = rawData[rawData.find("$Name[") + 6:]
+			name = name[:name.find("]#")]
+			if name == "": #Just in case there was nothing to extract...
+				name = "".join(["Entry ", str(total), " Missing Name"])
+			#find the first tags badge, and extract the tags
+			tags = rawData[rawData.find("#Tags[") + 6:]
+			tags = tags[:tags.find("]#")]
+			#find the first meta badge, and extract the meta data
+			meta = rawData[rawData.find("#Meta[") + 6:]
+			meta = meta[:meta.find("]#")]
+			#find the first body badge, and extract the body text
+			body = rawData[rawData.find("#Body[") + 6:]
+			body = body[:body.find("]End$")]
+			if body == "": #Just in case there was nothing to extract...
+				body = "Empty"
+			#Store the Values in a sublist of the master data list
+			newData.append([name, tags, meta, body])
+			#Erase the entry that was just recorded
+			rawData = rawData[rawData.find("]End$") + 5:]
+			#increment the total number of entries
+			total += 1
+		#insert the total number of entries into the data variable, making the actual data into another sublist
+		newData = [total, newData]
+		#more user feedback
+		print "".join([length, " Characters Found, ", str(total + 1), " Entries Found..."])
+		#return the whole sha-bang, as in, the data
+		return newData
+	except IOError:
+		#in case the user specified a non-existant file...
+		print "ERROR(File IO) probably can't find the file..."
+	except:
+		print "ERROR(Parsing), failed to process the file..."
+def printSettings():
+	#print out the various options, aka variables, and their corresponding values
+	print "".join([" 1: case sensitive = ", str(case)])
+	print "".join([" 2: search names = ", str(name)])
+	print "".join([" 3: search tags = ", str(tags)])
+	print "".join([" 4: search body = ", str(body)])
+	print "".join([" 5: exit search on name match = ", str(nameexit)])
+
+#MAIN LOOP===================================================================
+while continuing:
+	#Run every time -----------------------------------------------------------------
+	catch = raw_input("".join([mode, ">"]))
+	if case == False: #Set to lower case, according to the setting
+		catch = catch.lower()
+	if catch == "search": #Switch to search mode
+		mode = "search"
+		catch = "" #Clear the input that was caught, so it will skip everything below
+	elif catch == "calc": #Switch to calculator mode
+		mode = "calc"
+		catch = ""
+	elif catch == "back": #Go back to 'normal mode'
+		mode = ""
+		catch = ""
+	elif (catch == "clear display") or (catch == "cd") or (catch == "cls"):
+		#clear the dipslay if things get to cluttered
+		#Works on windows, can't vouch for other OS's though...
+		clear = lambda: os.system('cls')
+		clear()
+		catch = ""
+	
+	#Search Mode -----------------------------------------------------------------
+	if mode == "search":
+		results = ""
+		entry = []
+		if (len(catch) > 2) and (data[0] != -1) and (catch[:1] == "[") and (catch[len(catch) - 1:] == "]"):
+			results = catch[1:len(catch) - 1]
+			if (isNum(results, False, False) == True) and (int(results) > -1) and (int(results) < data[0] + 1):
+				entry = data[1]
+				entry = entry[int(results)]
+				results = "".join([ "\n", sep, entry[3], "\n", sep])
+			else:
+				results = "".join(["Please enter a number within the range of the database (", str(data[0]), ") entries"])
+		elif (catch != "") and (data[0] != -1): #Main Searcher
+			found = 0
+			num = 0
+			done = False			
+			while (num <= data[0]) and (done == False):
+				entry = data[1] #extract the entrIES portion of the database
+				entry = entry[num] #extract the individual entry
+				nameVal = entry[0]
+				tagsVal = entry[1]
+				metaVal = entry[2]
+				bodyVal = entry[3]
+				if case == False:
+					nameVal = nameVal.lower()
+					tagsVal = tagsVal.lower()
+					metaVal = metaVal.lower()
+					bodyVal = bodyVal.lower()
+				if name == True:
+					if nameVal == catch: #Look for identical matches
+						if nameexit == True:
+							done = True
+							found = 1
+							results = "".join(["[", str(num), "] ", entry[0], " (perfect match)"])
+						else:
+							found += 1 #found something!
+							results = "".join([results, "\n[", str(num), "] ", entry[0], " (match, but keep going)"])
+					elif nameVal.find(catch) > -1:
+						found += 1
+						results = "".join([results, "\n[", str(num), "] ", entry[0], " (in name)"])
+				if (tags == True) and (done == False): #search tags if not done
+					if tagsVal.find(catch) > -1:
+						found += 1
+						results = "".join([results, "\n[", str(num), "] ", entry[0], " (in tags)"])
+				if (body == True) and (done == False): #search body if not done
+					if bodyVal.find(catch) > -1:
+						found += 1
+						results = "".join([results, "\n[", str(num), "] ", entry[0], " (in body text)"])
+				num += 1 #increment the data index
+			if found == 0:
+				results = "No matches were found..."
+			elif found == 1:
+				entry = data[1]
+				entry = entry[int(results[results.find("[") + 1:results.find("]")])]
+				results = "".join([ "\n", sep, entry[3], "\n", sep])
+		elif data[0] == -1:
+			results = "Please load a database..."
+		print results
+	#Calc Mode----------------------------------------------------------------------
+	elif mode == "calc":
+		if catch != "":
+			try:
+				print calc(catch) #Compute the result using the calc function, then print it
+			except:
+				#Just in case the numbers got to big
+				print "Error, propably an overflow..."
+	#Normal Mode -----------------------------------------------------------------
+	elif mode == "":
+		if (catch == "end") or (catch == "exit") or (catch == "close"): #Catch exits
+			continuing = False
+		elif catch[:5] == "load ": #catch load commands
+			newdata = loadData(catch[5:]) #call the loadData function to load/parse the file into a database
+			if newdata[0] > -1:
+				print "\nLoad Complete"
+				data = newdata
+			else:
+				print "\nLoad Aborted"
+				newdata = ""
+		elif (catch == "display raw") or (catch == "dr"):
+			print data #Just print it all...
+		elif (catch == "display all") or (catch == "da"):
+			sData = data
+		elif (catch == "options") or (catch == "settings"):
+			printSettings()
+		elif (catch[:4] == "set "): #catch set commands
+			if (catch[4:9] == "1 to "): #catch the setting number, in this case, 1 means CASE
+				if (catch[9:] == "true"): #detect the value
+					case = True #Set the variable
+				elif (catch[9:] == "false"):
+					case = False
+				printSettings()
+			elif (catch[4:9] == "2 to "): #catch the setting number, in this case, 2 means NAME
+				if (catch[9:] == "true"):
+					name = True
+				elif (catch[9:] == "false"):
+					name = False
+				printSettings()
+			elif (catch[4:9] == "3 to "): #catch the setting number, in this case, 3 means TAGS
+				if (catch[9:] == "true"):
+					tags= True
+				elif (catch[9:] == "false"):
+					tags = False
+				printSettings()
+			elif (catch[4:9] == "4 to "): #catch the setting number, in this case, 4 means BODY
+				if (catch[9:] == "true"):
+					body = True
+				elif (catch[9:] == "false"):
+					body = False
+				printSettings()
+			elif (catch[4:9] == "5 to "): #catch the setting number, in this case, 5 means NAMEEXIT
+				if (catch[9:] == "true"):
+					nameexit = True
+				elif (catch[9:] == "false"):
+					nameexit = False
+				printSettings()
+			else:
+				print "Target or value incorrect..."
+			
+		else: #in case everything else failed, yell at the user for not playing nicely
+			if catch != "":
+				print "Command not recognized..."
+	#Run AFTER every time -----------------------------------------------------------------
+	print ""      #Spacing Line

@@ -1,0 +1,54 @@
+Public Function RadialImage(center As coordinate, Angle As Integer, Duplications As Integer, Blank As Integer, Orient As Integer)
+	If ImagePoints.Total > 0 Then
+		Dim Work As screentype
+		Dim i As Integer
+		Dim k As Integer
+		Dim Radians As Single
+		Dim pi As Single
+		pi = 3.141592
+		Call push(center)
+		Work = ImagePoints
+		If Orient = 1 Then 'orient image towards center
+			Dim Value As coordinate
+			For i = 1 To Duplications 'loop for each duplication
+				Radians = ((Angle / Duplications) * pi / 180) * i
+				If (360 - Angle) < (360 / (Duplications + 1)) Then
+					Radians = (((360 - (360 / (Duplications + 1))) / Duplications) * pi / 180) * i
+				End If
+				For k = 1 To ImagePoints.Total 'loop for each point in the image and apply the rotation
+					Work.Total = Work.Total + 1
+					Value.X = ImagePoints.Points(k).X
+					Value.Y = ImagePoints.Points(k).Y
+					Work.Points(Work.Total).X = Value.X * Cos(Radians) - Value.Y * Sin(Radians)
+					Work.Points(Work.Total).Y = Value.X * Sin(Radians) + Value.Y * Cos(Radians)
+					Work.Points(Work.Total).Blank = ImagePoints.Points(k).Blank
+					Work.Points(Work.Total).Type = ImagePoints.Points(k).Type
+					Work.Points(Work.Total).color = ImagePoints.Points(k).color
+					If k = 1 Then
+						If Blank = 1 Then Work.Points(Work.Total).Blank = True
+					End If
+				Next k
+			Next i
+		Else 'DON'T orient towards center, just move/duplicate radialy
+			Dim offset2 As coordinate
+			For i = 1 To Duplications 'loop for each duplication
+				Radians2 = ((Angle / (Duplications + 1)) * pi / 180) * i
+				offset2.X = (Boundbox.X * Cos(Radians2) - Boundbox.Y * Sin(Radians2)) - Boundbox.X
+				offset2.Y = (Boundbox.X * Sin(Radians2) + Boundbox.Y * Cos(Radians2)) - Boundbox.Y
+				For k = 1 To ImagePoints.Total 'loop for each point in the image and apply the translation
+					Work.Total = Work.Total + 1
+					Work.Points(Work.Total).X = ImagePoints.Points(k).X + offset2.X
+					Work.Points(Work.Total).Y = ImagePoints.Points(k).Y + offset2.Y
+					Work.Points(Work.Total).Blank = ImagePoints.Points(k).Blank
+					Work.Points(Work.Total).Type = ImagePoints.Points(k).Type
+					Work.Points(Work.Total).color = ImagePoints.Points(k).color
+					If k = 1 Then
+						If Blank = 1 Then Work.Points(Work.Total).Blank = True
+					End If
+				Next k
+			Next i
+		End If
+		ImagePoints = Work
+		Call pop(center)
+	End If
+End Function

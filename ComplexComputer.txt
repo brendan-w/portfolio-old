@@ -1,0 +1,46 @@
+/*
+ * Class providing tools for computing complex numbers.
+ * This class employs the Complex class, which also uses the Rational class
+ * 
+ * Brendan Whitfield
+ * Version 1.0.0 (10-29-2011)
+ */
+public class ComplexComputer
+{
+    //Complex objects to represent the two complex numbers
+    Complex num1, num2;
+
+    //Constructor accepting 4 integers (2 for each complex number) to instantiate the two complex objects
+    public ComplexComputer(int a1, int b1, int a2, int b2)
+    {
+        num1 = new Complex(a1, b1);
+        num2 = new Complex(a2, b2);
+    }
+    //Constructor accepting 2 strings to instantiate the two complex objects
+    public ComplexComputer(String a, String b)
+    {
+        num1 = new Complex(a);
+        num2 = new Complex(b);
+    }
+    
+    //Method to invoke the add method of the Complex class
+    public void add()
+    {
+        System.out.println ("(" + num1 + ") + (" + num2 + ") = " + num1.add(num2));
+    }
+    //Method to invoke the subtract method of the Complex class
+    public void subtract()
+    {
+        System.out.println ("(" + num1 + ") - (" + num2 + ") = " + num1.subtract(num2));
+    }
+    //Method to invoke the multiply method of the Complex class
+    public void multiply()
+    {
+        System.out.println ("(" + num1 + ") * (" + num2 + ") = " + num1.multiply(num2));
+    }
+    //Method to invoke the divide method of the Complex class
+    public void divide()
+    {
+        System.out.println ("(" + num1 + ") / (" + num2 + ") = " + num1.divide(num2));
+    }
+}

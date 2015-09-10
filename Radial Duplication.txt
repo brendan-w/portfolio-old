@@ -1,0 +1,88 @@
+Public Function RadialImage(center As coordinate, Angle As Integer, Duplications As Integer, Blank As Integer, Orient As Integer)
+    If WorkBasin.Total > 0 Then 'make sure there are points to work with
+        Call push(center) 'put the center of rotation at the origin
+        Dim Work As screentype
+        Work = WorkBasin 'create a temporary variable of points for the function to operate on
+        Dim i As Integer
+        Dim j As Integer
+        Dim radians As Single
+        Dim value As coordinate
+        Dim pi As Single
+        pi = 3.141592
+        If Orient = 1 Then 'orient each new set of points towards center
+            For i = 1 To Duplications 'loop through every duplication necessary
+                radians = ((Angle / Duplications) * pi / 180) * i 'compute the angle (degrees to radians) of rotation to be applied
+                If (360 - Angle) < (360 / (Duplications + 1)) Then 'make sure there isn't a redundant duplication at the end (wrap around protection)
+                    radians = (((360 - (360 / (Duplications + 1))) / Duplications) * pi / 180) * i
+                End If
+                For j = 1 To WorkBasin.Total 'loop through all of the points in the image
+                    Work.Total = Work.Total + 1 'add a new point
+                    value.X = WorkBasin.Points(j).X 'record the X and Y values
+                    value.Y = WorkBasin.Points(j).Y
+                    Work.Points(Work.Total).X = value.X * Cos(radians) - value.Y * Sin(radians) 'rotate the new values about the origin
+                    Work.Points(Work.Total).Y = value.X * Sin(radians) + value.Y * Cos(radians)
+                    Work.Points(Work.Total).Blank = WorkBasin.Points(j).Blank 'feed in color, type, and blank data from the old point
+                    Work.Points(Work.Total).Type = WorkBasin.Points(j).Type
+                    Work.Points(Work.Total).color = WorkBasin.Points(j).color
+                    If j = 1 Then 'allow the user to select whether the projector shows the intersticial line between the first and last points of every duplications
+                        If Blank = 1 Then Work.Points(Work.Total).Blank = True
+                    End If
+                Next j
+            Next i
+        Else '0, DON'T orient towards center, just move/duplicate radialy
+            For i = 1 To Duplications 'loop through every duplication necessary
+                radians = ((Angle / (Duplications + 1)) * pi / 180) * i 'compute the angle (degrees to radians) of rotation to be applied
+                value.X = (Boundbox.X * Cos(radians) - Boundbox.Y * Sin(radians)) - Boundbox.X 'compute the offset of the rotation
+                value.Y = (Boundbox.X * Sin(radians) + Boundbox.Y * Cos(radians)) - Boundbox.Y
+                For j = 1 To WorkBasin.Total 'loop through all of the points in the image
+                    Work.Total = Work.Total + 1 'add a new point
+                    Work.Points(Work.Total).X = WorkBasin.Points(j).X + value.X 'add the offset to both X and Y
+                    Work.Points(Work.Total).Y = WorkBasin.Points(j).Y + value.Y
+                    Work.Points(Work.Total).Blank = WorkBasin.Points(j).Blank 'feed in color, type, and blank data from the old point
+                    Work.Points(Work.Total).Type = WorkBasin.Points(j).Type
+                    Work.Points(Work.Total).color = WorkBasin.Points(j).color
+                    If j = 1 Then 'allow the user to select whether the projector shows the intersticial line between the first and last points of every duplications
+                        If Blank = 1 Then Work.Points(Work.Total).Blank = True
+                    End If
+                Next j
+            Next i
+        End If
+        WorkBasin = Work 'replace the old points with all of the newly processed ones
+        Call pop(center) 'retrun the image to it's original location
+    End If
+End Function
+
+
+Public Function Boundbox() As coordinate 'finds bounding box center of WorkBasin
+    If WorkBasin.Total > 0 Then 'if there's points to work with
+        Dim i As Integer 'looping variable
+        If CenterMode = "Bound" Then 'allows the user to choose their centering mode
+            Dim max As coordinate 'store the max X and Y values
+            Dim min As coordinate 'store the min X and Y values
+            max.X = WorkBasin.Points(1).X 'pre-load the coordinates of the first point in min and max
+            max.Y = WorkBasin.Points(1).Y
+            min.X = WorkBasin.Points(1).X
+            min.Y = WorkBasin.Points(1).Y
+                If WorkBasin.Total > 1 Then 'filter for min/max points (if more than 2 points)
+                    For i = 2 To WorkBasin.Total 'loop through every point
+                        'check new mins and maxs, if so, update them
+                        If WorkBasin.Points(i).X > max.X Then max.X = WorkBasin.Points(i).X
+                        If WorkBasin.Points(i).Y > max.Y Then max.Y = WorkBasin.Points(i).Y
+                        If WorkBasin.Points(i).X < min.X Then min.X = WorkBasin.Points(i).X
+                        If WorkBasin.Points(i).Y < min.Y Then min.Y = WorkBasin.Points(i).Y
+                    Next i
+                End If
+            'take average of two coordinates
+            Boundbox.X = (min.X + max.X) / 2 'divide by two to find the center of the box
+            Boundbox.Y = (min.Y + max.Y) / 2
+        Else 'median
+            Dim Total As coordinate
+            For i = 1 To WorkBasin.Total 'loop through every point
+                Total.X = Total.X + WorkBasin.Points(i).X 'total the X values
+                Total.Y = Total.Y + WorkBasin.Points(i).Y 'total the Y values
+            Next i
+            Boundbox.X = Total.X / WorkBasin.Total 'average the total by dividing by the number of points
+            Boundbox.Y = Total.Y / WorkBasin.Total
+        End If
+    End If
+End Function

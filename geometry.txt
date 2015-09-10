@@ -1,0 +1,136 @@
+$Name[Polygon]#
+#Tags[2D,shape]#
+#Meta[]#
+#Body[
+Polygon: A closed figure whose sides are line segments that intersect only at their endpoints.
+
+Polygon Equations:
+
+N = Number of sides
+(N-2)180 = Sum of all angles in the polygon
+[(N-2)180]/N = The measure of one angle in a regular polygon.
+
+3 sided polygon = (triangle): 180 degrees total.
+4 sided polygon = (quadrilateral): 360 degrees total.
+5 sided polygon = (pentagon): 540 degrees total.
+6 sided polygon = (hexagon): 720 degrees total.
+7 sided polygon = (heptagon): 900 degrees total.
+8 sided polygon = (octagon): 1080 degrees total.
+9 sided polygon = (enneagon): 1260 degrees total.
+10 sided polygon = (decagon): 1440 degrees total.
+]End$
+
+
+$Name[Plane]#
+#Tags[2D,flat]#
+#Meta[]#
+#Body[
+Plane: A flat surface constructed of 3 or more points.
+]End$
+
+
+$Name[Quadrilateral]#
+#Tags[2D,Trapezoid,Parallelogram,Rhombus,Rectangle,Square,shape]#
+#Meta[]#
+#Body[
+Quadrilateral: A 4-sided polygon.
+Total number of degrees: 360 degrees
+Number of degrees in one angle of a regular quadrilateral: 90 degrees
+
+Quadrilateral types:
+
+Trapezoid: a quadrilateral with exactly one pair of parallel sides.
+Parallelogram: a quadrilateral with exactly two pairs of parallel sides.
+Rhombus: a parallelogram with four sides of equal length.
+Rectangle: a parallelogram with four right angles.
+Square: a parallelogram with four sides of equal length and four right angles.
+]End$
+
+
+$Name[Angle]#
+#Tags[acute,obtuse,right,straight,complementary,Supplementary,verticle,types,angles]#
+#Meta[]#
+#Body[
+Acute: an angle less than 90 degrees.
+Obtuse: an angle between 90 and 180 degrees.
+Right: an angle that is 90 degrees.
+Straight: an angle that is 180 degrees.
+Complementary: two or more angles that add up to 90 degrees.
+Supplementary: two or more angles that add up to 180 degrees.
+Vertical: Sides of one angle are opposite rays of the sides of another angle.
+]End$
+
+
+$Name[Triangle]#
+#Tags[acute,obtuse,right,equilateral,isosceles,scalene,shape]#
+#Meta[]#
+#Body[
+Triangle = a 3 sided polygon.
+Total number of degrees: 180 degrees
+Number of degrees in one angle of a regular triangle: 60 degrees
+
+Triangle types:
+
+Acute triangle: a triangle consisting of three acute (<90) angles.
+Right triangle: a triangle containg one right (90) angle.
+Obtuse triangle: a triangle containing one obtuse (>90 / <180) angle.
+Equilateral traingle: a triangle that has sides of equal length.
+Isosceles triangle: a triangle with at least two sides of equal length.
+Scalene triangle: a triangle that has no sides of equal length.
+]End$
+
+
+$Name[Symmetry]#
+#Tags[line,radial]#
+#Meta[]#
+#Body[
+Line of symmetry = A figure has a line of symmetry if one half of the figure is a mirror image of the other half.
+]End$
+
+
+$Name[Circle]#
+#Tags[equations,2D,Pi]#
+#Meta[]#
+#Body[
+Pi = 3.14159
+
+Circle Equations:
+
+Area: pi*r^2
+Circumference: d*pi  or  (r2)*pi
+Diameter: c/pi  or  r*2
+Radius: d/2  or  (c/pi)/2
+]End$
+
+
+$Name[Rectangle]#
+#Tags[equations,2D,shape]#
+#Meta[]#
+#Body[
+Area: x*y
+Perimeter: x2 + y2
+]End$
+
+
+$Name[Similar]#
+#Tags[]#
+#Meta[]#
+#Body[
+Similar polygon = A polygon that is the same shape but not the same size as another polygon (~).
+]End$
+
+
+$Name[Regular]#
+#Tags[]#
+#Meta[]#
+#Body[
+Regular Polygon: A polygon in which all the angles have the same measure and all of the sides have the same length.
+]End$
+
+
+$Name[Congruent]#
+#Tags[]#
+#Meta[]#
+#Body[
+Congruent polygon = A polygon that is the same shape and size as another polygon (= with a ~ on top).
+]End$

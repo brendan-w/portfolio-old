@@ -1,0 +1,107 @@
+Public Function OpenDDL(FileName As String)
+    Dim Catch As String
+    Dim InType As String
+    Dim TraitCatch As String
+    Dim TypeCatch As String
+    Open FileName For Input As #1
+        RawDDL = ""
+        While Not EOF(1) '==========================Line Loop=============================
+            Line Input #1, Catch 'input the next line
+            Catch = Linecheck(Catch) 'Spell/Space check the line for parsing
+            RawDDL = RawDDL + Catch + Chr(13) + Chr(10)
+            'pick up header information
+            If Left(Catch, 7) = "Device " Then Info.Fixture = Right(Catch, (Len(Catch) - 7))
+            If LCase(Left(Catch, 14)) = ";      brand: " Then Info.Brand = Right(Catch, (Len(Catch) - 14))
+            If LCase(Left(Catch, 14)) = ";      notes: " Then Info.Notes = Right(Catch, (Len(Catch) - 14))
+            If LCase(Left(Catch, 18)) = ";      created by " Then Info.Creator = Right(Catch, (Len(Catch) - 18))
+            'record device information
+            If Left(Catch, 6) = "Trait " Then 'look for the "Trait" keyword, and record the following value
+                TraitCatch = Right(Catch, (Len(Catch) - 6))
+            End If
+            If Left(Catch, 5) = "Type " Then 'look for the "Type" keyword, and record the following value
+                TypeCatch = Right(Catch, (Len(Catch) - 5))
+                If TypeCatch = "EndUnion" Then 'detect Endunions
+                    InType = "Out" 'Since an Endunion was encountered, the parser is no longer in a trait (of any type)
+                    TypeCatch = "ERROR[Never Found Type]" 'set error codes in case the variables don't get over-written (meaning there was no data)
+                    TraitCatch = "ERROR[Never Found Name]"
+                End If
+            End If
+            If Left(Catch, 8) = "Channel " Then 'upon finding the "channel" keyword, a new trait is being defined
+                Data.Total = Data.Total + 1 'add a new trait
+                Data.Traits(Data.Total).name = TraitCatch 'load the name and type of the trait
+                Data.Traits(Data.Total).Type = TypeCatch
+                Data.Traits(Data.Total).Channel = FancyClamp(Right(Catch, (Len(Catch) - 8)), 1, 256) 'parse, clamp, and save the channel value
+                InType = TypeCatch
+            End If
+            If Left(Catch, 6) = "Black " Then Data.Traits(Data.Total).Black = Right(Catch, (Len(Catch) - 6)) 'detect the "Black" option
+            If Left(Catch, 8) = "BoValue " Then 'detect the black out values
+                If Data.Traits(Data.Total).Size = "8Bit" Then 'if the size is 8Bit, parse and clamp to 255
+                    Data.Traits(Data.Total).Blackvalue = FancyClamp(Right(Catch, (Len(Catch) - 8)), 0, 255)
+                Else 'if 16Bit, or no size has been recorded, parse and clamp to the 16Bit size (65535). Further clamping can be done later
+                    Data.Traits(Data.Total).Blackvalue = FancyClamp(Right(Catch, (Len(Catch) - 8)), 0, 65535)
+                End If
+            End If
+            If Left(Catch, 8) = "Default " Then 'look for the "Default" keyword, and record the following value
+                If Data.Traits(Data.Total).Size = "8Bit" Then 'if the size is 8Bit, parse and clamp to 255
+                    Data.Traits(Data.Total).Default = FancyClamp(Right(Catch, (Len(Catch) - 8)), 0, 255)
+                Else 'if 16Bit, or no size has been recorded, parse and clamp to the 16Bit size (65535). Further clamping can be done later
+                    Data.Traits(Data.Total).Default = FancyClamp(Right(Catch, (Len(Catch) - 8)), 0, 65535)
+                End If
+            End If
+            Select Case InType 'switch for parameters specific to the type of trait the parser is currently in
+                Case "Continuous" 'continuous traits
+		    'look for the following keywords, and save their values accordingly
+                    If Left(Catch, 5) = "Size " Then Data.Traits(Data.Total).Size = Right(Catch, (Len(Catch) - 5))
+                    If Left(Catch, 7) = "Invert " Then Data.Traits(Data.Total).Invert = Right(Catch, (Len(Catch) - 7))
+                    If Left(Catch, 6) = "XAxis " Then Data.Traits(Data.Total).X = Right(Catch, (Len(Catch) - 6))
+                    If Left(Catch, 6) = "YAxis " Then Data.Traits(Data.Total).Y = Right(Catch, (Len(Catch) - 6))
+                    If Left(Catch, 7) = "Master " Then Data.Traits(Data.Total).Grand = Right(Catch, (Len(Catch) - 7))
+                    If Left(Catch, 8) = "Maximum " Then 'look for the "Maximum" keyword, and record the following value
+                        If Data.Traits(Data.Total).Size = "8Bit" Then 'if the size is 8Bit, parse and clamp to 255
+                            Data.Traits(Data.Total).Max = FancyClamp(Right(Catch, (Len(Catch) - 8)), 0, 255)
+                        Else 'if 16Bit, or no size has been recorded, parse and clamp to the 16Bit size (65535). Further clamping can be done later
+                            Data.Traits(Data.Total).Max = FancyClamp(Right(Catch, (Len(Catch) - 8)), 0, 65535)
+                        End If
+                    End If
+                    If Left(Catch, 8) = "Minimum " Then 'look for the "Minimum" keyword, and record the following value
+                        If Data.Traits(Data.Total).Size = "8Bit" Then 'if the size is 8Bit, parse and clamp to 255
+                            Data.Traits(Data.Total).Min = FancyClamp(Right(Catch, (Len(Catch) - 8)), 0, 255)
+                        Else 'if 16Bit, or no size has been recorded, parse and clamp to the 16Bit size (65535). Further clamping can be done later
+                            Data.Traits(Data.Total).Min = FancyClamp(Right(Catch, (Len(Catch) - 8)), 0, 65535)
+                        End If
+                        InType = "Out" 'Since an minimum is always at the end, the parser is no longer in a trait (of any type)
+                        TypeCatch = "ERROR[Never Found Type]" 'set error codes in case the variables don't get over-written (meaning there was no data)
+                        TraitCatch = "ERROR[Never Found Name]"
+                    End If
+                Case "Indexed" 'indexed traits
+                    If Left(Catch, 6) = "Index " Then 'look for the "Index" keyword, and record the following name and value
+                        Indexes(Data.Total).Total = Indexes(Data.Total).Total + 1
+                        Indexes(Data.Total).Indexes(Indexes(Data.Total).Total).name = Right(Catch, Len(Catch) - 6)
+                        Indexes(Data.Total).Indexes(Indexes(Data.Total).Total).value = Right(Indexes(Data.Total).Indexes(Indexes(Data.Total).Total).name, Len(Indexes(Data.Total).Indexes(Indexes(Data.Total).Total).name) - InStr(1, Indexes(Data.Total).Indexes(Indexes(Data.Total).Total).name, ",", vbTextCompare))
+                        Indexes(Data.Total).Indexes(Indexes(Data.Total).Total).value = FancyClamp(Indexes(Data.Total).Indexes(Indexes(Data.Total).Total).value, 0, 255)
+                        Indexes(Data.Total).Indexes(Indexes(Data.Total).Total).name = Left(Indexes(Data.Total).Indexes(Indexes(Data.Total).Total).name, InStr(1, Indexes(Data.Total).Indexes(Indexes(Data.Total).Total).name, ",", vbTextCompare) - 1)
+                    End If
+                Case "Union" 'union traits
+                    If Left(Catch, 6) = "Index " Then 'look for the "Index" keyword, and record the following name and value
+                        Unions(Data.Total).Total = Unions(Data.Total).Total + 1
+                        Unions(Data.Total).Unions(Unions(Data.Total).Total).Type = "Indexed"
+                        Unions(Data.Total).Unions(Unions(Data.Total).Total).name = Right(Catch, Len(Catch) - 6)
+                        Unions(Data.Total).Unions(Unions(Data.Total).Total).Min = Right(Unions(Data.Total).Unions(Unions(Data.Total).Total).name, Len(Unions(Data.Total).Unions(Unions(Data.Total).Total).name) - InStr(1, Unions(Data.Total).Unions(Unions(Data.Total).Total).name, ",", vbTextCompare))
+                        Unions(Data.Total).Unions(Unions(Data.Total).Total).Min = FancyClamp(Unions(Data.Total).Unions(Unions(Data.Total).Total).Min, 0, 255)
+                        Unions(Data.Total).Unions(Unions(Data.Total).Total).name = Left(Unions(Data.Total).Unions(Unions(Data.Total).Total).name, InStr(1, Unions(Data.Total).Unions(Unions(Data.Total).Total).name, ",", vbTextCompare) - 1)
+                    End If
+                    If Left(Catch, 8) = "Maximum " Then 'look for the "Maximum" keyword, and record the following value
+                        Unions(Data.Total).Total = Unions(Data.Total).Total + 1
+                        Unions(Data.Total).Unions(Unions(Data.Total).Total).Type = "Continuous"
+                        Unions(Data.Total).Unions(Unions(Data.Total).Total).name = TraitCatch
+                        Unions(Data.Total).Unions(Unions(Data.Total).Total).Max = Right(Catch, (Len(Catch) - 8))
+                        Unions(Data.Total).Unions(Unions(Data.Total).Total).Max = FancyClamp(Unions(Data.Total).Unions(Unions(Data.Total).Total).Max, 0, 255)
+                    End If
+                    If Left(Catch, 8) = "Minimum " Then 'look for the "Minimum" keyword, and record the following value
+                        Unions(Data.Total).Unions(Unions(Data.Total).Total).Min = Right(Catch, (Len(Catch) - 8))
+                        Unions(Data.Total).Unions(Unions(Data.Total).Total).Min = FancyClamp(Unions(Data.Total).Unions(Unions(Data.Total).Total).Min, 0, 255)
+                    End If
+            End Select
+        Wend '==========================Line Loop=============================
+    Close #1
+End Function

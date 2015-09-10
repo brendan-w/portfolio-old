@@ -1,0 +1,168 @@
+Public Function SpellCheck(value As String, origin As String) As String
+    'checks for spelling errors in keywords and values
+    value = LCase(value)
+    Dim i As Integer 'looping variable
+	'create array of keywords
+        Dim Checks(24) As String
+            Checks(1) = "Continuous"
+            Checks(2) = "Indexed"
+            Checks(3) = "Union"
+            Checks(4) = "EndUnion"
+            Checks(5) = "8Bit"
+            Checks(6) = "16Bit"
+            Checks(7) = "Yes"
+            Checks(8) = "No"
+            Checks(9) = "Device"
+            Checks(10) = "Trait"
+            Checks(11) = "Type"
+            Checks(12) = "Channel"
+            Checks(13) = "Size"
+            Checks(14) = "Invert"
+            Checks(15) = "XAxis"
+            Checks(16) = "YAxis"
+            Checks(17) = "Black"
+            Checks(18) = "BoValue"
+            Checks(19) = "Master"
+            Checks(20) = "Default"
+            Checks(21) = "Maximum"
+            Checks(22) = "Minimum"
+            Checks(23) = "Index"
+            Checks(24) = "End"
+	    'enable/disable based on where the data came from
+            Select Case origin
+                Case "Type"
+                    For i = 5 To 24
+                        Checks(i) = ""
+                    Next i
+                Case "Size"
+                    For i = 1 To 4
+                        Checks(i) = ""
+                    Next i
+                    For i = 7 To 24
+                        Checks(i) = ""
+                    Next i
+                Case "Boolean"
+                    For i = 1 To 6
+                        Checks(i) = ""
+                    Next i
+                    For i = 9 To 24
+                        Checks(i) = ""
+                    Next i
+                Case "Parameter"
+                    For i = 1 To 8
+                        Checks(i) = ""
+                    Next i
+                    Checks(24) = ""
+                Case "End"
+                    For i = 1 To 23
+                        Checks(i) = ""
+                    Next i
+            End Select
+	    'loop through every keyword and quickly check for matches
+            i = 1
+            Do While (SpellCheck = "") And (i <= 24)
+                If InStr(1, Checks(i), value, vbTextCompare) > 0 Then SpellCheck = Checks(i)
+                i = i + 1
+            Loop
+	    'if nothing obvious was found, start checking by blocks of characters
+            If SpellCheck = "" Then
+                Dim Largest As Integer
+                Dim LargestPos As Integer
+                Dim minblock As Integer
+                minblock = 3 'for normal values, use a permutation algorithm starting with 3 matching characters
+                If origin = "Boolean" Then minblock = 2 'for boolean, use 2 matching characters
+                Largest = Permutation(value, Checks(1), minblock) + Permutation(value, Checks(1), minblock + 1)
+                LargestPos = 1
+                For i = 2 To 24
+                    If Checks(i) <> "" Then
+                        If Permutation(value, Checks(i), minblock) + Permutation(value, Checks(i), minblock + 1) > Largest Then
+                            Largest = Permutation(value, Checks(i), minblock) + Permutation(value, Checks(i), minblock + 1)
+                            LargestPos = i 'store which keyword had the most hits
+                        End If
+                    End If
+                Next i
+                If Largest <> 0 Then SpellCheck = Checks(LargestPos)
+            End If
+End Function
+
+
+Public Function Permutation(value As String, field As String, width As Integer) As Integer
+    If Len(value) >= width Then
+        Dim i As Integer
+        Dim block As String
+        For i = 0 To Len(value) - width 'look for all possible blocks of the set width within the field
+	    'extract the block
+            block = Left(Right(value, Len(value) - i), width)
+	    'look for all possible blocks of the set width within the field and record the successes
+            If InStr(1, field, block, vbTextCompare) > 0 Then Permutation = Permutation + 1
+        Next i
+    End If
+End Function
+
+
+Public Function Linecheck(Catch As String) As String
+    'checks parameter spelling and removes extra spaces
+    'remove spaces prior/after data
+    Do While Left(Catch, 1) = " "
+        Catch = Right(Catch, Len(Catch) - 1)
+    Loop
+    Do While Right(Catch, 1) = " "
+        Catch = Left(Catch, Len(Catch) - 1)
+    Loop
+    If Catch <> "" Then 'if there's data to work with...
+        If Left(Catch, 1) <> ";" Then 'If it's not a commented line...
+            If InStr(1, Catch, " ", vbTextCompare) > 0 Then 'if there's a space sperating the parameter and the value...
+                Dim parameter As String 'variables to store the parameter and the value
+                Dim value As String
+                'extract and spellcheck the parameter
+                parameter = Left(Catch, InStr(1, Catch, " ", vbTextCompare) - 1)
+                parameter = SpellCheck(parameter, "Parameter")
+                'extract the value
+                value = Right(Catch, Len(Catch) - InStr(1, Catch, " ", vbTextCompare) + 1)
+                'remove spaces
+		Do While Left(value, 1) = " "
+                    value = Right(value, Len(value) - 1)
+                Loop
+		'spellcheck the value, based on it's origin
+                Select Case parameter
+                    Case "Type"
+                        value = SpellCheck(value, "Type")
+                    Case "Size"
+                        value = SpellCheck(value, "Size")
+                    Case "Invert"
+                        value = SpellCheck(value, "Boolean")
+                    Case "XAxis"
+                        value = SpellCheck(value, "Boolean")
+                    Case "YAxis"
+                        value = SpellCheck(value, "Boolean")
+                    Case "Black"
+                        value = SpellCheck(value, "Boolean")
+                    Case "Master"
+                        value = SpellCheck(value, "Boolean")
+                End Select
+                'no need to correct the numerical ones (taken care of in primary input parsing)
+                Linecheck = parameter + " " + value
+            Else 'only one parameter with no value (no seperating space was found)
+                'if there's STILL an error, report the corresponding missing component
+                If Linecheck = "" Then
+                    Linecheck = SpellCheck(Catch, "Parameter")
+                    If Left(Linecheck, 6) <> "" Then Linecheck = Linecheck + " " + "ERROR[Missing " + Linecheck + "]"
+                End If
+            End If
+        Else 'Comment line (found ;)
+            If Left(Catch, 2) <> ";*" Then
+                Dim header As String
+                Dim Info As String
+                'erase comment prefix ";_______" on information lines
+                Catch = Right(Catch, Len(Catch) - 1)
+		'remove spaces
+                Do While Left(Catch, 1) = " "
+                    Catch = Right(Catch, Len(Catch) - 1)
+                Loop
+                Linecheck = ";      " + Catch
+            Else 'opening/closing headers lines (;****...)
+                Linecheck = Catch 'pass them straight through
+            End If
+        End If
+    End If
+End Function

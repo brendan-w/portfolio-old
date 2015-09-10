@@ -1,0 +1,193 @@
+/*
+ * Class for representing and processing complex numbers. This class uses two rational numbers
+ * to represent the real and imaginary components of a complex number.
+ * 
+ * Brendan Whitfield 
+ * Version: 1.0.0 (10-29-2011)
+ */
+public class Complex
+{
+    //Variables of type Rational to store the real and imaginary components of a complex number
+    private Rational a, b;
+    
+    //Constructor accepting two Rational numbers
+    public Complex(Rational real, Rational imaginary)
+    {
+        a = real;
+        b = imaginary;
+    }
+    //Constructor accepting two integer values
+    public Complex(int real, int imaginary)
+    {
+        a = new Rational(real);
+        b = new Rational(imaginary);
+    }
+    //Constructor accepting a string and parsing it into real and imagainary Rationals (a+bi form)
+    public Complex(String input)
+    {
+        input = input.toLowerCase(); //make sure everythings lower case (generally only for I's)
+        boolean searching = false, found = false;
+        String real = "", imaginary = "";
+        char atI; //char to store the current character
+        for (int i = 0; i < input.length(); i++) //loop through all the characters
+        {
+            atI = input.charAt(i); //pull out one character at a time
+            if (isNumber(atI)) //upon comming across the first number,
+            {
+                searching = true; //start looking for the next sign
+            }
+            if (searching && ((atI == '+') || (atI == '-'))) //If searching for the next sign, and the sign is found,
+            {
+                found = true;//switch to recording the imaginary digits
+            }
+            if (!found && (atI != '+')) //if the seperation point has not been found (skip plus signs)
+            {
+                real += atI; //keep recording the real number digits
+            }
+            else if (found && (atI != '+'))//if the seperation point HAS been found (skip plus signs)
+            {
+                imaginary += atI; //keep recording the imaginary number digits
+            }
+        }
+        try //convert the strings into integers, and load them into the Rational variables
+        {
+            a = new Rational(Integer.parseInt(real));
+            b = new Rational(Integer.parseInt(imaginary));
+        }
+        catch (RuntimeException exception) //in case the parsing didn't go so well
+        {
+            System.out.println("Parse Error: \"" + input + "\"" + imaginary);
+            a = new Rational(0);
+            b = new Rational(0);
+        }
+    }
+    //Constructor with no parameters. The Complex is automatically assigned a value of zero
+    public Complex()
+    {
+        a = new Rational(0);
+        b = new Rational(0);
+    }
+    
+    //Method returning the real number
+    public Rational getA()
+    {
+        return a;
+    }
+    //Method returning the imaginary number
+    public Rational getB()
+    {
+        return b;
+    }
+    //Method to add two complex numbers (uses Rational.add)
+    public Complex add(Complex op2)
+    {
+        Rational newA = a.add(op2.getA());
+        Rational newB = b.add(op2.getB());
+        return new Complex(newA, newB);
+    }
+    //Method to subract two complex numbers (uses Rational.subtract)
+    public Complex subtract(Complex op2)
+    {
+        Rational newA = a.subtract(op2.getA());
+        Rational newB = b.subtract(op2.getB());
+        return new Complex(newA, newB);
+    }
+    //Method to multiply two complex numbers by FOILing (uses Rational.add, Rational.subtract, and Rational.multiply)
+    public Complex multiply(Complex op2)
+    {
+        Rational newA = (a.multiply(op2.getA())).subtract((b.multiply(op2.getB())));
+        Rational newB = (a.multiply(op2.getB())).add((b.multiply(op2.getA())));
+        return new Complex(newA, newB);
+    }
+    //Method to find the cojugate of a complex number (uses Rational.multiply)
+    public Complex conjugate()
+    {
+        return new Complex(a, b.multiply(-1));
+    }
+    //Method to divide two complex numbers by multiplying by the conjugate and reducing
+    public Complex divide(Complex op2)
+    {
+        Complex numerator = multiply(op2.conjugate()); //multiply the numerator by the conjugate
+        Rational newA = numerator.getA(); //retrieve both values in the numerator
+        Rational newB = numerator.getB();
+        
+        Rational denominator = (op2.multiply(op2.conjugate())).getA(); //multiply the denominator by the conjugate
+        Rational factor = gcf(denominator, gcf(newA, newB)); //find the greatest common factor of all three values
+        
+        newA = newA.divide(factor); //divide every number by the common factor
+        newB = newB.divide(factor);
+        denominator = denominator.divide(factor);
+        
+        newA = newA.divide(denominator); //divide the denominator to get A+Bi form of the complex number
+        newB = newB.divide(denominator);
+        
+        return new Complex(newA, newB);
+    }
+    //Method to find the greatest common factor of two Rational numbers (Using Euclids algorithm)
+    private Rational gcf(Rational a, Rational b)
+    {
+        if (!a.positive()) //make sure the number is positive
+        {
+            a = a.multiply(-1); //if negative, multiply by -1
+        }
+        if (!b.positive()) //make sure the number is positive
+        {
+            b = b.multiply(-1); //if negative, multiply by -1
+        }
+        while (!a.equals(b)) //Euclids Algorithm
+        {
+            if (a.greaterThan(b))
+            {
+                a = a.subtract(b);
+            }
+            else
+            {
+                b = b.subtract(a);
+            }
+        }
+        return a;
+    }
+    //Method to determine if a character is a number (used in the parsing constructor)
+    private boolean isNumber(char input)
+    {
+        boolean result = false; //set result to true in any of the following cases
+        if (input == '0') {result = true;}
+        if (input == '1') {result = true;}
+        if (input == '2') {result = true;}
+        if (input == '3') {result = true;}
+        if (input == '4') {result = true;}
+        if (input == '5') {result = true;}
+        if (input == '6') {result = true;}
+        if (input == '7') {result = true;}
+        if (input == '8') {result = true;}
+        if (input == '9') {result = true;}
+        return result;
+    }
+    //Method to format the Complex number as a string
+    public String toString()
+    {
+        String Astr = "" + a; //convert each number into a string
+        String Bstr = "" + b;
+        if (Bstr.charAt(0) != '-')
+        {
+            Bstr = "+" + Bstr; //if B is a positive number, add the sign
+        }
+        if (Bstr == "+1")
+        {
+            Bstr = "+i"; //if the imaginary coefficient is +1, then print +i
+        }
+        else if (Bstr == "-1")
+        {
+            Bstr = "-i"; //if the imaginary coefficient is -1, then print -i
+        }
+        else
+        {
+            Bstr += "i";
+        }
+        if ((Bstr == "+0i") || (Bstr == "-0i"))
+        {
+            Bstr = "";
+        }
+        return Astr + Bstr; //return the concatination of the two components
+    }
+}

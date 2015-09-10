@@ -1,0 +1,289 @@
+;*******************************************************
+;      Fixture: Mac 250+
+;      Brand: Martin
+;      10 Channels
+;      Notes: Mode 1, gobo = standard
+;      Created by Brendan Whitfield, on 12/23/2009
+;      Made using DDL Creator (TM)
+;      (c)2008-2009 WindWorks Design
+;      www.windworksdesign.com
+;*******************************************************
+
+
+Device Mac 250+
+
+
+           TRAIT Dimmer
+            TYPE Continuous
+         CHANNEL 2
+            SIZE 8BIT
+          INVERT No
+           XAXIS No
+           YAXIS No
+           BLACK Yes
+         BOVALUE 0
+          MASTER Yes
+         DEFAULT 255
+         MAXIMUM 255
+         MINIMUM 0
+
+
+           TRAIT Shutter
+            TYPE Union
+         CHANNEL 1
+           BLACK No
+         BOVALUE 0
+         DEFAULT 30
+           TRAIT Shutter
+            TYPE Indexed
+           INDEX Closed,0
+           INDEX Open,30
+
+           TRAIT Strobe
+            TYPE Continuous
+         MAXIMUM 72
+         MINIMUM 50
+
+           TRAIT Pulse On
+            TYPE Continuous
+         MAXIMUM 99
+         MINIMUM 80
+
+           TRAIT PulseOff
+            TYPE Continuous
+         MAXIMUM 119
+         MINIMUM 100
+
+           TRAIT Shutter
+            TYPE Indexed
+           INDEX Rnd Fast,130
+           INDEX Rnd Med,150
+           INDEX Rnd Slow,170
+
+           TRAIT Rnd Plse
+            TYPE Continuous
+         MAXIMUM 202
+         MINIMUM 191
+
+           TRAIT Shutter
+            TYPE EndUnion
+
+
+           TRAIT Color
+            TYPE Union
+         CHANNEL 3
+           BLACK No
+         BOVALUE 0
+         DEFAULT 0
+           TRAIT Color
+            TYPE Indexed
+           INDEX White,0
+           INDEX CTC,12
+           INDEX Yellow,24
+           INDEX Cyan,36
+           INDEX Pink,48
+           INDEX Green,60
+           INDEX Blue,72
+           INDEX Red,84
+           INDEX Magenta,96
+           INDEX Lt Blue,108
+           INDEX Orange,120
+           INDEX Lt Green,132
+           INDEX UV,144
+
+           TRAIT Scroll
+            TYPE Continuous
+         MAXIMUM 144
+         MINIMUM 0
+
+           TRAIT Rotate
+            TYPE Continuous
+         MAXIMUM 245
+         MINIMUM 208
+
+           TRAIT Color
+            TYPE Indexed
+           INDEX Rndm Fst,246
+           INDEX Rndm Med,249
+           INDEX Rndm Slw,255
+
+           TRAIT Color
+            TYPE EndUnion
+
+
+           TRAIT Gobo
+            TYPE Union
+         CHANNEL 4
+           BLACK No
+         BOVALUE 0
+         DEFAULT 45
+           TRAIT Gobo
+            TYPE Indexed
+           INDEX Open,45
+           INDEX Gobo 1,50
+           INDEX Gobo 2,55
+           INDEX Gobo 3,60
+           INDEX Gobo 4,65
+           INDEX Gobo 5,70
+           INDEX Gobo 6,75
+           INDEX Gobo 7,80
+           INDEX Gobo 8,85
+           INDEX Indx G1,5
+           INDEX Indx G2,10
+           INDEX Indx G3,15
+           INDEX Indx G4,20
+           INDEX Indx G5,25
+           INDEX Indx G6,30
+           INDEX Indx G7,35
+           INDEX Indx G8,40
+
+           TRAIT Shake 8
+            TYPE Continuous
+         MAXIMUM 104
+         MINIMUM 90
+
+           TRAIT Shake 7
+            TYPE Continuous
+         MAXIMUM 119
+         MINIMUM 105
+
+           TRAIT Shake 6
+            TYPE Continuous
+         MAXIMUM 134
+         MINIMUM 120
+
+           TRAIT Shake 5
+            TYPE Continuous
+         MAXIMUM 149
+         MINIMUM 135
+
+           TRAIT Shake 4
+            TYPE Continuous
+         MAXIMUM 164
+         MINIMUM 150
+
+           TRAIT Shake 3
+            TYPE Continuous
+         MAXIMUM 179
+         MINIMUM 165
+
+           TRAIT Shake 2
+            TYPE Continuous
+         MAXIMUM 194
+         MINIMUM 180
+
+           TRAIT Shake 1
+            TYPE Continuous
+         MAXIMUM 209
+         MINIMUM 195
+
+           TRAIT CW Rot
+            TYPE Continuous
+         MAXIMUM 232
+         MINIMUM 210
+
+           TRAIT CCW Rot
+            TYPE Continuous
+         MAXIMUM 255
+         MINIMUM 233
+
+           TRAIT Gobo
+            TYPE EndUnion
+
+
+           TRAIT Gobo Rot
+            TYPE Union
+         CHANNEL 5
+           BLACK No
+         BOVALUE 0
+         DEFAULT 0
+           TRAIT Gobo Rot
+            TYPE Indexed
+           INDEX Still,0
+
+           TRAIT Forward
+            TYPE Continuous
+         MAXIMUM 255
+         MINIMUM 1
+
+           TRAIT Gobo Rot
+            TYPE EndUnion
+
+
+           TRAIT Focus
+            TYPE Continuous
+         CHANNEL 6
+            SIZE 8BIT
+          INVERT No
+           XAXIS No
+           YAXIS No
+           BLACK No
+         BOVALUE 0
+          MASTER No
+         DEFAULT 128
+         MAXIMUM 255
+         MINIMUM 0
+
+
+           TRAIT Prism
+            TYPE Union
+         CHANNEL 7
+           BLACK No
+         BOVALUE 0
+         DEFAULT 0
+           TRAIT Prism
+            TYPE Indexed
+           INDEX Out,0
+
+           TRAIT Rotate
+            TYPE Continuous
+         MAXIMUM 149
+         MINIMUM 20
+
+           TRAIT Prism
+            TYPE EndUnion
+
+
+           TRAIT Special
+            TYPE Indexed
+         CHANNEL 1
+           BLACK No
+         BOVALUE 0
+         DEFAULT 30
+           INDEX Open,30
+           INDEX Reset,210
+           INDEX Lamp ON,230
+           INDEX Lamp OFF,255
+
+
+           TRAIT Pan
+            TYPE Continuous
+         CHANNEL 8
+            SIZE 8BIT
+          INVERT No
+           XAXIS Yes
+           YAXIS No
+           BLACK No
+         BOVALUE 0
+          MASTER No
+         DEFAULT 128
+         MAXIMUM 255
+         MINIMUM 0
+
+
+           TRAIT Tilt
+            TYPE Continuous
+         CHANNEL 10
+            SIZE 8BIT
+          INVERT No
+           XAXIS No
+           YAXIS Yes
+           BLACK No
+         BOVALUE 0
+          MASTER No
+         DEFAULT 128
+         MAXIMUM 255
+         MINIMUM 0
+
+
+End

@@ -1,0 +1,155 @@
+/*
+ * Class for representing and processing rational numbers. This class uses two integers
+ * to represent the numerator and denominator of a fraction.
+ * 
+ * This class was heavily based on the Rational class written by Lewis, Loftus, and Cocking.
+ * Modifications and additions were made by Brendan Whitfield
+ * 
+ * Version: 1.0.0 (10-29-2011)
+ */
+public class Rational
+{
+    //integer variables to store the numerator and denominator of the fraction
+    private int numerator, denominator;
+    
+    //constructor accepting two integers for the numerator and the denominator
+    public Rational(int numer, int denom)
+    {
+        if (denom == 0) //if the denominator is zero, make it 1
+        {
+            denom = 1;
+        }
+        if (denom < 0) //move any negative sign into the numerator
+        {
+            numer *= (-1);
+            denom *= (-1);
+        }
+        numerator = numer;
+        denominator = denom;
+        reduce(); //reduce the fraction
+    }
+    //Constructor accepting an integer for the numerator (setting the denominator to 1)
+    public Rational(int numer)
+    {
+        numerator = numer;
+        denominator = 1;
+    }
+    
+    //Method returning the numerator value
+    public int getNumerator()
+    {
+        return numerator;
+    }
+    //Method returning the denominator value
+    public int getDenominator()
+    {
+        return denominator;
+    }
+    //Method to add two rational numbers
+    public Rational add(Rational op2)
+    {
+        int comDenom = denominator * op2.getDenominator();
+        int sum = (numerator * op2.getDenominator()) + (op2.getNumerator() * denominator);
+        return new Rational(sum, comDenom);
+    }
+    //Method to subtract two rational numbers
+    public Rational subtract(Rational op2)
+    {
+        int comDenom = denominator * op2.getDenominator();
+        int sum = (numerator * op2.getDenominator()) - (op2.getNumerator() * denominator);
+        return new Rational(sum, comDenom);
+    }
+    //Method to multiply by a rational number
+    public Rational multiply(Rational op2)
+    {
+        int numer = numerator * op2.getNumerator();
+        int denom = denominator * op2.getDenominator();
+        return new Rational(numer, denom);
+    }
+    //Method to multiply by an integer
+    public Rational multiply(int op2)
+    {
+        return new Rational(numerator * op2, denominator);
+    }
+    //Method to divide by a rational number (by multiplying by the reciprocal)
+    public Rational divide(Rational op2)
+    {
+        return multiply(op2.reciprocal());
+    }
+    //Method returning the reciprocal of this number
+    public Rational reciprocal()
+    {
+        return new Rational(denominator, numerator);
+    }
+    //Method for testing the equivalence of two rational numbers
+    public boolean equals(Rational op2)
+    {
+        return ((numerator == op2.getNumerator()) && (denominator == op2.getDenominator()));
+    }
+    //Method for testing whether this number is greater than another rational number
+    public boolean greaterThan(Rational op2)
+    {
+        //make the denominators common before testing
+        int num1 = numerator * op2.getDenominator();
+        int num2 = op2.getNumerator() * denominator;
+        return (num1 > num2); //test the numerators
+    }
+    //Method returning the sign of this number
+    public boolean positive()
+    {
+        boolean result = false;
+        if (numerator > 0)
+        {
+            result = true;
+        }
+        return result;
+    }
+    //Method for reducing the numerator and denominator of this rational number
+    private void reduce()
+    {
+        if (numerator != 0) //make sure the numerator is not zero
+        {
+            int common = gcf(numerator, denominator);
+            numerator /= common;
+            denominator /= common;
+        }
+    }
+    //Method for finding the greatest common factor of two integers (Using Euclids algorithm)
+    private int gcf(int a, int b)
+    {
+        if (a < 0) //make sure the number is positive
+        {
+            a *= (-1); //if negative, multiply by -1
+        }
+        if (b < 0) //make sure the number is positive
+        {
+            b *= (-1); //if negative, multiply by -1
+        }
+        while (a != b) //Euclids Algorithm
+        {
+            if (a > b)
+            {
+                a -= b;
+            }
+            else
+            {
+                b -= a;
+            }
+        }
+        return a;
+    }
+    //Method to format the Rational number as a string
+    public String toString()
+    {
+        String result;
+        if (denominator == 1) //if the denominator is 1, return the numerator
+        {
+            result = numerator + "";
+        }
+        else //otherwise, return the entire fraction
+        {
+            result = "(" + numerator + "/" + denominator + ")";
+        }
+        return result;
+    }
+}
