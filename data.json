@@ -1,0 +1,151 @@
+{
+	"projects":
+	{
+		"15-puzzle_solver":
+		{
+			"displayName":"15-Puzzle Solver",
+			"language":"Actionscript 3",
+			"listImage":"media/l_solver.jpg",
+			"mainImage":"media/p_solver.png",
+			"lText":"This program allows the user to solve the classic 15 tile puzzle by hand, or have the computer find a solution. Solutions are generated using the A* search algorithm implemented with the Manhattan Distance heuristic. This quickly generates large tree structures and requires the hashing of nodes to check for puzzle collisions. Due to the large process size, this program also self-regulates its search (iterations per time) so the interface does not go unresponsive.",
+			"rText":"",
+			"executable":"media/exe_sliderpuzzle.swf",
+			"exeHeight":"525",
+			"exeWidth":"1000"
+		},
+
+		"site":
+		{
+			"displayName":"Portfolio Website",
+			"language":"HTML / CSS / Javascript / PHP",
+			"listImage":"media/l_site.jpg",
+			"mainImage":"media/l_site.jpg",
+			"lText":"The overall layout of this site was designed to be simple. The home page clearly defines the two purposes of the site, which are to showcase my work, and to provide information about myself. Since this information will inevitably need to be updated, data is centralized in a single JSON file, which lists all of the projects and content (text and image URLs) needed for operation. PHP was then used as a templating engine to generate pages according to the data stored in this file. This dramatically reduces the number of files required (at the cost of PHP processing time). This allows for quick changes and updates, and eliminates the time spent editting links accross multiple documents. There is also a DCE authenticated page located in the About Me section. Any user with valid RIT credentials can view this content.",
+			"rText":"The aesthetics of this site are powered mostly by jQuery. The various page transition animation were intended to clearly demarcate various pages, and reinforce the users location within the site. The path-style navigation was chosen specifically for this purpose. CSS is used mainly to color and space the design. While the internal structures of some elements are arranged according to css rules, the site-wide animations prompted me to handle positioning in javascript. A custom border class was also written to facilitate the creation and animation of the white corners surrounding key elements. As it sits, this site still requires a lot of tweaking before it can be made fully operational.",
+			"executable":"",
+			"exeHeight":"",
+			"exeWidth":""
+		},
+
+		"interactive_optics_book":
+		{
+			"displayName":"Interactive Optics Book",
+			"language":"Actionscript 3",
+			"listImage":"media/l_opticsbook.jpg",
+			"mainImage":"media/p_opticsbook.png",
+			"lText":"This project is based on an excerpt from the book 'How It Works' by Archibald Williams. The goal was to make the book interactive and fun for the user, while still providing all of the text from the original book. Its most effective page (page 2), features a mock optics bench where the user can place up to six lenses in a beam of light. This provided several challenges, such as implementing Snells Law, and computing Lens/Ray intersections.",
+			"rText":"",
+			"executable":"media/exe_optics.swf",
+			"exeHeight":"600",
+			"exeWidth":"800"
+		},
+		
+		"drone_game":
+		{
+			"displayName":"Drone Game",
+			"language":"Actionscript 3",
+			"listImage":"media/l_dronegame.jpg",
+			"mainImage":"media/p_dronegame.png",
+			"lText":"This flash game was done as a final project for RIT's Intro to Programming course. It features four levels in which the user can pilot a quadrotor drone around a course filled with enemy turrets. By using any of the three weapon types, the user can clear the playing field of all turrets.",
+			"rText":"",
+			"executable":"media/exe_drone.swf",
+			"exeHeight":"600",
+			"exeWidth":"800"
+		},
+
+		"earthquake":
+		{
+			"displayName":"Earthquake Map",
+			"language":"Actionscript 3",
+			"listImage":"media/l_earthquake.jpg",
+			"mainImage":"media/p_earthquake.png",
+			"lText":"This flash application displays recent earthquakes around the globe. It is fed by an RSS feed from USGS.gov, and provides the position, magnitude and depth of the quake to the user. One can also filter the display by setting minimum and maximum magnitudes.",
+			"rText":"",
+			"executable":"media/exe_earthquake.swf",
+			"exeHeight":"500",
+			"exeWidth":"1000"
+		},
+
+		"3d_graphics_engine":
+		{
+			"displayName":"3D Graphics Engine",
+			"language":"Actionscript 3",
+			"listImage":"media/l_bullet3d.jpg",
+			"mainImage":"media/p_bullet3d.png",
+			"lText":"This projects uses a 2D turtle graphics system to render 3D objects. A system of classes representing 3D Points, Polygons, and Objects was created to facilitate work with these structures. The original 2D Turtle class was extended with functions accepting these 3D Objects. Upon startup, the document class procedurally generates a unique fracture pattern for the glass, and gives it to the turtle for rendering.",
+			"rText":"",
+			"executable":"media/exe_turtle.swf",
+			"exeHeight":"640",
+			"exeWidth":"800"
+		},
+
+		"sound_effects_player":
+		{
+			"displayName":"Sound Effects Player",
+			"language":"Processing",
+			"listImage":"media/l_sound.jpg",
+			"mainImage":"media/p_sound.png",
+			"lText":"This program is being developed to facilitate the live playback of audio effects for theatrical performances. Using the Minim and ControlP5 libraries, sounds can be triggered individually or in ordered groups. Hotkeys also enable quick activation of any desired track.",
+			"rText":"",
+			"executable":"",
+			"exeHeight":"",
+			"exeWidth":""
+		},
+
+		"laser":
+		{
+			"displayName":"Laser Projection Software",
+			"language":"MS Visual Basic",
+			"listImage":"media/l_laser.jpg",
+			"mainImage":"media/p_laser.png",	
+			"lText":"This program was built to control a laser graphics projector, like those used at rock concerts. On top of handling the vector laser graphics, this program also features an effects stack. This lets the user sequentially apply modifiers to the drawn image. Once computed, the program then sends the data to the projector via that parallel port.",
+			"rText":"",
+			"executable":"",
+			"exeHeight":"",
+			"exeWidth":""
+		}
+	},
+
+	"about":
+	{
+		"resume":
+		{
+			"displayName":"Resume (currently nonexistent, so here is a picture of my cat)",
+			"language":"",
+			"listImage":"media/l_cat.jpg",
+			"mainImage":"media/p_cat.jpg",
+			"lText":"",
+			"rText":""
+		},
+
+		"lighting":
+		{
+			"displayName":"Lighting",
+			"language":"",
+			"listImage":"media/l_lighting.jpg",
+			"mainImage":"media/p_lighting.jpg",
+			"lText":"For many years, I've worked as a lighting tech for various productions. Most of my time is spent programming or debugging automated fixtures, but I also help rig, service and design lights for theater and parties.",
+			"rText":""
+		},
+
+		"lasers":
+		{
+			"displayName":"Laser Projection",
+			"language":"",
+			"listImage":"media/l_laser.jpg",
+			"mainImage":"media/p_projector.jpg",
+			"lText":"One of my many hobbies is building laser projectors, much like those found at rock concerts. The projector above is the latest working graphics projector capable of high scanning rates.",
+			"rText":""
+		},
+
+		"glass":
+		{
+			"displayName":"Glass",
+			"language":"",
+			"listImage":"media/l_glass.jpg",
+			"mainImage":"media/p_glass.jpg",
+			"lText":"I am currently employed as a torch worker for Robin Lehman Glass. Most of my time is spent creating the interior elements for our lampworked paperweights",
+			"rText":""
+		}
+	}
+}
