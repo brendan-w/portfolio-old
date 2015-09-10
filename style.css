@@ -1,0 +1,184 @@
+/*stylesheet for Brendan Whitfield's Portfolio*/
+
+@font-face {
+    font-family: 'ArimoRegular';
+    src: url('media/fonts/Arimo-Regular-Latin-webfont.eot');
+    src: url('media/fonts/Arimo-Regular-Latin-webfont.eot?#iefix') format('embedded-opentype'),
+         url('media/fonts/Arimo-Regular-Latin-webfont.woff') format('woff'),
+         url('media/fonts/Arimo-Regular-Latin-webfont.ttf') format('truetype'),
+         url('media/fonts/Arimo-Regular-Latin-webfont.svg#ArimoRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'ArimoBold';
+    src: url('media/fonts/Arimo-Bold-Latin-webfont.eot');
+    src: url('media/fonts/Arimo-Bold-Latin-webfont.eot?#iefix') format('embedded-opentype'),
+         url('media/fonts/Arimo-Bold-Latin-webfont.woff') format('woff'),
+         url('media/fonts/Arimo-Bold-Latin-webfont.ttf') format('truetype'),
+         url('media/fonts/Arimo-Bold-Latin-webfont.svg#ArimoBold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body
+{
+	margin:auto;
+	width:990px;
+	background-color: rgb(11,22,35);
+}
+
+a
+{
+	text-decoration: none;
+}
+
+p > a
+{
+	text-decoration: underline;
+	font-family:"ArimoRegular", sans-serif;
+	font-size:10pt;
+	color: rgb(105, 142, 184);
+	text-align:left;
+}
+
+h1
+{
+	font-family:"ArimoBold", sans-serif;
+	font-size:10pt;
+	color: rgb(105, 142, 184);
+	white-space:pre-wrap;
+	text-align:left;
+	margin-top:0px;
+	height:0px;
+}
+
+/*caption text style*/
+li, h2
+{
+	font-family:"ArimoRegular", sans-serif;
+	font-size:10pt;
+	color: rgb(105, 142, 184);
+	text-align:left;
+}
+
+/*paragraph text style*/
+p
+{
+	font-family:"ArimoRegular", sans-serif;
+	font-size:10pt;
+	color: rgb(105, 142, 184);
+	text-align:justify;
+	padding-top:15px;
+	text-justify:inter-word;
+}
+
+.contact > h1
+{
+	position:absolute;
+	top:63px;
+	left:28px;
+	width:0px;
+	height:0px;
+}
+
+/*copyright text style*/
+.copyright
+{
+	float: left;
+	font-family:"ArimoRegular", sans-serif;
+	font-size:10pt;
+	color: rgb(52, 71, 92);
+	white-space:pre-wrap;
+	text-align:left;
+	padding-top:20px;
+	padding-bottom:30px;
+}
+
+/*turn off ugly link borders*/
+img
+{
+	border-style:none;
+}
+
+/*email block*/
+.contact
+{
+	float:right;
+	margin:auto;
+	position:relative;
+	left:-180px;
+	top:0px;
+	width:65px;
+	height:104px;
+	background-image:url('media/EmailNode.jpg');
+	background-repeat:no-repeat;
+}
+
+/*Main nav block*/
+.nav
+{
+	float:left;
+	margin:auto;
+	position:relative;
+	left:0px;
+	top:10px;
+	width:130px;
+	height:360px;
+	background-image:url('media/NodeTree.jpg');
+	background-repeat:no-repeat;
+}
+/*Name image*/
+.name
+{
+	position:relative;
+	top:2px;
+	left:6px;
+	width:0px;
+	height:0px;
+}
+
+/*specific positioning for each node link*/
+.node1
+{
+	position:absolute;
+	height:0px;
+	width:60px;
+	top:125px;
+	left:94px;
+}
+.node2
+{
+	position:absolute;
+	height:0px;
+	width:60px;
+	top:189px;
+	left:29px;
+	width:60px;
+}
+.node3
+{
+	position:absolute;
+	height:0px;
+	width:60px;
+	top:318px;
+	left:66px;
+	width:60px;
+}
+
+/*main content block*/
+.content
+{
+	float:right;
+	margin:auto;
+	position:relative;
+	top:16px; /*120 - 104*/
+	left:0px;
+	width:800px;
+}
+
+/*Single project entry*/
+.project
+{
+	height: 350px;
+}
