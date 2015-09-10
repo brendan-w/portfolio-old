@@ -1,0 +1,75 @@
+/*Brendan Whitfield*/
+
+/********************************* TYPE ****************************************/
+
+@font-face
+{
+	font-family: Lato;
+	src: url('../media/Lato/Lato-Light.ttf')
+}
+@font-face
+{
+	font-family: Lato Hairline;
+	src: url('../media/Lato/Lato-Hairline.ttf')
+}
+@font-face
+{
+	font-family: Share Tech Mono;
+	src: url('../media/Share_Tech_Mono/ShareTechMono-Regular.ttf')
+}
+@font-face
+{
+	font-family: Opan Sans;
+	src: url('../media/Open_Sans/OpenSans-Regular.ttf')
+}
+
+h1{font-size: 38px; word-spacing: 0px; font-family: 'Share Tech Mono', 'Helvetica', 'Arial', sans-serif;}
+h2{font-size: 16px; word-spacing: 10px; font-family: 'Share Tech Mono', 'Helvetica', 'Arial', sans-serif;}
+
+/*************************************************************************/
+
+html
+{
+	width:100%;
+	height:100%;
+}
+
+body
+{
+	/*GENERIC*/
+	background-color: rgb(240,240,255);
+	width:100%;
+	
+	/*TYPE*/
+	color:rgb(0,0,0);
+	font-smoothing: antialiased !important;
+	-moz-font-smoothing: antialiased !important;
+	-webkit-font-smoothing: antialiased !important;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.4);
+
+	overflow:hidden;
+}
+
+
+header, .block
+{
+	position:absolute;
+	text-align:center;
+	box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+}
+
+header
+{
+	width:375px;
+	height:75px;
+	padding-top:8px;
+}
+
+.block
+{
+	opacity:0;
+	color:rgb(255,255,255);
+	background-color: rgba(0,0,0,0);
+}
