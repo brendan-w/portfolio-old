@@ -1,0 +1,309 @@
+/*Brendan Whitfield*/
+
+/********************************* TYPE ****************************************/
+
+@font-face
+{
+	font-family: Lato;
+	src: url('../media/Lato/Lato-Light.ttf')
+}
+@font-face
+{
+	font-family: Lato Hairline;
+	src: url('../media/Lato/Lato-Hairline.ttf')
+}
+@font-face
+{
+	font-family: Share Tech Mono;
+	src: url('../media/Share_Tech_Mono/ShareTechMono-Regular.ttf')
+}
+@font-face
+{
+	font-family: Open Sans;
+	src: url('../media/Open_Sans/OpenSans-Regular.ttf')
+}
+@font-face
+{
+	font-family: Share Tech;
+	src: url('../media/Share_Tech/ShareTech-Regular.ttf')
+}
+
+body
+{
+	/* default behavior */
+	color:rgb(0,0,0);
+	font-smoothing: antialiased !important;
+	-moz-font-smoothing: antialiased !important;
+	-webkit-font-smoothing: antialiased !important;
+	font-size: 12px;
+	font-family: 'Open Sans', 'Arial', sans-serif;
+}
+
+/*h1{font-size: 42px; letter-spacing:1px; word-spacing: 9px; font-family: 'Share Tech', 'Helvetica', 'Arial', sans-serif;}*/
+/*h2{font-size: 14px; letter-spacing:2px; word-spacing: 14px; font-family: 'Share Tech', 'Helvetica', 'Arial', sans-serif;}*/
+
+h1{font-size: 31.5pt; letter-spacing:1px; word-spacing: 9px; font-family: 'Share Tech', 'Helvetica', 'Arial', sans-serif;}
+h2{font-size: 10.5pt; letter-spacing:2px; word-spacing: 14px; font-family: 'Share Tech', 'Helvetica', 'Arial', sans-serif;}
+
+/*make links less ugly*/
+a {color:rgb(0,0,0); text-decoration:none;}
+a:active {outline: none;}
+a:focus   {outline: none;}
+
+/* Source: http://snipplr.com/view/10979/css-cross-browser-word-wrap */
+.wordwrap { 
+   white-space: pre-wrap;      /* CSS3 */   
+   white-space: -moz-pre-wrap; /* Firefox */    
+   white-space: -pre-wrap;     /* Opera <7 */   
+   white-space: -o-pre-wrap;   /* Opera 7 */    
+   word-wrap: break-word;      /* IE */
+}
+
+/************************************* Structure ************************************/
+
+html
+{
+	width:100%;
+	height:100%;
+}
+
+body
+{
+	background-color: rgb(255,255,255);
+	width:100%;
+	height:100%;
+}
+
+#main
+{
+	width:800px;
+	margin-right:auto;
+	margin-left:auto;
+	opacity:1;
+}
+
+#top
+{
+	position:relative;
+	width:100%;
+	height:125px;
+}
+
+#bottom
+{
+	overflow:hidden;
+	width:100%;
+}
+
+#side, #content
+{
+	/*include the padding in the width*/
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+#side
+{
+	float:left;
+	width:200px;
+	text-align:right;
+	padding:12px 12px 12px 0px;
+}
+
+#content
+{
+	float:right;
+	width:600px;
+	padding: 12px 0px 12px 12px;
+}
+
+/****************************** Header ********************************/
+header
+{
+	text-align:center;
+	width:374px;
+	height:65px;
+
+	position:absolute;
+	bottom:0px;
+	left:200px;
+}
+
+.interact:hover {color:blue;}
+
+/****************************** Nav ********************************/
+#nav
+{
+	position:absolute;
+	bottom:0px;
+	right:0px;
+}
+
+#nav li
+{
+	float:left;
+}
+
+#nav li a
+{
+	display:block;
+	height:24px;
+}
+
+/* used to make contiguous mouseover area */
+#nav li a.pr {padding-right:12px;}
+#nav li a.pl {padding-left:12px;}
+
+/* page selector */
+#page
+{
+	background-color: rgb(240,0,0);
+	width:42px;
+	height:4px;
+	position:absolute;
+	bottom:-1px;
+
+	transition: all 0.35s;
+	-webkit-transition: all 0.35s;
+}
+
+#page.work {right:118px;}
+#page.about {right:63px;}
+#page.contact {right:0px;}
+
+/****************************** Project List ********************************/
+section
+{
+	margin-bottom:12px;
+	height:130px;
+	display:block;
+}
+
+img.bw, img.clr{position:absolute;}
+img.bw{opacity:0.75;}
+img.clr
+{
+	opacity:0;
+	transition: opacity 0.35s;
+	-webkit-transition: opacity 0.35s;
+}
+img.clr:hover{opacity:1;}
+
+.info
+{
+	display:block;
+	position:relative;
+	float:right;
+	height:50%;
+	width:224px;
+	border-bottom:1px solid black;
+	transition: opacity 0.35s;
+	-webkit-transition: opacity 0.35s;
+}
+
+.info.in{opacity:1;}
+.info.out{opacity:0;}
+
+.name, .lang
+{
+	position:absolute;
+	right:0px;
+	transition: bottom 0.35s;
+	-webkit-transition: bottom 0.35s;
+}
+
+.lang{opacity:0.65;}
+
+.name.in{bottom:14px;}
+.name.out{bottom:4px;}
+
+.lang.in{bottom:-24px;}
+.lang.out{bottom:-14px;}
+
+
+/****************************** Graphics ********************************/
+
+/* Main lines */
+#h, #v{background-color: rgb(0,0,0); position:absolute;}
+#h{width:800px; height:1px;}
+#v{width:1px; height:600px;}
+
+/* dimension arrows */
+.arrow
+{
+	//opacity:0.3;
+	opacity:0;
+	position:absolute;
+	height:0px;
+	width:0px;
+}
+
+.h.arrow {border-bottom:1px solid black;}
+.v.arrow {border-left:1px solid black;}
+.h.arrow span{position:absolute; right:50%; bottom:4px;}
+.v.arrow span
+{
+	display:inline-block;
+	position:absolute;
+	transform:rotate(90deg);
+	-ms-transform:rotate(90deg);
+	-webkit-transform:rotate(90deg);
+	bottom:50%;
+	left:-8px;
+}
+
+
+.la, .ra, .ua, .da {position:absolute;}
+.la {top:-7px; left:0px;}
+.ra {top:-7px; right:0px;}
+.ua {right:-7px; top:0px;}
+.da {right:-7px; bottom:0px;}
+
+/* arrow-specific rules */
+#screenWidth{bottom:24px; width:100%;}
+#screenHeight{right:24px; height:100%;}
+#lineWidth{top:450px;}
+
+
+/****************************** Footer ********************************/
+footer
+{
+	position:fixed;
+	bottom:0px;
+	width:100%;
+}
+
+#copy
+{
+	opacity: 0.4;
+	float:left;
+	margin:6px;
+}
+
+footer a.email
+{
+	float:right;
+	margin:12px;
+}
+
+
+#lang li
+{
+	margin-bottom:12px;
+}
+
+/****************************** Media Queries ********************************/
+
+@media only screen and (max-width: 799px)
+{
+	.arrow{opacity:0;}
+	#main {width:576px;}
+	#content {width:376px;}
+	#nav {left:22px;}
+	#page.work {left:15px;}
+	#page.about {left:70px;}
+	#page.contact {left:133px;}
+	section{height:130px;}
+	.info.in{opacity:0;}
+}
