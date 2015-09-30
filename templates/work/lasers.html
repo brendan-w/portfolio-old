@@ -4,15 +4,35 @@
 {% block title %}Laser Projectors{% endblock %}
 {% block name  %}Laser Projectors{% endblock %}
 
+{%- block langs -%}
+	{{ make_langs([
+		'C',
+		'ØMQ',
+		'SDL 2.0'
+	]) }}
+{%- endblock -%}
+
+{%- block links -%}
+	{{ make_links([
+		('Gallery', 'https://imgur.com/a/pBG3L'),
+		('Code',    'https://github.com/brendanwhitfield/lzr')
+	]) }}
+{% endblock %}
 
 {% block article -%}
+		<section>
+			{{ make_image("/static/play/laser_glamour.jpg", "https://imgur.com/a/pBG3L") }}
+		</section>
+		<section>
+			One of my many hobbies is making laser light shows. To facilitate this, I have crafted my own software for drawing and transmitting lasers graphics. This project is currently a collection of backend libraries and binaries which can form the bones of laser show GUIs, or creative applications. It features basic point manipulation functions, an ILDA file parser (laser graphics file format), and a ØMQ daemon for operating the hardware.
+		</section>
 		<section>
 			{{ make_image("/static/play/laser.png", "/static/play/laser.png") }}
 		</section>
 		<section>
 			<div class='col'>
 				<p>
-				One of my many hobbies is building laser projectors. Much like those found at rock concerts, this projector is capable of receiving and drawing vector graphics. The projector shown was built back in highschool.
+				On top of the software, I also enjoy building the projectors themselves. The projector shown above was built back in highschool.
 				</p>
 				<p>
 				In order to control the projector, I wrote custom software in visual basic (I was a young programmer). This provided an interface in which to draw vector laser. Tools such as point manipulation, interpolation, and effects are all built in to the software. Once drawn, the image can then be sent to the projector via that parallel port.
